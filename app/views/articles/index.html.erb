@@ -1,0 +1,41 @@
+<% if params[:displayedit] == "Y" %>
+  <div class='row'> 
+    <div align = "left" class='article-title col-xs-7 gutter-0'>
+      <h5>My Ads</h5>
+    </div>
+    <div align = "right" class='article-title col-xs-5 gutter-0'>
+      <h5><%= current_user.articles.count %> of <%= session[:m_posting] %></h5>   
+    </div>
+  </div>
+  <div class="row">
+    <hr>
+  </div>
+
+<% else %>
+  <div class='row'> 
+    <div align="left" class="article-title col-xs-7 gutter-0">      
+      <h5>All Ads from <%= @articles.first.user.name %></h5>
+    </div>
+    <div align = "right" class='article-title col-xs-5 gutter-0'>
+      <!--<h5><%#= current_user.articles.count %> of <%#= session[:m_posting] %></h5> -->  
+    </div>
+  </div>
+  <div class="row">
+    <hr>
+  </div>  
+<% end %>
+
+<% if session[:mobile] == "Y" %>
+  <%= render 'mmarticle', obj: @articles %>      
+<% else %>
+  <div class='row'> 
+    <div class='col-sm-offset-0 col-xs-12'>
+      <div class="well well-lg">
+          <%= render 'article', obj: @articles %>
+          <div align="left">
+            <%= will_paginate %>
+          </div>
+      </div>
+    </div>
+  </div>  
+<% end %>

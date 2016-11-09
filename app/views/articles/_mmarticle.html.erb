@@ -1,0 +1,60 @@
+<%= form_tag root_path, :method => "get", id: "search-form", :class => "form-horizontal project" , :enforce_utf8 => false do %>      
+  <div class="row">
+    <div class='col-xs-offset-0 col-xs-12 gutter-0'>
+      <% obj.each do |article| %> 
+      	<div class="col-xs-3 gutter-0">
+          <% article.images.each do |t| %>
+            <% if t.picture.url %>
+              <%= image_tag t.picture.url, size: "80x60" %>
+            <% else %>
+              xx<%= image_tag url('images/noimage.gif'), size: "80x60" %>xx
+            <% end %>
+            <% break %>
+          <% end %>
+          <% if !article.images.present? %>
+            <%= image_tag("80x60.gif", :size => '80x60') %>
+          <% end %>
+        </div>
+      	<div class="col-xs-9 gutter-0">
+          <div class="article-title00">
+            <%#= article.category %> <%#= article.proptype%>
+            <%= link_to article.title, article_path(article,:param1 => "1", :usr => article.user_id) %>         
+          </div>
+          <div>
+            <%= truncate(article.description, length: 80) %>
+          </div>
+
+          <div class="font-green col-xs-7 gutter-0">
+            <% @place = Place.find(article.currency) if article.currency.present? %>
+            <%= @place.currency if @place.present? %> <%= number_with_precision(article.amount, precision: 0, delimiter: ',') %>
+          </div>
+          <div align="right" class="font-green col-xs-5 gutter-0">
+            <%= article.updated_at.to_formatted_s(:short) %>
+          </div>
+
+          <% if current_user %>
+            <% if params[:displayedit] == "Y" && current_user == article.user || current_user.admin? %>
+              <div class="col-xs-12 gutter-0">
+                <%= link_to "Edit Ad", edit_article_path(article), class: "btn btn-xs btn-primary" %>
+                <%= link_to "Delete Ad", article_path(article), method: :delete,
+                          data: { confirm: "Are you sure you want to delete the article?"}, class: "btn btn-xs btn-danger" %>
+              	<% if !article.xonline? %>
+                  <div class="btn btn-xs btn-warning ">
+                    * Draft copy *
+                  </div>&nbsp;&nbsp;
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col-xs-12 gutter-0">
+          <hr>
+        </div>
+      <% end %> <!--/do all-->
+    </div> <!-- xs-12 gutter-->
+  </div> <!--/row-->
+<% end %> <!--/form-->
+
+
+
+
