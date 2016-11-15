@@ -1,4 +1,4 @@
-<% if params[:displayedit] == "Y" %>
+<% if params[:displayedit] == "Y" #routine for My Ads after login%>
   <div class='row'> 
     <div align = "left" class='article-title col-xs-7 gutter-0'>
       <h5>My Ads</h5>
@@ -11,13 +11,17 @@
     <hr>
   </div>
 
-<% else %>
+<% else #ads details%>
   <div class='row'> 
-    <div align="left" class="article-title col-xs-7 gutter-0">      
-      <h5>All Ads from <%= @articles.first.user.name %></h5>
+    <div align="left" class="article-title col-xs-7 gutter-0">
+      <% if current_user.admin? %>
+        <h5>ADMIN: All Ads</h5>      
+      <% else %>
+        <h5>All Ads from <%= @articles.first.user.name %></h5>
+      <% end %>
     </div>
     <div align = "right" class='article-title col-xs-5 gutter-0'>
-      <!--<h5><%#= current_user.articles.count %> of <%#= session[:m_posting] %></h5> -->  
+      <h5><%#= current_user.articles.count %> of <%= session[:m_posting] %></h5>  
     </div>
   </div>
   <div class="row">

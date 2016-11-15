@@ -7,17 +7,11 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, :except => [:index]
   helper_method :current_user, :logged_in?
 
-  #def current_user
-    #@current_user ||= User.find(session[:user_id]) if session[:user_id] 
-  #end
+
 
   def logged_in?
-    !!current_user 
-    #user = User.find_by_email("lowseng@yahoo.com")
-    #if user.email == "lowseng@yahoo.com"
-    #  user.admin = "true"
-    #  user.save
-    #end
+    !!current_user #convert to Boolean ie. return tru or false if user logged in
+
   end
 
   def require_user
