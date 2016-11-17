@@ -259,8 +259,8 @@ function showSlides(n) {
     <% end %>
     <div class="btn btn-green">
       <span class='glyphicon glyphicon-list'></span><br>
-      <%#= link_to pluralize(@article.user.articles.count, "listing").html_safe, user_path(@article.user), :id => "button_id"%> 
-      <%= link_to pluralize(@article.user.articles.count, "listing").html_safe, articles_path(:usr => params[:usr]), :id => "button_id"%> 
+      <%#= link_to pluralize(@article.user.articles.count, "listing").html_safe, articles_path(:usr => params[:usr]), :id => "button_id"%> 
+      <%= link_to "My Listings".html_safe, articles_path(:usr => params[:usr]), :id => "button_id"%> 
     </div>
   </div>    
   <div align="center" class='col-xs-12'>
