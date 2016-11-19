@@ -13,7 +13,7 @@
       <% article1.images.each do |t| %>
         <% if t.picture.url %>
           <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 250px; height: 188px;">
-            <img src="assets/media.gif" alt="some_text" style="opacity:0.4;filter:alpha(opacity=40);"/>
+            <img src="assets/media.gif" style="opacity:0.4;filter:alpha(opacity=40);"/>
 
             <div class="property-price">
               <% @place = Place.find(article1.currency) if article1.currency.present? %>
@@ -70,7 +70,7 @@
       <% article2.images.each do |t| %>
         <% if t.picture.url %>
           <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 250px; height: 188px;">
-            <img src="assets/media.gif" alt="some_text" style="opacity:0.4;filter:alpha(opacity=40);"/>
+            <img src="assets/media.gif" style="opacity:0.4;filter:alpha(opacity=40);"/>
 
             <div class="property-price">
               <% @place = Place.find(article2.currency) if article2.currency.present? %>
