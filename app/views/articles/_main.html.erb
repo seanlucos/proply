@@ -1,0 +1,118 @@
+
+<div class='col-sm-9 gutter-0'>
+  <div align="left" class="latest col-sm-6" >
+    <%= "Latest: FOR SALE" %>
+  </div>
+  <div align="right" class="latest col-sm-6" >
+    <%= link_to "... more".html_safe, root_path(:proptype => "for Sale", :more => "Y") %>
+  </div>
+  <div class="latest col-sm-12"><hr></div>
+  <% mm=1 %>
+  <% @articles1.each do |article1| %> 
+  	<div align="center" class="col-sm-4 gutter-0" >
+      <% article1.images.each do |t| %>
+        <% if t.picture.url %>
+          <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 250px; height: 188px;">
+            <img src="assets/media.gif" alt="some_text" style="opacity:0.4;filter:alpha(opacity=40);"/>
+
+            <div class="property-price">
+              <% @place = Place.find(article1.currency) if article1.currency.present? %>
+              <%= @place.currency if @place.present? %> <%= number_with_precision(article1.amount, precision: 0, delimiter: ',') %>
+            </div>
+            <%= link_to article_path(article1, :usr => article1.user_id), :class => 'click-able' do %>
+              <span></span>
+            <% end %>
+          </div>
+          <div align = "center">
+            <% if article1.area.present? %>
+              <% @area = Area.find(article1.area)  %>
+              <%= @area.name %>,&nbsp;
+            <% end %>
+            <% if article1.region.present? %>
+              <% @region = Region.find(article1.region)  %>
+              <%= @region.name %>.
+            <% end %>
+          </div>
+          <div align = "center">
+            <% if article1.place.present? %>
+              <% @place = Place.find(article1.place)  %>
+              <%= @place.name %>
+            <% end %>
+          </div>
+        <% else %>
+          xx<%= image_tag url('images/noimage.gif'), size: "150x100" %>xx
+        <% end %>
+        <% break %>
+      <% end %>
+      <% if !article1.images.present? %>
+        <%= image_tag("noimage.gif") %>
+      <% end %>
+  	</div>
+  	<% mm = mm + 1 %>
+  	<% if mm == 4 %>
+  	  <% break %>
+  	<% end %>
+  <% end %>
+</div>
+<br><br><br><br>
+
+<div class='col-sm-9 gutter-0'>
+  <div align="left" class="latest col-sm-6" >
+    <%= "Latest: FOR RENT" %>
+  </div>
+  <div align="right" class="latest col-sm-6" >
+    <%= link_to "... more".html_safe, root_path(:proptype => "for Rent", :more => "Y") %>
+  </div>
+  <div class="latest col-sm-12"><hr></div>
+  <% mm=1 %>
+  <% @articles2.each do |article2| %> 
+  	<div align="center" class="col-sm-4 gutter-0" >
+      <% article2.images.each do |t| %>
+        <% if t.picture.url %>
+          <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 250px; height: 188px;">
+            <img src="assets/media.gif" alt="some_text" style="opacity:0.4;filter:alpha(opacity=40);"/>
+
+            <div class="property-price">
+              <% @place = Place.find(article2.currency) if article2.currency.present? %>
+              <%= @place.currency if @place.present? %> <%= number_with_precision(article2.amount, precision: 0, delimiter: ',') %>
+            </div>
+            <%= link_to article_path(article2, :usr => article2.user_id), :class => 'click-able' do %>
+              <span></span>
+            <% end %>
+          </div>
+          <div align = "center">
+            <% if article2.area.present? %>
+              <% @area = Area.find(article2.area)  %>
+              <%= @area.name %>,&nbsp;
+            <% end %>
+            <% if article2.region.present? %>
+              <% @region = Region.find(article2.region)  %>
+              <%= @region.name %>.
+            <% end %>
+          </div>
+          <div align = "center">
+            <% if article2.place.present? %>
+              <% @place = Place.find(article2.place)  %>
+              <%= @place.name %>
+            <% end %>
+          </div>
+        <% else %>
+          xx<%= image_tag url('images/noimage.gif'), size: "150x100" %>xx
+        <% end %>
+        <% break %>
+      <% end %>
+      <% if !article2.images.present? %>
+        <%= image_tag("noimage.gif") %>
+      <% end %>
+  	</div>
+  	<% mm = mm + 1 %>
+  	<% if mm == 4 %>
+  	  <% break %>
+  	<% end %>
+  <% end %>
+</div>
+
+
+<div  class='col-sm-3 gutter-0'>
+</div>	
+

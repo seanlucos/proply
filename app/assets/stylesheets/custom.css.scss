@@ -5,7 +5,6 @@ $navbar-default-bg: #3C4042; /*top bar background color */
 #comments-section {
   display: none;
 }
-
 hr {
     display: block;
     height: 1px;
@@ -169,8 +168,27 @@ padding: 0px!important;
 text-align: center; 
 text-decoration: none;
 }
+
 a:hover, a:focus {
 color: #ffffff !important;
+}
+}
+
+.latest {
+    font-family: "Segoe UI",sans-serif;
+    color: #1d4d87;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1.2;
+//    text-transform: uppercase;
+hr { 
+    border-top: 1px solid #1d4d87;
+    display: block;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    margin-left: auto;
+    margin-right: auto;
+    border-width: 3px;
 }
 }
 
@@ -211,6 +229,39 @@ font-size: 30px !important;
 }
 } */
 }
+.image-std {
+position: relative;
+text-align: center;
+background-size: cover;
+color: #fff;
+font-family: 'Helvetica Neue' !important;
+font-stretch: expanded;
+text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
+}
+.click-able { 
+  position:absolute; 
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+  z-index: 1;
+//  background-image: url('media.gif');
+}   
+.property-price {
+padding-top: 0.75rem;
+padding-right: 1.5rem;
+padding-bottom: 0.75rem;
+padding-left: 1.5rem;
+background-color: #cb3300;
+color: #fff;
+font-size: 1.5rem;
+    font-family: "Segoe UI",sans-serif;
+line-height: 1;
+position: absolute;
+right: 0;
+bottom: 0;
+z-index: 1;
+}
 .lowseng {
 text-align: center;
 background-image: asset-url('top.jpg');
@@ -220,54 +271,6 @@ font-family: 'Helvetica Neue' !important;
 font-stretch: expanded;
 padding-top: 50px;
 padding-bottom: 60px;
-text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
-}
-.bg250x400 {
-text-align: center;
-background-image: asset-url('300x400.gif');
-background-size: 300px 400px;
-background-repeat: no-repeat;
-color: #fff;
-font-family: 'Helvetica Neue' !important;
-font-stretch: expanded;
-padding-top: 50px;
-padding-bottom: 350px;
-text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
-}
-.bg250x300 {
-text-align: center;
-background-image: asset-url('300x300.gif');
-background-size: 300px 300px;
-background-repeat: no-repeat;
-color: #fff;
-font-family: 'Helvetica Neue' !important;
-font-stretch: expanded;
-padding-top: 50px;
-padding-bottom: 250px;
-text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
-}
-.bg250x200 {
-text-align: center;
-background-image: asset-url('300x200.gif');
-background-size: 300px 200px;
-background-repeat: no-repeat;
-color: #fff;
-font-family: 'Helvetica Neue' !important;
-font-stretch: expanded;
-padding-top: 50px;
-padding-bottom: 150px;
-text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
-}
-.bg250x100 {
-text-align: center;
-background-image: asset-url('300x100.gif');
-background-size: 300px 100px;
-background-repeat: no-repeat;
-color: #fff;
-font-family: 'Helvetica Neue' !important;
-font-stretch: expanded;
-padding-top: 50px;
-padding-bottom: 50px;
 text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
 }
 .paypal {

@@ -27,7 +27,23 @@ class ApplicationController < ActionController::Base
     if params[:search]
       @articles = Article.paginate(page: params[:page], per_page: 10).search(params[:search]).where(xonline: true).order('updated_at desc')
     else
-      @articles = Article.paginate(page: params[:page], per_page: 10).where(xonline: true).order('updated_at desc')      
+      if params[:proptype]=='for Sale'
+        @articles = Article.paginate(page: params[:page], per_page: 10).where(xonline: true, :proptype => 'for Sale').order('updated_at desc')        
+        else if params[:proptype]=='for Rent'
+          @articles = Article.paginate(page: params[:page], per_page: 10).where(xonline: true, :proptype => 'for Rent').order('updated_at desc')        
+          else if params[:proptype]=='for Auction' 
+            @articles = Article.paginate(page: params[:page], per_page: 10).where(xonline: true, :proptype => 'for Auction').order('updated_at desc')          
+            else if params[:proptype]=='new Launch' 
+              @articles = Article.paginate(page: params[:page], per_page: 10).where(xonline: true, :proptype => 'new Launch').order('updated_at desc')            
+            else
+              @articles1 = Article.where(xonline: true, :proptype => 'for Sale').order('updated_at desc')  
+              @articles2 = Article.where(xonline: true, :proptype => 'for Rent').order('updated_at desc')
+              @articles3 = Article.where(xonline: true, :proptype => 'for Auction').order('updated_at desc')          
+              @articles4 = Article.where(xonline: true, :proptype => 'new Launch').order('updated_at desc')            
+            end
+          end
+        end
+      end
     end  
     @articles = @articles.place(params[:place][:name]) if params[:place].present? and params[:place][:name] !=""
     @articles = @articles.region(params[:region][:name]) if params[:region].present? and params[:region][:name] !=""
