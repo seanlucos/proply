@@ -3,6 +3,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   include CarrierWave::MiniMagick
   process resize_to_limit: [400, 300] 
+  process :watermark
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -17,11 +18,20 @@ class PictureUploader < CarrierWave::Uploader::Base
   def store_dir
     #"#{model.class.to_s.underscore}"
     "#{model.class.to_s.underscore}/#{model.id}"
-   #     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-    #mm_folder1 = "images"
-    #"#{mm_folder1}/#{model.class.to_s.underscore}"
+    #"uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  def watermark
+    second_image = MiniMagick::Image.open("https://s3.amazonaws.com/arealestate1/image/logo.gif")
+    manipulate! do |img|
+      result = img.composite(second_image) do |c|
+        c.compose "Over"    # OverCompositeOp
+        c.gravity "Southeast" # copy second_image onto first_image from (20, 20)
+      end
+      result
+    end
+  end
+  
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
