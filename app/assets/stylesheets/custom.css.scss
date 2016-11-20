@@ -262,6 +262,32 @@ right: 0;
 bottom: 0;
 z-index: 1;
 }
+.property-x {
+padding-top: 0.75rem;
+padding-right: 1.5rem;
+padding-bottom: 0.75rem;
+padding-left: 1.5rem;
+background-color: #cb3300;
+color: #fff;
+font-size: 1.5rem;
+    font-family: "Segoe UI",sans-serif;
+line-height: 1;
+position: absolute;
+right: 0;
+top: 0;
+z-index: 1;
+a {
+  color: white;
+  text-decoration: none;
+  &:visited {
+    color: white;
+  }
+  &:hover {
+    color: white;
+    text-decoration: none;    
+  }
+}
+}
 .lowseng {
 text-align: center;
 background-image: asset-url('livingroom.gif');
