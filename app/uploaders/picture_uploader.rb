@@ -22,14 +22,24 @@ class PictureUploader < CarrierWave::Uploader::Base
   end
 
   def watermark
-    second_image = MiniMagick::Image.open("https://s3.amazonaws.com/arealestate1/image/logo.gif")
-    manipulate! do |img|
-      result = img.composite(second_image) do |c|
-        c.compose "Over"    # OverCompositeOp
-        c.geometry "+20+20" # copy second_image onto first_image from (20, 20)
+    #second_image = MiniMagick::Image.open("https://s3.amazonaws.com/arealestate1/image/logo.gif")
+    #manipulate! do |img|
+    #  result = img.composite(second_image) do |c|
+    #    c.compose "Over"    # OverCompositeOp
+    #    c.gravity "Center" # copy second_image onto first_image from (20, 20)
+    #  end
+    #  result
+    #end
+    manipulate! do |image|
+      image.combine_options do |c|
+        c.gravity 'Center'
+        c.pointsize '80'
+        c.annotate('+0+0', "media.my")
+        c.fill 'grey'
       end
-      result
+      image
     end
+
   end
   
   # Provide a default URL as a default if there hasn't been a file uploaded:
