@@ -33,7 +33,7 @@ class PictureUploader < CarrierWave::Uploader::Base
     manipulate! do |image|
       image.combine_options do |c|
         c.gravity 'Center'
-        c.pointsize '14'
+        c.pointsize '22'
         c.annotate('+0+0', "http://media.my")
         c.fill 'grey'
       end
