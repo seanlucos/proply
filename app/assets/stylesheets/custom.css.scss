@@ -264,13 +264,13 @@ z-index: 1;
 }
 .lowseng {
 text-align: center;
-background-image: asset-url('top.jpg');
-background-size: cover;
+background-image: asset-url('livingroom.gif');
+background-size: 100% 100%;
 color: #fff;
 font-family: 'Helvetica Neue' !important;
 font-stretch: expanded;
-padding-top: 50px;
-padding-bottom: 60px;
+//padding-top: 50px;
+padding-bottom: 920px;
 text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
 }
 .paypal {
