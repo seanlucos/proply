@@ -26,7 +26,7 @@ class PictureUploader < CarrierWave::Uploader::Base
     manipulate! do |img|
       result = img.composite(second_image) do |c|
         c.compose "Over"    # OverCompositeOp
-        c.gravity "+20+20" # copy second_image onto first_image from (20, 20)
+        c.geometry "+20+20" # copy second_image onto first_image from (20, 20)
       end
       result
     end
