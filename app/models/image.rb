@@ -1,6 +1,6 @@
 class Image < ActiveRecord::Base
   belongs_to :article
-  mount_uploader :picture, PictureUploader
+  mount_uploader :image, PictureUploader
   validate :picture_size
   validates :picture, presence: true
 
