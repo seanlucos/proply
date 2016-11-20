@@ -17,7 +17,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   def store_dir
     #"#{model.class.to_s.underscore}"
     #"uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-    "#{model.id}"
+    "#{model.request_id}/#{model.id}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
