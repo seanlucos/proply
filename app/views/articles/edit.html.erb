@@ -23,7 +23,6 @@
     <% current_article = @article.id %>
     <% session[:current_article] = current_article %>
     <%= render :partial => 'images/mmform', :object => @image %>
-    <%#= render :partial => 'images/mmform' %>
   <% end %>
   <br><br><br><br>
 <% else %>
@@ -46,12 +45,11 @@
     <% end %>
   </div>
   <%= render 'form' %>
-  <% if params[:param1] == 'confirm' %>
+  <!--<%# if params[:param1] == 'confirm' %>
     <a id="images"></a>
-    <% current_article = @article.id %>
-    <% session[:current_article] = current_article %>
-    <%= render :partial => 'images/form', :object => @image %>
-    <%#= render :partial => 'images/mmform' %>
-  <% end %>
+    <%# current_article = @article.id %>
+    <%# session[:current_article] = current_article %>
+    <%#= render :partial => 'images/form', :object => @image %>
+  <%# end %>-->
   <br><br><br><br> 
 <% end %>

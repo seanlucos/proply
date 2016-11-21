@@ -1,4 +1,4 @@
-<%#= render 'shared/errors', obj: @image %>
+<%= render 'shared/errors', obj: @image %>
   <table width="100%" border="0" cellspacing=5 cellpadding=5>
     <tr valign="center">  
       <% mcount = 6 %>
@@ -46,7 +46,7 @@
                   </ul>
                 </div>
               </div>
-            <% end %><%= mcount %>
+            <% end %>
             <%="Add Images?? Amplify your ad ::.."%><br><%="Share more images" %>
             <%= f.file_field :picture, accept: 'image/jpg,image/jpeg,image/gif,image/png',  :onchange => "this.form.submit()" %>
           <% end %>

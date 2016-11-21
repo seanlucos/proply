@@ -205,7 +205,7 @@ class ArticlesController < ApplicationController
     @article.otherinfo = params[:otherinfo][:name] if params[:otherinfo].present?    
 
 
-    @image = Image.new
+    @image = Image.new #take out 20/nov seem of no use??
     session[:mpage] = "1"
     current_article = @article.id
     session[:current_article] = current_article
