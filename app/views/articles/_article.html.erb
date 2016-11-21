@@ -1,3 +1,19 @@
+<div align="left" class="latest col-sm-6 gutter-0" >
+  <% if params[:proptype] == 'new Launch' %>
+    <%= "Ads: NEW LAUNCH" %>
+    <% else if params[:proptype] == 'for Sale' %>
+      <%= "Ads: FOR SALE" %>   
+      <% else if params[:proptype] == 'for Auction' %>
+        <%= "Ads: FOR AUCTION" %>
+        <% else if params[:proptype] == 'for Rent' %>
+          <%= "Ads: FOR RENT" %>        
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>  
+</div>
+<div class="latest col-sm-8 gutter-0"><hr></div>
+
 <%= form_tag root_path, :method => "get", id: "search-form", :class => "form-horizontal project" , :enforce_utf8 => false do %>      
   <div  class='col-sm-8 gutter-0'>
     <% obj.each do |article| %> 
