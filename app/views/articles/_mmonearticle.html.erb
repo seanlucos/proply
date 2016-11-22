@@ -115,18 +115,30 @@ body {font-family: Verdana,sans-serif;margin:0}
   <a class="next" onclick="plusSlides(1)">❯</a>
   <br>
   <div style="text-align:center">
+    <% mm = 1 %>
     <% @article.images.each do |t| %>
-      <span class="dot" onclick="currentSlide(t)"></span>
+      <% if mm == 1 %>
+        <span class="dot" onclick="currentSlide(1)"></span>        
+        <% else if mm == 2 %>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <% else if mm == 3 %>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <% else if mm == 4 %>
+              <span class="dot" onclick="currentSlide(4)"></span>
+              <% else if mm == 5 %>
+                <span class="dot" onclick="currentSlide(5)"></span>
+              <% else %>
+                <span class="dot" onclick="currentSlide(6)"></span>
+              <% end %>
+            <% end %>  
+          <% end %>
+        <% end %>
+      <% end %>
+      <% mm = mm + 1 %>
     <% end %>
   </div>
 </div>
 <br>
-<!--
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
-</div>-->
 
 <script>
 var slideIndex = 1;

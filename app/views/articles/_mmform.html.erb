@@ -184,24 +184,22 @@
             <%= f.collection_select(:currency, Place.where(status: true), :id, :currency, {:selected => current_user.prefercountry}, {:class => 'form-control'} ) %>
           </div>
         </div> 
-
       <% end %> <!--params1==confirm-->  
+
+      <% if params[:param1] == 'confirm' %>
+        <% current_article = @article.id %>
+        <% session[:current_article] = @article.id %>
+        <%= render :partial => 'images/mmform', :object => @image %>
+        <%#= render :partial => 'images/form' %>
+      <% end %>
       
       <div class="form-group form-actions">
-        
-        <% if params[:param1] == 'confirm' %>
-          <div align="center" class="col-xs-12"> <br><br>
-            <%= f.check_box :xonline  %>&nbsp;&nbsp;<%= 'Display this Ad'%>
-            <%#= link_to t('.cancel', :default => t("helpers.links.cancel")), articles_path, :class => 'btn btn-default' %>
-          </div>
-        <% else %>
-          <%= f.hidden_field :xonline, value: false %>
-        <% end %>
-        
         <div align="center" class="col-xs-12 gutter-0"><br> 
           <% if params[:param1] == 'confirm' %>
+            <%= f.hidden_field :xonline, value: true %> 
             <%= f.submit "CONFIRM", :class => "btn btn-primary btn-block"%>          
           <% else %>
+            <%= f.hidden_field :xonline, value: false %>  
             <%= f.submit "NEXT", name: "mmaction1", value: "NEXT", :class => "btn btn-primary btn-block"%>
           <% end %>
         </div>

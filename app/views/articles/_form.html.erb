@@ -214,18 +214,7 @@
         <%#= render :partial => 'images/form' %>
       <% end %>
 
-
       <div class="form-group form-actions">
-        
-        <!--<%# if params[:param1] == 'confirm' %>
-          <div align="center" class="col-sm-12"><br><br> 
-            <%#= f.check_box :xonline  %>&nbsp;&nbsp;<%#= 'Display this Ad'%>
-            <%#= link_to t('.cancel', :default => t("helpers.links.cancel")), articles_path, :class => 'btn btn-default' %>
-          </div>
-        <%# else %>
-          <%#= f.hidden_field :xonline, value: false %>
-        <%# end %>-->
-        
         <div align="center" class="col-sm-12 gutter-0"><br> 
           <% if params[:param1] == 'confirm' %>
             <%= f.hidden_field :xonline, value: true %>  

@@ -5,9 +5,6 @@
     <div class='col-sm-offset-0 col-sm-12'>
       <div class="well">
         <%= render 'onearticle' %>
-        <div class='gutter-0 col-sm-12 article-title'>
-          <br>All Ads from <%= @article.user.name %><hr><br>
-        </div>
         <%# params[:donotdisplay] = "Y" %>
         <%= render 'article', obj: @articles %>
         <div align="left">
@@ -16,4 +13,4 @@
       </div>
     </div>
   </div>
-  <% end %>
+<% end %>

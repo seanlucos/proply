@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   def mobile_search
     session[:mpage] = "0"    
-    @articles = Article.all
+    @articles = Article.paginate(page: params[:page], per_page: 10).where(xonline: true).order('updated_at desc')
     if params[:search]
       @articles = Article.paginate(page: params[:page], per_page: 10).search(params[:search]).where(xonline: true).order('updated_at desc')
     else

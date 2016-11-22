@@ -1,31 +1,20 @@
-<%= render 'shared/errors', obj: @image %>
-<script>
-  function preventBack(){window.history.forward();}
-  setTimeout("preventBack()", 0);
-  window.onunload=function(){null};
-</script>
-<script type="text/javascript">
-  $('#image_picture').bind('change', function() {
-  var size_in_megabytes = this.files[0].size/1024/1024;
-  if (size_in_megabytes > 5) {
-    alert('Maximum file size is 5MB.');
-}
-});
-</script>
-
-<div class='row'> 
+<%#= render 'shared/errors', obj: @image %>
+<!-- table & tr inserted so that confirm button is pressable. i dont know why-->
+<table>
+  <tr>
+  <div class='row'> 
   <div class='col-xs-offset-0 col-xs-12'>
     <div class="well" >
       <div  class="form-group">
         <% @article.images.each do |t| %>
-          <div align="right" class='col-xs-12 gutter-0'>
-            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              image_path(t),
-              :method => :delete,
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }%>
-          </div>
           <div align="center" class='col-xs-12 gutter-0'>
-            <%= image_tag t.picture.url, size: "280x190", :class => "style_image" %></td>
+            <div style="background-image: url('<%= t.picture.url %>');background-size: cover; position: relative; border: 3px solid; width: 250px; height: 188px;">
+              <div class="property-x">
+                <%= link_to t('.destroy', :default => "x"), image_path(t),
+                :method => :delete,
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }%>
+              </div>
+            </div>
           </div>
           <div align="center" class='col-xs-12 gutter-0'>
             <hr>
@@ -33,6 +22,10 @@
         <% end %>
       </div>
       
+<!--to pacify upload ELSE first upload will NOT work - dont know why!!-->
+    <%= form_for @image, :url => { :controller => "images", :action => "create"} do |x| %>
+    <% end %>
+    
       <%= form_for @image, :html => { multipart: true, :class => "form-horizontal image" } do |f| %>
         <% if @image.errors.any? %>
           <div id="error_expl" class="panel panel-danger">
@@ -65,3 +58,14 @@
     </div>
   </div>
 </div>
+</tr>
+</table>
+
+<script type="text/javascript">
+  $('#image_picture').bind('change', function() {
+  var size_in_megabytes = this.files[0].size/1024/1024;
+  if (size_in_megabytes > 5) {
+    alert('Maximum file size is 5MB.');
+}
+});
+</script>

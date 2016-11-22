@@ -1,19 +1,92 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing:border-box}
+body {font-family: Verdana,sans-serif; background-color: #e4685d; }
+.mySlides {display:none}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1200px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 18px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 13px;
+  width: 13px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 10.5s;
+  animation-name: fade;
+  animation-duration: 10.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: 1}
+  to {opacity: .8}
+}
+
+@keyframes fade {
+  from {opacity: 1}
+  to {opacity: .8}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+</style>
+<body>
+<div class='col-sm-12 gutter-0'><br><br>
 <div class='col-sm-9 gutter-0'>
-  <div align="left" class="latest col-sm-6" >
+  <div align="left" class="latest col-sm-6 gutter-0" >
     <%= "Latest: NEW LAUNCH" %>
   </div>
-  <div align="right" class="latest col-sm-6" >
+  <div align="right" class="latest col-sm-6 gutter-0" >
     <%= link_to "... more".html_safe, root_path(:proptype => "new Launch", :more => "Y") %>
   </div>
-  <div class="latest col-sm-12"><hr></div>
+  <div class="latest col-sm-12 gutter-0"><hr></div>
   <% mm=1 %>
   <% @articles4.each do |articles4| %> 
   	<div align="center" class="col-sm-4 gutter-0" >
       <% articles4.images.each do |t| %>
         <% if t.picture.url %>
-          <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 250px; height: 188px;">
-            <img src="assets/media.gif" style="opacity:0.4;filter:alpha(opacity=40);"/>
-
+          <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 100%; height: 188px;">
             <div class="property-price">
               <% @place = Place.find(articles4.currency) if articles4.currency.present? %>
               <%= @place.currency if @place.present? %> <%= number_with_precision(articles4.amount, precision: 0, delimiter: ',') %>
@@ -53,25 +126,53 @@
   	<% end %>
   <% end %>
 </div>
+<div  class='col-sm-3 gutter-0'>
+  <img src="assets/joinnow.gif" style="width:100%">
+</div>
+<div class="slideshow-container col-sm-9 gutter-0">
+  <div class="mySlides fade">
+    <div class="numbertext">Highlights</div>
+    <img src="assets/scr1.gif" style="width:100%">
+    <div class="text">Caption Text</div>
+  </div>
+  
+  <div class="mySlides fade">
+    <div class="numbertext">Featured Location</div>
+    <img src="assets/scr2.gif" style="width:100%">
+    <div class="text">National Monument - Kuala Lumpur</div>
+  </div>
+  
+  <div class="mySlides fade">
+    <div class="numbertext">Higly Recommended</div>
+    <img src="assets/scr3.gif" style="width:100%">
+    <div class="text">Caption Three</div>
+  </div>
+</div>
+<br>
+
+<div style="text-align:center" class="col-sm-9">
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span><br><br><br><br>
+</div>
+
 
 
 
 <div class='col-sm-9 gutter-0'>
-  <div align="left" class="latest col-sm-6" >
+  <div align="left" class="latest col-sm-6 gutter-0" >
     <%= "Latest: FOR SALE" %>
   </div>
-  <div align="right" class="latest col-sm-6" >
+  <div align="right" class="latest col-sm-6 gutter-0" >
     <%= link_to "... more".html_safe, root_path(:proptype => "for Sale", :more => "Y") %>
   </div>
-  <div class="latest col-sm-12"><hr></div>
+  <div class="latest col-sm-12 gutter-0"><hr></div>
   <% mm=1 %>
   <% @articles1.each do |article1| %> 
   	<div align="center" class="col-sm-4 gutter-0" >
       <% article1.images.each do |t| %>
         <% if t.picture.url %>
-          <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 250px; height: 188px;">
-            <img src="assets/media.gif" style="opacity:0.4;filter:alpha(opacity=40);"/>
-
+          <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 100%; height: 188px;">
             <div class="property-price">
               <% @place = Place.find(article1.currency) if article1.currency.present? %>
               <%= @place.currency if @place.present? %> <%= number_with_precision(article1.amount, precision: 0, delimiter: ',') %>
@@ -113,21 +214,19 @@
 </div>
 
 <div class='col-sm-9 gutter-0'>
-  <div align="left" class="latest col-sm-6" >
+  <div align="left" class="latest col-sm-6 gutter-0" >
     <%= "Latest: FOR RENT" %>
   </div>
-  <div align="right" class="latest col-sm-6" >
+  <div align="right" class="latest col-sm-6 gutter-0" >
     <%= link_to "... more".html_safe, root_path(:proptype => "for Rent", :more => "Y") %>
   </div>
-  <div class="latest col-sm-12"><hr></div>
+  <div class="latest col-sm-12 gutter-0"><hr></div>
   <% mm=1 %>
   <% @articles2.each do |article2| %> 
   	<div align="center" class="col-sm-4 gutter-0" >
       <% article2.images.each do |t| %>
         <% if t.picture.url %>
-          <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 250px; height: 188px;">
-            <img src="assets/media.gif" style="opacity:0.4;filter:alpha(opacity=40);"/>
-
+          <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 100%; height: 188px;">
             <div class="property-price">
               <% @place = Place.find(article2.currency) if article2.currency.present? %>
               <%= @place.currency if @place.present? %> <%= number_with_precision(article2.amount, precision: 0, delimiter: ',') %>
@@ -169,21 +268,19 @@
 </div>
 
 <div class='col-sm-9 gutter-0'>
-  <div align="left" class="latest col-sm-6" >
+  <div align="left" class="latest col-sm-6 gutter-0" >
     <%= "Latest: FOR AUCTION" %>
   </div>
-  <div align="right" class="latest col-sm-6" >
+  <div align="right" class="latest col-sm-6 gutter-0" >
     <%= link_to "... more".html_safe, root_path(:proptype => "for Auction", :more => "Y") %>
   </div>
-  <div class="latest col-sm-12"><hr></div>
+  <div class="latest col-sm-12 gutter-0"><hr></div>
   <% mm=1 %>
   <% @articles3.each do |articles3| %> 
   	<div align="center" class="col-sm-4 gutter-0" >
       <% articles3.images.each do |t| %>
         <% if t.picture.url %>
-          <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 250px; height: 188px;">
-            <img src="assets/media.gif" style="opacity:0.4;filter:alpha(opacity=40);"/>
-
+          <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 100%; height: 188px;">
             <div class="property-price">
               <% @place = Place.find(articles3.currency) if articles3.currency.present? %>
               <%= @place.currency if @place.present? %> <%= number_with_precision(articles3.amount, precision: 0, delimiter: ',') %>
@@ -223,9 +320,30 @@
   	<% end %>
   <% end %>
 </div>
+	
+</div>
 
+<script>
+var slideIndex = 0;
+showSlides();
 
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex> slides.length) {slideIndex = 1}
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 5000); // Change image every 2 seconds
+}
+</script>
 
-<div  class='col-sm-3 gutter-0'>
-</div>	
-
+</body>
+</html>

@@ -1,14 +1,3 @@
-<div class='row'>
-  <div align = "left" class='article-title col-xs-7 gutter-0'>
-   <h5>All Ads from <%= @articles.first.user.name %></h5>
-  </div>
-  <% if logged_in? and !current_user.admin?%>
-    <div align = "right" class='article-title col-xs-5 gutter-0'>
-      <h5><%= current_user.articles.count %> of <%= session[:m_posting] %></h5> 
-    </div>
-  <% end %>
-</div>
-
 <% if session[:mobile] == "Y" %>
   <%= render 'mmarticle', obj: @articles %>      
 <% else %>

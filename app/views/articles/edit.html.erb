@@ -1,29 +1,27 @@
 <% if session[:mobile] == "Y" %>
-  <div class='col-xs-offset-0 col-xs-12 gutter-0'>
-    <% if params[:param1] == 'confirm' %>
-      <div align = "left" class='article-title col-xs-7 gutter-0'>
-        <h5><%= session[:step2]%> - Continue...</h5> 
-      </div>
-      <div align = "right" class='article-title col-xs-5 gutter-0'>
-        <h5>Id: <%= @article.id %></h5> 
-      </div>
-    <% else %>
-      <div align = "left" class='article-title col-xs-7 gutter-0'>
-        <h5>Modify Ad</h5>
-      </div>
-      <div align = "right" class='article-title col-xs-5 gutter-0'>
-        <h5>Id: <%= @article.id %></h5>
-      </div>      
-      <% session[:step2] = "Modify Ad" %>
-    <% end %>
+  <div class='row'> 
+    <div class='col-xs-offset-0 col-xs-12 gutter-0'><br>
+      <% if params[:param1] == 'confirm' %>
+        <div align="left" class="latest col-sm-6 gutter-0" >
+          <%= session[:step2]%> - Continue...
+        </div>
+        <div align="right" class="latest col-sm-6 gutter-0" >
+          Id: <%= @article.id %>
+        </div>
+        <div class="latest col-sm-12 gutter-0"><hr></div>
+      <% else %>
+        <div align="left" class="latest col-sm-6 gutter-0" >
+          Modify Ad
+        </div>
+        <div align="right" class="latest col-sm-6 gutter-0" >
+          Id: <%= @article.id %>
+        </div> 
+        <div class="latest col-sm-12 gutter-0"><hr></div>        
+        <% session[:step2] = "Modify Ad" %>
+      <% end %>
+    </div>
   </div>
   <%= render 'mmform' %>
-  <% if params[:param1] == 'confirm' %>
-    <a id="images"></a>
-    <% current_article = @article.id %>
-    <% session[:current_article] = current_article %>
-    <%= render :partial => 'images/mmform', :object => @image %>
-  <% end %>
   <br><br><br><br>
 <% else %>
   <div class='row'> 
@@ -49,11 +47,5 @@
     </div>
   </div>
   <%= render 'form' %>
-  <!--<%# if params[:param1] == 'confirm' %>
-    <a id="images"></a>
-    <%# current_article = @article.id %>
-    <%# session[:current_article] = current_article %>
-    <%#= render :partial => 'images/form', :object => @image %>
-  <%# end %>-->
   <br><br><br><br> 
 <% end %>
