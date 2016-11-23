@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   #resources :rawregions
   #resources :rawareas  
   
-  devise_for :users
+  #devise_for :users -- as at 21-nov-2016
+  devise_for :users, :controllers => { :registrations => "user/registrations" } #from 21-nov-2016 for additional fields
   #devise_for :users, :controllers => { :registrations => 'registrations' }
   resources :articles, :users
   #get 'welcome/index'
