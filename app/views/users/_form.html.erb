@@ -7,7 +7,7 @@
         <div class="control-label col-sm-2"> 
           <%= "Email" %> 
         </div> 
-        <div class="col-sm-5"> 
+        <div class="col-sm-4"> 
           <%#= @user.email %> 
           <%= f.text_field :email, class: "form-control", :disabled=>true %> 
           <%= hidden_field(:user, :email) %>
@@ -20,10 +20,11 @@
       </div> 
       <div class="form-group"> 
         <div class="control-label col-sm-2"> 
-          <%="Name" %> 
+          <%="Agent Name" %> 
         </div> 
         <div class="col-sm-4"> 
-          <%= f.text_field :name, class: "form-control", placeholder: "Agent Name", autofocus: true %> 
+          <%= f.text_field :name, class: "form-control", :disabled=>true, placeholder: "Agent Name", autofocus: true %>
+          <%= hidden_field(:user, :name) %>          
         </div> 
         <div class="control-label col-sm-2"> 
           <%= "Telephone" %> 
@@ -34,16 +35,17 @@
       </div>
       <div class="form-group"> 
         <div class="control-label col-sm-2"> 
-          <%= "Agent No" %> 
+          <%= "Agent/ REN No" %> 
         </div> 
         <div class="col-sm-4"> 
-          <%= f.text_field :agentno, class: "form-control", placeholder: "", autofocus: true %> 
+          <%= f.text_field :agentno, class: "form-control", :disabled=>true, placeholder: "", autofocus: true %>
+          <%= hidden_field(:user, :agentno) %>            
         </div> 
         <div class="control-label col-sm-2"> 
-          <%= "Company" %> 
+          <%= "Agency Name" %> 
         </div> 
         <div class="col-sm-4"> 
-          <%= f.text_field :company, class: "form-control", placeholder: "Company Name", autofocus: true %> 
+          <%= f.text_field :company, class: "form-control", placeholder: "Agency Name", autofocus: true %> 
         </div> 
       </div>
       <div class="form-group"> 
@@ -61,17 +63,42 @@
         </div> 
       </div>     
       <%# if @user.status != 'Premier' %>
-      <% if @user.status != 'Premier' %>      
-        <div class="form-group"> 
-          <div class="checkbox col-sm-offset-2 col-sm-8">
-            <br><%= f.check_box :gold %>&nbsp;&nbsp;Upgrade to Premier Account @ RM125.00<br>
-            <%= f.hidden_field :m_gold, value: 'PayPal', :class => 'form-control' %> <!--#becos only paypal-->
-            <!--&nbsp;&nbsp;&nbsp;&nbsp;<%#= f.radio_button :m_gold, 'PayPal', { :checked => true } %>&nbsp;&nbsp;<%#= "PayPal" %>-->
-            <!--&nbsp;&nbsp;&nbsp;&nbsp;<%#= f.radio_button :m_gold, 'CreditCards' %>&nbsp;&nbsp;<%#= "Credit Cards" %>-->
-            <br><%= image_tag("paypal.gif") %>
+      <div id="container">
+        <div id="middle">
+          <div class="well">
+            <% if @user.status != 'Premier' %>      
+              <div class="form-group"> 
+                <div class="checkbox col-sm-offset-1 col-sm-8">
+                  <b>Negotiator's Upgrade Plan:</b><br><br>
+                </div>
+                <div class="checkbox col-sm-offset-2 col-sm-8">
+                  <%= f.check_box :gold %>&nbsp;&nbsp;Upgrade to Package #1 @ RM 350.00/ year<br>
+                  &nbsp;&nbsp;- 25 Concurrent Ads
+                  <%= f.hidden_field :m_gold, value: 'PayPal', :class => 'form-control' %> <!--#becos only paypal-->
+                </div>
+                <div class="checkbox col-sm-offset-2 col-sm-8">
+                  <%= f.check_box :gold %>&nbsp;&nbsp;Upgrade to Package #2 @ RM 550.00/ year<br>
+                  &nbsp;&nbsp;- 55 Concurrent Ads
+                  <%= f.hidden_field :m_gold, value: 'PayPal', :class => 'form-control' %> <!--#becos only paypal-->
+                  <!--&nbsp;&nbsp;&nbsp;&nbsp;<%#= f.radio_button :m_gold, 'PayPal', { :checked => true } %>&nbsp;&nbsp;<%#= "PayPal" %>-->
+                  <!--&nbsp;&nbsp;&nbsp;&nbsp;<%#= f.radio_button :m_gold, 'CreditCards' %>&nbsp;&nbsp;<%#= "Credit Cards" %>-->
+                  <br><br><%= image_tag("paypal.gif") %>
+                </div>
+              </div> 
+            <% end %>
           </div>
-        </div> 
-      <% end %>
+        </div>
+        <div align="center" id="right"><br>
+          <% if current_user && current_user == @user || current_user && current_user.admin? %>
+            <%= gravatar_for @user, size:180 %><br><br>
+            Profile from <%= link_to "http://gravatar.com", "http://gravatar.com" %><br>
+          <% else %>
+            <%= link_to image_tag("/assets/gprofile.gif", width: "100%"), "http://gravatar.com" %><br>
+            <b>User Profile</b><br>Gravatar stands for Globally Recognized Avatar. It is globally recognized because millions of people and websites use them. 
+            Most popular applications like WordPress have built-in support for Gravatar.
+          <% end %>
+        </div>
+      </div>
       <!--
       <div class="form-group"> 
         <div class="control-label col-sm-2"> 
@@ -165,12 +192,14 @@
         <% end %>
         <div class="form-group"> 
           <div class="col-sm-offset-2 col-sm-3"> 
-            <br><br><%= f.submit "Update Settings", class: 'btn btn-primary btn-lg' %> 
+            <br><%= f.submit "Update Settings", class: 'btn btn-primary btn-block' %> 
             <%#= f.submit class: 'btn btn-primary btn-lg' %> 
             <%#= link_to "Change Password", edit_user_registration_path, class: 'btn btn-primary btn-lg' %>
           </div> 
         </div> 
       </section>
     <% end %> 
+    <%#= gravatar_for current_user, size:200 %>
+  
   </div> 
 </div>

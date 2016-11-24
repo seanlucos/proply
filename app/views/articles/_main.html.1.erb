@@ -71,16 +71,16 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
   .text {font-size: 11px}
 }
 </style>
-<div id="container">
-  <div id="middle">
-    <div class='col-md-12 gutter-0'>
-      <div align="left" class="latest col-md-12 gutter-0" >
+<div class="container">
+  <div class="middle">
+    <div class='col-sm-9 gutter-0'>
+      <div align="left" class="latest col-sm-6 gutter-0" >
         <%= "Latest: NEW LAUNCH" %>
       </div>
-      <div align="right" class="latest col-md-12 gutter-0" >
+      <div align="right" class="latest col-sm-6 gutter-0" >
         <%= link_to "... more".html_safe, root_path(:proptype => "new Launch", :more => "Y") %>
       </div>
-      <div class="latest col-md-12 gutter-0"><hr></div>
+      <div class="latest col-sm-12 gutter-0"><hr></div>
       <% mm=1 %>
       <% @articles4.each do |articles4| %> 
       	<div align="center" class="col-sm-4 gutter-0" >
@@ -127,7 +127,7 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
       <% end %>
     </div>
 
-    <div class="slideshow-container col-md-12 gutter-0">
+    <div class="slideshow-container col-sm-9 gutter-0">
       <div class="mySlides fade">
         <div class="numbertext">Highlights</div>
         <img src="assets/scr1.gif" style="width:100%">
@@ -147,20 +147,24 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
       </div>
     </div>
     <br>
-    <div style="text-align:center" class="col-md-12">
+    
+    <div style="text-align:center" class="col-sm-9">
       <span class="dot"></span>
       <span class="dot"></span>
       <span class="dot"></span><br><br><br><br>
     </div>
-
-    <div class='col-md-12 gutter-0'>
-      <div align="left" class="latest col-md-12 gutter-0" >
+    
+    
+    
+    
+    <div class='col-sm-9 gutter-0'>
+      <div align="left" class="latest col-sm-6 gutter-0" >
         <%= "Latest: FOR SALE" %>
       </div>
-      <div align="right" class="latest col-md-12 gutter-0" >
+      <div align="right" class="latest col-sm-6 gutter-0" >
         <%= link_to "... more".html_safe, root_path(:proptype => "for Sale", :more => "Y") %>
       </div>
-      <div class="latest col-md-12 gutter-0"><hr></div>
+      <div class="latest col-sm-12 gutter-0"><hr></div>
       <% mm=1 %>
       <% @articles1.each do |article1| %> 
       	<div align="center" class="col-sm-4 gutter-0" >
@@ -207,14 +211,14 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
       <% end %>
     </div>
     
-    <div class='col-md-12 gutter-0'>
-      <div align="left" class="latest col-md-12 gutter-0" >
+    <div class='col-sm-9 gutter-0'>
+      <div align="left" class="latest col-sm-6 gutter-0" >
         <%= "Latest: FOR RENT" %>
       </div>
-      <div align="right" class="latest col-md-12 gutter-0" >
+      <div align="right" class="latest col-sm-6 gutter-0" >
         <%= link_to "... more".html_safe, root_path(:proptype => "for Rent", :more => "Y") %>
       </div>
-      <div class="latest col-md-12 gutter-0"><hr></div>
+      <div class="latest col-sm-12 gutter-0"><hr></div>
       <% mm=1 %>
       <% @articles2.each do |article2| %> 
       	<div align="center" class="col-sm-4 gutter-0" >
@@ -261,14 +265,14 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
       <% end %>
     </div>
     
-    <div class='col-md-12 gutter-0'>
-      <div align="left" class="latest col-md-12 gutter-0" >
+    <div class='col-sm-9 gutter-0'>
+      <div align="left" class="latest col-sm-6 gutter-0" >
         <%= "Latest: FOR AUCTION" %>
       </div>
-      <div align="right" class="latest col-md-12 gutter-0" >
+      <div align="right" class="latest col-sm-6 gutter-0" >
         <%= link_to "... more".html_safe, root_path(:proptype => "for Auction", :more => "Y") %>
       </div>
-      <div class="latest col-md-12 gutter-0"><hr></div>
+      <div class="latest col-sm-12 gutter-0"><hr></div>
       <% mm=1 %>
       <% @articles3.each do |articles3| %> 
       	<div align="center" class="col-sm-4 gutter-0" >
@@ -314,32 +318,24 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
       	<% end %>
       <% end %>
     </div>
-  </div>
-  <div id="right">
-    <div>
+  </div><!--middle-->
+  <div class="right">
+    <div  class='col-sm-3 gutter-0'>
       <!--<img src="assets/joinnow.gif" style="width:100%">-->
       <%= link_to image_tag("/assets/joinnow.gif", width: "100%"), new_user_registration_path %>
       
       <% if current_user.present? %>
-        <%#= gravatar_for current_user, size:200 %>
-        <%= link_to image_tag("/assets/gprofile.gif", width: "100%"), "http://gravatar.com" %><br>
-        <div class="div1">
-          <b>Gravatar for Profile Picture</b><br>
-          Gravatar stands for Globally Recognized Avatar. It is globally recognized because millions of people and websites use them. 
-          Most popular applications like WordPress have built-in support for Gravatar.<br> 
-          When a user leaves a comment (with email) on a site that supports Gravatar, 
-          it pulls their Globally Recognized Avatar from Gravatar servers. 
-          Then that picture is shown next to the comment. 
-          This allows each commenter to have their identity through out the world wide web.
-        </div>
+        <%= gravatar_for current_user, size:200 %>
       <% end %>  
-    </div> 
+    </div>    
   </div>
-</div>
+</div><!--container-->
+
 
 <script>
 var slideIndex = 0;
 showSlides();
+
 function showSlides() {
     var i;
     var slides = document.getElementsByClassName("mySlides");
@@ -357,4 +353,6 @@ function showSlides() {
     setTimeout(showSlides, 5000); // Change image every 2 seconds
 }
 </script>
+
+
 </html>

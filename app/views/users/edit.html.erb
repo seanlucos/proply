@@ -6,14 +6,11 @@
   </div>
   <%= render 'mmform' %>
 <% else %>
-  <div class='row'> 
-    <div class='col-sm-offset-0 col-xs-12'>
-      <div class="well well-lg ">
-        <div class='row col-sm-offset-0 col-xs-12 article-title'>
-          <h4 align="left">My Settings</h4><hr><br>
-        </div>
-        <%= render 'form' %>
-      </div>
+  <div class='col-sm-12 gutter-0'><br>
+    <div align="left" class="latest col-sm-6 gutter-0" >
+      MY SETTINGS
     </div>
-  </div> 
+    <div class="latest col-sm-12 gutter-0"><hr></div>  
+  </div>
+  <%= render 'form' %>
 <% end %>

@@ -18,7 +18,7 @@ hr {
 #container {
   display: table;
   width:100%;
-  background-color:#F79F5F;
+  background-color:#fffffF;
   border:0px solid  #666666;
   border-spacing:5px;/*cellspacing:poor IE support for  this*/  
   
@@ -42,7 +42,7 @@ hr {
 #right {
   border:0px solid  #666666;
   display: table-cell;
-  width: 250px;
+  width: 300px;
   vertical-align: top;
   
 }  
@@ -401,4 +401,10 @@ padding-bottom: 10px !important;
 }
 .left-padding {
 padding-left: 15px !important;
+}
+.div1 {
+    width: 300px;
+    height: 100%;
+    padding: 10px;    
+    border: 1px solid black;
 }
