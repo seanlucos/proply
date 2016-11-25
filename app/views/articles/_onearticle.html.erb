@@ -87,9 +87,9 @@
           <% if @article.user %>
             <div align="center">
               <% if current_user && current_user == @article.user || current_user && current_user.admin? %>
-                <%= gravatar_for @article.user, size:120 %>
+                <%= gravatar_for @article.user, size:200 %>
               <% else %>
-                <%= gravatar_for @article.user, size:120 %>
+                <%= gravatar_for @article.user, size:200 %>
               <% end %>
               <br><br>
               <h3><%= @article.user.name %></h3>

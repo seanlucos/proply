@@ -84,9 +84,9 @@ class ImagesController < ApplicationController
         format.json { head :no_content }
       end
     else
-      #redirect_to(:back)
+      #redirect_to(:back) - from delete images on updating/creating article
       respond_to do |format|
-        format.html { redirect_to edit_article_path(:id => session[:current_article], :param1 => "confirm", anchor: "images"), notice: 'Image was successfully removed.' }
+        format.html { redirect_to edit_article_path(:id => session[:current_article], :param1 => "confirm", anchor: "images"), notice: 'Image was successfully removed ::..' }
       end
     end
   end
