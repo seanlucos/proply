@@ -316,9 +316,9 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
     </div>
   </div>
   <div id="right">
-    <div>
+    <div align="center">
       <!--<img src="assets/joinnow.gif" style="width:100%">-->
-      <%= link_to image_tag("/assets/joinnow.gif", width: "100%"), new_user_registration_path %>
+      <%= link_to image_tag("/assets/joinnow.gif", width: "80%"), new_user_registration_path %>
       
       <% if current_user.present? %>
         <%#= gravatar_for current_user, size:200 %>

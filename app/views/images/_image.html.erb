@@ -6,14 +6,13 @@
     <% if logged_in? and current_user.admin? and param1 = params[:param1] %> <%# This is for Admin Image Listing %>
       <% @images.each do |image| %>
         <td  align="center" width = 20%><%= image_tag image.picture.url, size: "150x100" %></br></br>
-
-<% params[:param1] = "listonly" %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               image_path(image),
               :method => :delete,
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :param1 => 'listonly',
+              :listallimages => 'Y',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :listallimages => 'Y', :default => 'Are 1sssssyou sure?')) },
               :class => 'btn btn-xs btn-danger' %> Id: <%= image.article_id %>
+
         </td>
         <% if mcol > 4 %>
            <tr  align="center" width = 20%>

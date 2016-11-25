@@ -7,7 +7,7 @@ class ImagesController < ApplicationController
   def index
     #@article = Article.find(session[:current_article])
     @images = Image.all.paginate(page: params[:page], per_page: 90).order('updated_at desc')
-    @images1 = Image.where(:article_id => session[:current_article]).order('updated_at desc')  
+    @images1 = Image.where(:article_id => session[:current_article]).order('updated_at desc') 
   end
 
   # GET /images/1
@@ -77,7 +77,7 @@ class ImagesController < ApplicationController
   # DELETE /images/1.json
   def destroy
     @image.destroy
-    if params[:param1] == "listonly"
+    if params[:listallimages] == "Y"
       respond_to do |format|
         #format.html { redirect_to images_url, notice: 'Image was successfully destroyed.' }
         format.html { redirect_to images_path(:param1 => "listonly"), notice: 'Image was successfully destroyed.' }

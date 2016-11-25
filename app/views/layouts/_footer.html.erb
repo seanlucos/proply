@@ -1,18 +1,12 @@
 <div id="container">
   <nav class="navbar navbar-inverse navbar-bottom navbar-custom">
   
-    <div id="middle">
+    <div id="left">
       <div align="center"><br>
-        <%= link_to "Home".html_safe, welcome_mmindex_path, class: 'btn btn-footer' %>|
         <%= link_to "New Launch".html_safe, root_path(:proptype => "new Launch", :more => "Y"), class: 'btn btn-footer' %>|
         <%= link_to "For Sale".html_safe, root_path(:proptype => "for Sale", :more => "Y"), class: 'btn btn-footer' %>|
         <%= link_to "For Rent".html_safe, root_path(:proptype => "for Rent", :more => "Y"), class: 'btn btn-footer' %>|
-        <%= link_to "For Auction".html_safe, root_path(:proptype => "for Auction", :more => "Y"), class: 'btn btn-footer' %>|
-        <% if current_user %>
-          <%= link_to "Sign Out ".html_safe, destroy_user_session_path, :method => :delete, class: 'btn btn-footer' %>        
-        <% else %>
-          <%= link_to "Sign In".html_safe, new_user_session_path, class: 'btn btn-footer'  %>
-        <% end %>
+        <%= link_to "For Auction".html_safe, root_path(:proptype => "for Auction", :more => "Y"), class: 'btn btn-footer' %>
       </div>
       <div align="center"><br>
         <img src='/assets/f.gif'>&nbsp;&nbsp;
@@ -21,7 +15,7 @@
         <img src='/assets/t.gif'>   
       </div>
     </div>
-    <div id="left">
+    <div id="middle">
       <div align="right">
       <table width=100%>
         <tr>
