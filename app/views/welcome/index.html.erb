@@ -3,28 +3,33 @@ if (screen.width <= 699) {
 document.location = "welcome/mmindex";
 }
 </script>
-
+<div class="lowseng"></div>
 <!--
 javascript is on client's side, and erb is on servers side.
 Usually if you want to pass some variable to erb , you can fetch that variable in controller in a specific action, (if you like), and pass that data to the erb.
 -->
-<div class='row '> 
-  <div class='col-sm-offset-0 col-sm-12 '>
-    <%= render 'search' %>
-    <!--<div align="left" class='col-sm-8 gutter-0'>
-      Your search criteria,
-      <%#= params[:category] if params[:category].present? %> <%#= params[:proptype] if params[:proptype].present? %>
-      returns
-      <%#= @articles.count if @articles%> records.
-    </div>-->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class='row '> 
+        <div class='col-sm-offset-0 col-sm-12 '>
+          <%= render 'search' %>
+          <!--<div align="left" class='col-sm-8 gutter-0'>
+            Your search criteria,
+            <%#= params[:category] if params[:category].present? %> <%#= params[:proptype] if params[:proptype].present? %>
+            returns
+            <%#= @articles.count if @articles%> records.
+          </div>-->
+        </div>
+      </div>
+      <% if params[:place].present? or params[:more] == 'Y'%>
+        <%= render 'articles/article', obj: @articles %>      
+        <div align="left">
+          <%= will_paginate @articles %>
+        </div>
+      <% else %>
+        <%= render 'articles/main', obj: @articles %>
+      <% end %>
+    </div>
   </div>
 </div>
-<% if params[:place].present? or params[:more] == 'Y'%>
-  <%= render 'articles/article', obj: @articles %>      
-  <div align="left">
-    <%= will_paginate @articles %>
-  </div>
-<% else %>
-  <%= render 'articles/main', obj: @articles %>
-<% end %>
-

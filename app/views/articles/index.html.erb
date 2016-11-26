@@ -1,14 +1,21 @@
 <% if session[:mobile] == "Y" %>
   <%= render 'mmarticle', obj: @articles %>      
 <% else %>
-  <div class='row'> 
-    <div class='col-sm-offset-0 col-xs-12'>
-      <div class="well well-lg">
+  <% if params[:param1] == "admin" %>
+    <%= render 'articleadmin', obj: @articles %>        
+    <div align="left" class="col-md-12" >
+      <%= will_paginate %>
+    </div> 
+  <% else %>
+    <div class='row'> 
+      <div class='col-sm-offset-0 col-xs-12'>
+        <div class="well well-lg">        
           <%= render 'article', obj: @articles %>
-          <div align="left">
-            <%= will_paginate %>
-          </div>
+        </div>
       </div>
-    </div>
-  </div>  
+    </div>              
+    <div align="left" >
+      <%= will_paginate %>
+    </div>  
+  <% end %>
 <% end %>

@@ -1,0 +1,53 @@
+<div align="left" class="latest col-md-12 gutter-0" >
+  <br><%= "Manage Ads" %>
+</div>
+<div class="latest col-md-12 gutter-0"><hr></div>
+
+<%= form_tag root_path, :method => "get", id: "search-form", :class => "form-horizontal project" , :enforce_utf8 => false do %>      
+  <div  class='col-md-12 gutter-0'>
+    <% obj.each do |article| %> 
+      <div class="form-group">
+        <div class="latest col-md-9">
+          Id: <%= article.id %> - <%= article.category %> <%= article.proptype%> - 
+          <%= link_to article.title, article_path(article, :usr => article.user_id) %>         
+        </div>
+        <% if current_user %>
+          <% if params[:displayedit] == "Y" && current_user == article.user || current_user.admin? %>
+            <div align="right" class="col-md-3">
+            	<% if !article.xonline? %>
+                <div class="btn btn-xs btn-warning ">
+                  Draft!
+                </div>
+              <% end %>
+              <%= link_to "Edit Ad", edit_article_path(article), class: "btn btn-xs btn-primary" %>
+              <%= link_to "Delete Ad", article_path(article), method: :delete,
+              data: { confirm: "Are you sure you want to delete the article?"},
+              class: "btn btn-xs btn-danger" %>
+            </div>
+          <% end %>
+        <% end %>        
+        
+      	<div class="col-sm-10">
+          <% article.images.each do |t| %>
+            <% if t.picture.url %>
+              <%= image_tag t.picture.url, size: "150x100" %>
+            <% else %>
+              xx<%= image_tag url('images/noimage.gif'), size: "150x100" %>xx
+            <% end %>
+          <% end %>
+          <% if !article.images.present? %>
+            <%= image_tag("noimage.gif") %>
+          <% end %>
+      	</div>
+        <div align="right" class="font-green col-md-2">
+          <br><%= article.user.name %>
+          <br><%= article.user.email %>
+          <br><% @place = Place.find(article.currency) if article.currency.present? %>
+          <%= @place.currency if @place.present? %> <%= number_with_precision(article.amount, precision: 0, delimiter: ',') %>
+          <br><%= article.updated_at.to_formatted_s(:short) %>
+        </div>
+      </div><hr>
+    <% end %>
+	</div>
+
+<% end %>	

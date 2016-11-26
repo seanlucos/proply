@@ -73,11 +73,38 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
 </style>
 <div id="container">
   <div id="middle">
+
+    <div class="slideshow-container col-md-12 gutter-0">
+      <div class="mySlides fade">
+        <div class="numbertext">Highlights</div>
+        <img src="assets/scr1.gif" style="width:100%">
+        <div class="text">Caption Text</div>
+      </div>
+      
+      <div class="mySlides fade">
+        <div class="numbertext">Featured Location</div>
+        <img src="assets/scr2.gif" style="width:100%">
+        <div class="text">National Monument - Kuala Lumpur</div>
+      </div>
+      
+      <div class="mySlides fade">
+        <div class="numbertext">Higly Recommended</div>
+        <img src="assets/scr3.gif" style="width:100%">
+        <div class="text">Caption Three</div>
+      </div>
+    </div>
+    <br>
+    <div style="text-align:center" class="col-md-12">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span><br><br><br><br>
+    </div>
+    
     <div class='col-md-12 gutter-0'>
-      <div align="left" class="latest col-md-12 gutter-0" >
+      <div align="left" class="latest col-md-6 gutter-0" >
         <%= "Latest: NEW LAUNCH" %>
       </div>
-      <div align="right" class="latest col-md-12 gutter-0" >
+      <div align="right" class="latest col-md-6 gutter-0" >
         <%= link_to "... more".html_safe, root_path(:proptype => "new Launch", :more => "Y") %>
       </div>
       <div class="latest col-md-12 gutter-0"><hr></div>
@@ -127,37 +154,11 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
       <% end %>
     </div>
 
-    <div class="slideshow-container col-md-12 gutter-0">
-      <div class="mySlides fade">
-        <div class="numbertext">Highlights</div>
-        <img src="assets/scr1.gif" style="width:100%">
-        <div class="text">Caption Text</div>
-      </div>
-      
-      <div class="mySlides fade">
-        <div class="numbertext">Featured Location</div>
-        <img src="assets/scr2.gif" style="width:100%">
-        <div class="text">National Monument - Kuala Lumpur</div>
-      </div>
-      
-      <div class="mySlides fade">
-        <div class="numbertext">Higly Recommended</div>
-        <img src="assets/scr3.gif" style="width:100%">
-        <div class="text">Caption Three</div>
-      </div>
-    </div>
-    <br>
-    <div style="text-align:center" class="col-md-12">
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span><br><br><br><br>
-    </div>
-
     <div class='col-md-12 gutter-0'>
-      <div align="left" class="latest col-md-12 gutter-0" >
+      <div align="left" class="latest col-md-6 gutter-0" >
         <%= "Latest: FOR SALE" %>
       </div>
-      <div align="right" class="latest col-md-12 gutter-0" >
+      <div align="right" class="latest col-md-6 gutter-0" >
         <%= link_to "... more".html_safe, root_path(:proptype => "for Sale", :more => "Y") %>
       </div>
       <div class="latest col-md-12 gutter-0"><hr></div>
@@ -208,10 +209,10 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
     </div>
     
     <div class='col-md-12 gutter-0'>
-      <div align="left" class="latest col-md-12 gutter-0" >
+      <div align="left" class="latest col-md-6 gutter-0" >
         <%= "Latest: FOR RENT" %>
       </div>
-      <div align="right" class="latest col-md-12 gutter-0" >
+      <div align="right" class="latest col-md-6 gutter-0" >
         <%= link_to "... more".html_safe, root_path(:proptype => "for Rent", :more => "Y") %>
       </div>
       <div class="latest col-md-12 gutter-0"><hr></div>
@@ -262,10 +263,10 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
     </div>
     
     <div class='col-md-12 gutter-0'>
-      <div align="left" class="latest col-md-12 gutter-0" >
+      <div align="left" class="latest col-md-6 gutter-0" >
         <%= "Latest: FOR AUCTION" %>
       </div>
-      <div align="right" class="latest col-md-12 gutter-0" >
+      <div align="right" class="latest col-md-6 gutter-0" >
         <%= link_to "... more".html_safe, root_path(:proptype => "for Auction", :more => "Y") %>
       </div>
       <div class="latest col-md-12 gutter-0"><hr></div>
@@ -319,7 +320,68 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
     <div align="center">
       <!--<img src="assets/joinnow.gif" style="width:100%">-->
       <%= link_to image_tag("/assets/joinnow.gif", width: "80%"), new_user_registration_path %>
-      
+      <div align="left" class="latest">
+        <h3>Other Services</h3>
+      </div>
+      <div class="div1">
+        <div class="row">
+          <div class="col-md-4 gutter-0">
+            <img src="/assets/ipwai.gif">
+          </div>
+          <div align="left" class="col-md-8 gutter-0">
+             Plumbing Services
+             Puchong, Cheras & PJ Area<br>
+             http://www.ipwai.com
+          </div>
+          <div class="col-md-12"><br><hr></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 gutter-0">
+            <img src="/assets/ipwai.gif">
+          </div>
+          <div align="left" class="col-md-8 gutter-0">
+             Plumbing Services
+             Puchong, Cheras & PJ Area<br>
+             http://www.ipwai.com
+          </div>
+          <div class="col-md-12"><br><hr></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 gutter-0">
+            <img src="/assets/ipwai.gif">
+          </div>
+          <div align="left" class="col-md-8 gutter-0">
+             Plumbing Services
+             Puchong, Cheras & PJ Area<br>
+             http://www.ipwai.com
+          </div>
+          <div class="col-md-12"><br><hr></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 gutter-0">
+            <img src="/assets/ipwai.gif">
+          </div>
+          <div align="left" class="col-md-8 gutter-0">
+             Plumbing Services
+             Puchong, Cheras & PJ Area<br>
+             http://www.ipwai.com
+          </div>
+          <div class="col-md-12"><br><hr></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 gutter-0">
+            <img src="/assets/ipwai.gif">
+          </div>
+          <div align="left" class="col-md-8 gutter-0">
+             Plumbing Services
+             Puchong, Cheras & PJ Area<br>
+             http://www.ipwai.com
+          </div>
+        </div>        
+      </div>
+      <div align="center">
+        <br><br><img src="/assets/contactus.gif" width="200">
+      </div>
       <% if current_user.present? %>
         <%#= gravatar_for current_user, size:200 %>
         <%= link_to image_tag("/assets/gprofile.gif", width: "100%"), "http://gravatar.com" %><br>

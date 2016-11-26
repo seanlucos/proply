@@ -1,12 +1,12 @@
-<div class="article-title"><BR>
-  <%= link_to "Basic A/C", users_path(:status => "Basic"), class: "btn btn-success" %>  
-  <%= link_to "Pending", users_path(:status => "Pending"), class: "btn btn-info" %>  
-  <%= link_to "Premier A/C", users_path(:status => "Premier"), class: "btn btn-warning" %>
+<div class="latest"><BR>
+  <div class="col-md-6 gutter-0">MANAGE ADS: <%= params[:status] %> Accounts Listings...</div>
+  <div align="right" class="col-md-6"> 
+    <%= link_to "Basic A/C", users_path(:status => "Basic"), class: "btn btn-warning" %>  
+    <%= link_to "Pending", users_path(:status => "Pending"), class: "btn btn-warning" %>  
+    <%= link_to "Premier A/C", users_path(:status => "Premier"), class: "btn btn-warning" %>
+  </div>
 </div>
-<div class="article-title">
-  <br><%= params[:status] %> accounts listings...<br><br>
-</div>  
-
+  <div class="latest col-md-12 gutter-0"><hr></div>
 <div class='row'> 
   <div class='col-sm-offset-0 col-xs-12'>
     <%= will_paginate %>
@@ -17,9 +17,13 @@
             <%= link_to gravatar_for(user), user_path(user) %>
           </td>
           <td>
-            <b><%= user.email %></b>
-            <li><%= link_to pluralize(user.articles.count, "article"), user_path(user) if user.articles %></li>
+            <b>Id: <%= user.id %>- <%= user.name %></b><br>
+            Email: <%= user.email %>
+            <%#= link_to pluralize(user.articles.count, "article"), user_path(user) if user.articles %>
+            <li><%= link_to pluralize(user.articles.count, "article"), articles_path(:usr => user.id) if user.articles %></li>
             <li>Premier Date: <%= user.purchased_at %></li>
+          </td>
+          <td>
             <% if logged_in? and current_user.admin? %>
               <br><%= link_to "Delete user", user_path(user), method: :delete,
               data: { confirm: "Are you sure you want to delete the user and all their articles?" }, class: "btn btn-xs btn-danger" %>&nbsp;
