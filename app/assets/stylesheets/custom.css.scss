@@ -20,19 +20,19 @@ hr {
   width:100%;
   background-color:#fffffF;
   border:0px solid  #666666;
-  border-spacing:5px;/*cellspacing:poor IE support for  this*/  
+  border-spacing:0px;/*cellspacing:poor IE support for  this*/  
   
 }
 
 #row  {
   display: table-row;
-  border:1px solid  #666666;
+  border:0px solid  #666666;
   vertical-align: top;  
 }
 #left {
   border:0px solid  #666666;
   display: table-cell;
-  width: 1000px;
+  width: 400px;
 }
 #middle {
   border:0px solid  #666666;
@@ -403,7 +403,7 @@ padding-bottom: 10px !important;
 padding-left: 15px !important;
 }
 .div1 {
-background-color: #1F497D;
+//background-color: #1F497D;
 color: #ffffff;
 width: 300px;
 height: 100%;
@@ -419,5 +419,13 @@ hr {
     margin-left: auto;
     margin-right: auto;
     border-width: 1px;
+}
+a {
+color: #ffffff !important;
+margin: 0 !important;
+padding: 5px!important;
+}
+a:hover, a:focus {
+color: #000 !important;
 }
 }

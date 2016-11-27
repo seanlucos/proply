@@ -1,38 +1,31 @@
-<div id="container">
-  <nav class="navbar navbar-inverse navbar-bottom navbar-custom">
-  
-    <div id="left">
-      <div align="center"><br>
-        <%= link_to "New Launch".html_safe, root_path(:proptype => "new Launch", :more => "Y"), class: 'btn btn-footer' %>|
-        <%= link_to "For Sale".html_safe, root_path(:proptype => "for Sale", :more => "Y"), class: 'btn btn-footer' %>|
-        <%= link_to "For Rent".html_safe, root_path(:proptype => "for Rent", :more => "Y"), class: 'btn btn-footer' %>|
-        <%= link_to "For Auction".html_safe, root_path(:proptype => "for Auction", :more => "Y"), class: 'btn btn-footer' %>
-      </div>
-      <div align="center"><br>
-        <img src='/assets/f.gif'>&nbsp;&nbsp;
-        <img src='/assets/i.gif'>&nbsp;&nbsp;
-        <img src='/assets/g.gif'>&nbsp;&nbsp;
-        <img src='/assets/t.gif'>   
-      </div>
+<div class="container-fluid" style="background-color: #3C4042">
+  <div class="row"><br>
+    <div class="div1 col-md-offset-1 col-md-3 gutter-0">
+      <%= link_to "New Launch".html_safe, root_path(:proptype => "new Launch", :more => "Y") %><br>
+      <hr style="border-top: 2px dotted white"/>
+      <%= link_to "For Sale".html_safe, root_path(:proptype => "for Sale", :more => "Y")%><br>
+      <hr style="border-top: 2px dotted white"/>
+      <%= link_to "For Rent".html_safe, root_path(:proptype => "for Rent", :more => "Y") %><br>
+      <hr style="border-top: 2px dotted white"/>
+      <%= link_to "For Auction".html_safe, root_path(:proptype => "for Auction", :more => "Y") %>
+      <hr style="border-top: 2px dotted white"/>
     </div>
-    <div id="middle">
-      <div align="right">
-      <table width=100%>
-        <tr>
-          <td>
-            <div align="right"><br>
-              <img src='/assets/gvatar.gif'>
-            </div>            
-          </td>
-          <td>
-          <div>
-            We are using Gravatar for your profile image! <br> 
-            Your Gravatar is an image that follows you from site to site appearing beside your name when you do things like comment or post on a blog. 
-            Avatars help identify your posts on blogs and web forums, etc.
-          </div>            
-          </td>
-        </tr>
-      </table>
+
+    <div align="center"  class="col-md-4 gutter-0"><br>
+      <img src='/assets/f.gif'>&nbsp;&nbsp;
+      <img src='/assets/i.gif'>&nbsp;&nbsp;
+      <img src='/assets/g.gif'>&nbsp;&nbsp;
+      <img src='/assets/t.gif'>   
     </div>
-  </nav>
+    
+    <div align="right" class="col-md-1 gutter-0">
+      <img src='/assets/gvatar.gif'>
+    </div>
+    <div class="div1 col-md-3 gutter-0">
+      We are using Gravatar for your profile image! <br> 
+      Your Gravatar is an image that follows you from site to site appearing beside your name when you do things like comment or post on a blog. 
+      Avatars help identify your posts on blogs and web forums, etc.
+    </div>          
+
+  </div><br>
 </div>
