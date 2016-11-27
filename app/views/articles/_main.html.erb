@@ -102,7 +102,7 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
     
     <div class='col-md-12 gutter-0'>
       <div align="left" class="latest col-md-6 gutter-0" >
-        <%= "Latest: NEW LAUNCH" %>
+        <%= "Latest: NEWLY LAUNCHED" %>
       </div>
       <div align="right" class="latest col-md-6 gutter-0" >
         <%= link_to "... more".html_safe, root_path(:proptype => "new Launch", :more => "Y") %>
@@ -380,7 +380,7 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
         </div>        
       </div>
       <div align="center">
-        <br><br><img src="/assets/contactus.gif" width="200">
+        <br><br><img src="/assets/contactus.gif" width=100%>
       </div>
       <% if current_user.present? %>
         <%#= gravatar_for current_user, size:200 %>
