@@ -9,7 +9,11 @@
           <% else if params[:proptype] == 'for Rent' %>
             <%= "Ads: FOR RENT" %>        
           <% else %>
-            All Ads from <%= @articles.first.user.name if @articles.present? %>        
+            <% if params[:usr].present? %>
+              All Ads from <%= @articles.first.user.name if @articles.present? %>
+            <% else %>
+              Welcome to iDeal Online!
+            <% end %>
           <% end %>
         <% end %>
       <% end %>

@@ -1,5 +1,11 @@
 <% if session[:mobile] == "Y" %>
-  <%= render 'mmarticle', obj: @articles %>      
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <%= render 'mmarticle', obj: @articles %> 
+      </div>
+    </div>
+  </div>
 <% else %>
   <% if params[:param1] == "admin" %>
     <%= render 'articleadmin', obj: @articles %>        
