@@ -3,7 +3,10 @@ if (screen.width <= 699) {
 document.location = "welcome/mmindex";
 }
 </script>
-<div class="lowseng"></div>
+<% if params[:place].present? or params[:more] == 'Y'%>
+<% else %>
+  <div class="lowseng"></div>
+<% end %>
 <!--
 javascript is on client's side, and erb is on servers side.
 Usually if you want to pass some variable to erb , you can fetch that variable in controller in a specific action, (if you like), and pass that data to the erb.
