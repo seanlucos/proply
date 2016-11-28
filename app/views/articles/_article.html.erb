@@ -3,7 +3,7 @@
     <div align="left" class="latest col-sm-10 no-padding" >
       <span class='glyphicon glyphicon-list'></span>&nbsp;
       <% if params[:proptype] == 'new Launch' %>
-        <%= "Ads: NEW LAUNCH" %>
+        <%= "Ads: NEWLY LAUNCHED" %>
         <% else if params[:proptype] == 'for Sale' %>
           <%= "Ads: FOR SALE" %>   
           <% else if params[:proptype] == 'for Auction' %>
@@ -27,12 +27,23 @@
     <%= form_tag root_path, :method => "get", id: "search-form", :class => "form-horizontal project" , :enforce_utf8 => false do %>      
       <div  class='col-sm-12 gutter-0'>
         <% obj.each do |article| %> 
+
           <div class="form-group">
+
           	<div class="col-sm-3">
               <% article.images.each do |t| %>
                 <% if t.picture.url %>
-                  <%#= image_tag t.picture.url, size: "150x100" %>
+                  <%#= image_tag(t.picture.url, width: '100%') %>
                   <%= image_tag t.picture.url, size: "200x150" %>
+
+                <div class="property-count">
+                  <%= article.images.count %>
+                </div>
+                <%= link_to article_path(article, :usr => article.user_id), :class => 'click-able' do %>
+                  <span></span>
+                <% end %> 
+               
+                
                 <% else %>
                   xx<%= image_tag url('images/noimage.gif'), size: "150x100" %>xx
                 <% end %>
