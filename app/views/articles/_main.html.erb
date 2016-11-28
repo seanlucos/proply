@@ -116,7 +116,7 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
               <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 100%; height: 188px;">
                 <div class="property-price">
                   <% @place = Place.find(articles4.currency) if articles4.currency.present? %>
-                  <%= @place.currency if @place.present? %> <%= number_with_precision(articles4.amount, precision: 0, delimiter: ',') %>
+                  <%= @place.currency if @place.present? %> <%= number_with_precision(articles4.amount, precision: 0, delimiter: ' ') %>
                 </div>
                 <%= link_to article_path(articles4, :usr => articles4.user_id), :class => 'click-able' do %>
                   <span></span>
@@ -170,7 +170,7 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
               <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 100%; height: 188px;">
                 <div class="property-price">
                   <% @place = Place.find(article1.currency) if article1.currency.present? %>
-                  <%= @place.currency if @place.present? %> <%= number_with_precision(article1.amount, precision: 0, delimiter: ',') %>
+                  <%= @place.currency if @place.present? %> <%= number_with_precision(article1.amount, precision: 0, delimiter: ' ') %>
                 </div>
                 <%= link_to article_path(article1, :usr => article1.user_id), :class => 'click-able' do %>
                   <span></span>
@@ -224,7 +224,7 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
               <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 100%; height: 188px;">
                 <div class="property-price">
                   <% @place = Place.find(article2.currency) if article2.currency.present? %>
-                  <%= @place.currency if @place.present? %> <%= number_with_precision(article2.amount, precision: 0, delimiter: ',') %>
+                  <%= @place.currency if @place.present? %> <%= number_with_precision(article2.amount, precision: 0, delimiter: ' ') %>
                 </div>
                 <%= link_to article_path(article2, :usr => article2.user_id), :class => 'click-able' do %>
                   <span></span>
@@ -278,7 +278,7 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
               <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 100%; height: 188px;">
                 <div class="property-price">
                   <% @place = Place.find(articles3.currency) if articles3.currency.present? %>
-                  <%= @place.currency if @place.present? %> <%= number_with_precision(articles3.amount, precision: 0, delimiter: ',') %>
+                  <%= @place.currency if @place.present? %> <%= number_with_precision(articles3.amount, precision: 0, delimiter: ' ') %>
                 </div>
                 <%= link_to article_path(articles3, :usr => articles3.user_id), :class => 'click-able' do %>
                   <span></span>

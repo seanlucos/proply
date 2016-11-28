@@ -18,18 +18,20 @@
     </div>
     <%= render 'mmform' %> 
   <% else %>
-    <div class='row'> 
-      <div class='col-sm-12 gutter-0'><br>
-        <div align="left" class="latest col-sm-6 gutter-0" >
-          <% session[:step2] = "Insert a New Ad" %>
-          Insert a New Ad
+    <div class="container">
+      <div class='row'> 
+        <div class='col-sm-12 gutter-0'><br>
+          <div align="left" class="latest col-sm-6 gutter-0" >
+            <% session[:step2] = "Insert a New Ad" %>
+            Insert a New Ad
+          </div>
+          <div align="right" class="latest col-sm-6 gutter-0" >
+            <%= current_user.articles.count+1 %> of <%= session[:m_posting] %>   
+          </div>
+          <div class="latest col-sm-12 gutter-0"><hr></div>
         </div>
-        <div align="right" class="latest col-sm-6 gutter-0" >
-          <%= current_user.articles.count+1 %> of <%= session[:m_posting] %>   
-        </div>
-        <div class="latest col-sm-12 gutter-0"><hr></div>
+        <%= render 'form' %> 
       </div>
-      <%= render 'form' %> 
     </div>
   <% end %>
 <% end %>

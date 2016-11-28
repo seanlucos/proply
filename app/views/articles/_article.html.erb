@@ -1,91 +1,115 @@
-<div align="left" class="latest col-sm-6 gutter-0" >
-  <% if params[:proptype] == 'new Launch' %>
-    <%= "Ads: NEW LAUNCH" %>
-    <% else if params[:proptype] == 'for Sale' %>
-      <%= "Ads: FOR SALE" %>   
-      <% else if params[:proptype] == 'for Auction' %>
-        <%= "Ads: FOR AUCTION" %>
-        <% else if params[:proptype] == 'for Rent' %>
-          <%= "Ads: FOR RENT" %>        
-        <% else %>
-          All Ads from <%= @articles.first.user.name %>        
-        <% end %>
-      <% end %>
-    <% end %>
-  <% end %>  
-</div>
-<% if logged_in? and !current_user.admin?%>
-  <div align = "right" class="latest col-sm-2 gutter-0" >
-    <%= current_user.articles.count %> of <%= session[:m_posting] %> 
-  </div>
-<% end %>
-<div class="latest col-sm-8 gutter-0"><hr></div>
-
-<%= form_tag root_path, :method => "get", id: "search-form", :class => "form-horizontal project" , :enforce_utf8 => false do %>      
-  <div  class='col-sm-8 gutter-0'>
-    <% obj.each do |article| %> 
-      <div class="form-group">
-      	<div class="col-sm-3">
-          <% article.images.each do |t| %>
-            <% if t.picture.url %>
-              <%= image_tag t.picture.url, size: "150x100" %>
+<div id="container">
+  <div id="middle">
+    <div align="left" class="latest col-sm-10 no-padding" >
+      <span class='glyphicon glyphicon-list'></span>&nbsp;
+      <% if params[:proptype] == 'new Launch' %>
+        <%= "Ads: NEW LAUNCH" %>
+        <% else if params[:proptype] == 'for Sale' %>
+          <%= "Ads: FOR SALE" %>   
+          <% else if params[:proptype] == 'for Auction' %>
+            <%= "Ads: FOR AUCTION" %>
+            <% else if params[:proptype] == 'for Rent' %>
+              <%= "Ads: FOR RENT" %>        
             <% else %>
-              xx<%= image_tag url('images/noimage.gif'), size: "150x100" %>xx
+              All Ads from <%= @articles.first.user.name %>        
             <% end %>
-            <% break %>
-          <% end %>
-          <% if !article.images.present? %>
-            <%= image_tag("noimage.gif") %>
-          <% end %>
-      	</div>
-
-        <div class="article-title col-sm-9">
-          <%#= article.category %> <%#= article.proptype%>
-          <%= link_to article.title, article_path(article, :usr => article.user_id) %>         
-        </div>
-        <div class="col-sm-9">
-          <%= truncate(article.description, length: 250) %>
-        </div>
-        
-        <div class="font-green col-sm-5">
-          <% @place = Place.find(article.currency) if article.currency.present? %>
-          <%= @place.currency if @place.present? %> <%= number_with_precision(article.amount, precision: 0, delimiter: ',') %>
-        </div>
-        <div align="right" class="font-green col-sm-4">
-          <%= article.updated_at.to_formatted_s(:short) %>
-        </div>
-          
-
-        <% if current_user %>
-          <% if params[:displayedit] == "Y" && current_user == article.user || current_user.admin? %>
-            <div class="col-sm-8">
-              <%= link_to "Edit Ad", edit_article_path(article), class: "btn btn-xs btn-primary" %>
-              <%= link_to "Delete Ad", article_path(article), method: :delete,
-              data: { confirm: "Are you sure you want to delete the article?"},
-              class: "btn btn-xs btn-danger" %>
-            	<% if !article.xonline? %>
-                <div class="btn btn-xs btn-warning ">
-                  Draft copy!
-                </div>&nbsp;&nbsp;
-              <% end %>
-            </div>
           <% end %>
         <% end %>
-
-      </div><hr>
-    <% end %>
-	</div>
-  <div class="row">
-    <div class="col-xs-4" align="center">
-      <%= image_tag("500x1000.gif", width: '100%') %>
-      <h5><%= "Advertising" %></h5>
-      <br>
-      <h3><b>Where now?</b></h3>
-      <h5><b>Found this useful? Share it:</b></h5><br>
-      <%= link_to image_tag("facebook.gif"), "https://www.facebook.com/sharer.php?u=http://www.http://sssssb.comy/" %>&nbsp;&nbsp;
-      <%= link_to image_tag("twitter.gif"), "https://twitter.com/login?redirect_after_login=%2Fhome%3Fstatus%3DCurrently%2520reading%2520http%3A%2F%2Fwww.srsp.edu.my" %>&nbsp;&nbsp;
-      <%= link_to image_tag("google.gif"), "https://accounts.google.com/ServiceLogin?service=oz&passive=1209600&continue=https://plus.google.com/share?url%3Dhttp://www.sssssb.com%26gpsrc%3Dgplp0&btmpl=popup#identifier" %>&nbsp;&nbsp;
-      <%= image_tag("whatsapp.gif") %>
+      <% end %>  
     </div>
-  </div>	
-<% end %>	
+    <% if logged_in? and !current_user.admin?%>
+      <div align = "right" class="latest col-sm-2 no-padding" >
+        <%= current_user.articles.count %> of <%= session[:m_posting] %> 
+      </div>
+    <% end %>
+    <div class="no-padding latest col-sm-12"><hr></div>
+    
+    <%= form_tag root_path, :method => "get", id: "search-form", :class => "form-horizontal project" , :enforce_utf8 => false do %>      
+      <div  class='col-sm-12 gutter-0'>
+        <% obj.each do |article| %> 
+          <div class="form-group">
+          	<div class="col-sm-3">
+              <% article.images.each do |t| %>
+                <% if t.picture.url %>
+                  <%#= image_tag t.picture.url, size: "150x100" %>
+                  <%= image_tag t.picture.url, width: "200x150" %>
+                <% else %>
+                  xx<%= image_tag url('images/noimage.gif'), size: "150x100" %>xx
+                <% end %>
+                <% break %>
+              <% end %>
+              <% if !article.images.present? %>
+                <%= image_tag("noimage.gif") %>
+              <% end %>
+          	</div>
+    
+            <div class="col-sm-9 gutter-0">
+              <div class="latest col-sm-9">
+                <%= link_to article.title, article_path(article, :usr => article.user_id) %> 
+              </div>
+              <div align="right" class="latest col-sm-3">
+                <% @place = Place.find(article.currency) if article.currency.present? %>
+                <%= @place.currency if @place.present? %> <%= number_with_precision(article.amount, precision: 0, delimiter: ' ') %>
+              </div>
+              <div class="col-sm-12">              
+                <%= article.category %> <%= article.proptype %> - <%= article.titletype %>
+              </div>
+              <div class="col-sm-12">              
+                <% @area = Area.find(article.area) if article.area.present? %><%= @area.name %>, 
+                <% @region = Region.find(article.region) if article.region.present? %><%= @region.name %>, 
+                <% @place = Place.find(article.place) if article.place.present? %><%= @place.name %>.
+              </div>
+              <div class="col-sm-12">              
+                Built-up: <%= article.size1 %> 
+                  <%= "SqFt" if article.uom == "3" %><%= "SqM" if article.uom == "4" %><%= "Acres" if article.uom == "5" %><%= "Hectres" if article.uom == "6" %>
+                    (<%= number_with_precision(article.size1.to_i*0.092903, precision: 2, delimiter: ',') if article.uom == "3" %>
+                    <%= " SqM" if article.uom == "3" %><%= number_with_precision(article.size1.to_i*10.7639, precision: 2, delimiter: ',') if article.uom == "4" and article.size1.present? %><%= " SqFt" if article.uom == "4" %>)
+              </div>
+              <div class="col-sm-12">              
+                Land area: <%= article.size %> 
+                  <%= "SqFt" if article.uom == "3" %><%= "SqM" if article.uom == "4" %><%= "Acres" if article.uom == "5" %><%= "Hectres" if article.uom == "6" %>
+                    (<%= number_with_precision(article.size.to_i*0.092903, precision: 2, delimiter: ',') if article.uom == "3" %>
+                    <%= " SqM" if article.uom == "3" %><%= number_with_precision(article.size.to_i*10.7639, precision: 2, delimiter: ',') if article.uom == "4" and article.size.present? %><%= " SqFt" if article.uom == "4" %>)
+              </div>
+              <div class="col-sm-12"> 
+                Last Updated: <%= article.updated_at %>
+              </div>
+            </div>
+
+            <% if current_user %>
+              <% if params[:displayedit] == "Y" && current_user == article.user || current_user.admin? %>
+                <div class="col-sm-8">
+                  <%= link_to "Edit Ad", edit_article_path(article), class: "btn btn-xs btn-primary" %>
+                  <%= link_to "Delete Ad", article_path(article), method: :delete,
+                  data: { confirm: "Are you sure you want to delete the article?"},
+                  class: "btn btn-xs btn-danger" %>
+                	<% if !article.xonline? %>
+                    <div class="btn btn-xs btn-warning ">
+                      Draft copy!
+                    </div>&nbsp;&nbsp;
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+    
+          </div><hr>
+        <% end %>
+    	</div>
+    <% end %>
+  </div><!--middle-->
+  <div id="right">    
+    <div class="left-padding row">
+      <div class="col-sm-12" align="center">
+        <%= image_tag("500x1000.gif", width: '100%') %>
+        <h5><%= "Advertising" %></h5>
+        <br>
+        <h3><b>Where now?</b></h3>
+        <h5><b>Found this useful? Share it:</b></h5><br>
+        <%= link_to image_tag("facebook.gif"), "https://www.facebook.com/sharer.php?u=http://www.http://sssssb.comy/" %>&nbsp;&nbsp;
+        <%= link_to image_tag("twitter.gif"), "https://twitter.com/login?redirect_after_login=%2Fhome%3Fstatus%3DCurrently%2520reading%2520http%3A%2F%2Fwww.srsp.edu.my" %>&nbsp;&nbsp;
+        <%= link_to image_tag("google.gif"), "https://accounts.google.com/ServiceLogin?service=oz&passive=1209600&continue=https://plus.google.com/share?url%3Dhttp://www.sssssb.com%26gpsrc%3Dgplp0&btmpl=popup#identifier" %>&nbsp;&nbsp;
+        <%= image_tag("whatsapp.gif") %>
+      </div>
+    </div>
+  </div>
+</div>

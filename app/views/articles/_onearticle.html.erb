@@ -1,9 +1,5 @@
-<div class='row'> 
-  <div class='col-xs-12 article-title'>
-    <br><%= @article.title %><br><br>
-  </div>
+<div class='row'> <br>
   <div class='col-sm-8'>
-    
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">-->
     <style>
@@ -108,14 +104,22 @@
 </div>
 <div class='row'> 
   <div class='col-sm-offset-0 col-sm-12'>
-
+      <div class='col-sm-12 latest no-padding'>
+        <br><span class='glyphicon glyphicon-list'></span>&nbsp;<%= @article.title %><br><br>
+      </div>
 
       <div class="form-group"> 
         <div align="right" class='col-sm-offset-0 col-sm-2'>          
           <%= "Category:" %>
         </div>
-        <div align="left" class='font-green col-sm-offset-0 col-sm-10 gutter-0'>        
+        <div align="left" class='font-green col-sm-offset-0 col-sm-3 gutter-0'>        
           <b><%= @article.category %> <%= @article.proptype %></b>
+        </div>
+        <div align="right" class='col-sm-offset-0 col-sm-3'>  
+          <%= "Bedrooms: " %>
+        </div>
+        <div align="left" class='font-green col-sm-offset-0 col-sm-3 gutter-0'>  
+          <%= @article.bedroom %>&nbsp;
         </div>
       </div>
       
@@ -126,11 +130,12 @@
         <div align="left" class='font-green col-sm-offset-0 col-sm-3 gutter-0'>        
           <%= @area.name if @area.present? %>, <%= @region.name if @region.present?%>, <%= @place.name if @place.present?%>.
         </div>        
+
         <div align="right" class='col-sm-offset-0 col-sm-3'>  
-          <%= "Bedrooms: " %>
+          <%= "Bathrooms: " %>
         </div>
-        <div align="left" class='font-green col-sm-offset-0 col-sm-3 gutter-0'>  
-          <%= @article.bedroom %>&nbsp;
+        <div align="left" class='font-green col-sm-offset-0 col-sm-3 gutter-0'> 
+          <%= @article.bathroom %>&nbsp;
         </div>
       </div>
       
@@ -145,11 +150,12 @@
               <%= number_with_precision(@article.size.to_i*10.7639, precision: 2, delimiter: ',') if @article.uom == "4" and @article.size.present? %><%= " SqFt" if @article.uom == "4" %>
               )
         </div>
+
         <div align="right" class='col-sm-offset-0 col-sm-3'>  
-          <%= "Bathrooms: " %>
+          <%= "Other info:" %>
         </div>
-        <div align="left" class='font-green col-sm-offset-0 col-sm-3 gutter-0'> 
-          <%= @article.bathroom %>&nbsp;
+        <div align="left" class='font-green col-sm-offset-0 col-sm-3 gutter-0'>         
+          <%= @otherinfo.name if @otherinfo.present? %>&nbsp;
         </div>
       </div>
       
@@ -158,14 +164,16 @@
           <%= "Amount:" %>
         </div>
         <div align="left" class='font-green col-sm-offset-0 col-sm-3 gutter-0'> 
-          <%= @places.currency if @places.present? %> <%= number_with_precision(@article.amount, precision: 0, delimiter: ',') %>&nbsp;
+          <%= @places.currency if @places.present? %> <%= number_with_precision(@article.amount, precision: 0, delimiter: ' ') %>&nbsp;
         </div>
-        <div align="right" class='col-sm-offset-0 col-sm-3'>  
-          <%= "Other info:" %>
+
+        <div align="right" class='col-sm-offset-0 col-sm-3'>          
+          <%= "Title Type:" %>
         </div>
-        <div align="left" class='font-green col-sm-offset-0 col-sm-3 gutter-0'>         
-          <%= @otherinfo.name if @otherinfo.present? %>&nbsp;
+        <div align="left" class='font-green col-sm-offset-0 col-sm-3 gutter-0'>        
+          <%= @article.titletype %>
         </div>
+
         <div align="right" class='col-sm-offset-0 col-sm-12'>  
           <br>
         </div>
