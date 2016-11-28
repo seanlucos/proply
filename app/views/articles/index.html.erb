@@ -7,21 +7,18 @@
     </div>
   </div>
 <% else %>
-  <% if params[:param1] == "admin" %>
-    <%= render 'articleadmin', obj: @articles %>        
-    <div align="left" class="col-md-12" >
-      <%= will_paginate %>
-    </div> 
-  <% else %>
-    <div class="container"
-      <div class='row'> 
-        <div class='col-sm-offset-0 col-sm-12 gutter-0'>
+  <div class="container">
+    <div class='row'> 
+      <div class='col-sm-offset-0 col-sm-12 gutter-0'>
+        <% if logged_in? and current_user.admin? %>
+          <%= render 'articleadmin', obj: @articles %>        
+        <% else %>
           <br><%= render 'article', obj: @articles %>
-        </div>
-      </div>              
+        <% end %>
+      </div>
       <div align="left" >
         <%= will_paginate %>
       </div>
     </div>
-  <% end %>
+  </div>
 <% end %>
