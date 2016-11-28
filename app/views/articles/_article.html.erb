@@ -32,14 +32,14 @@
               <% article.images.each do |t| %>
                 <% if t.picture.url %>
                   <%#= image_tag t.picture.url, size: "150x100" %>
-                  <%= image_tag t.picture.url, width: "200x150" %>
+                  <%= image_tag t.picture.url, size: "200x150" %>
                 <% else %>
                   xx<%= image_tag url('images/noimage.gif'), size: "150x100" %>xx
                 <% end %>
                 <% break %>
               <% end %>
               <% if !article.images.present? %>
-                <%= image_tag("noimage.gif") %>
+                <img src="/assets/noimage.gif" style="width: 200px">
               <% end %>
           	</div>
     
