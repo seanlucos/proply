@@ -21,12 +21,12 @@
     <%= form_tag root_path, :method => "get", id: "search-form", :class => "form-horizontal project" , :enforce_utf8 => false do %>      
         <% obj.each do |article| %> 
           <div class="form-group">
-          	<div class="col-sm-4 gutter-0">
+          	<div class="col-sm-3">
               <% article.images.each do |t| %>
                 <% if t.picture.url %>
                   <%#= image_tag(t.picture.url, width: '100%') %>
                   <%#= image_tag t.picture.url, size: "200x150" %>
-                  <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 250px; height: 188px">
+                  <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 200px; height: 150px">
                     <div class="property-count">
                       <%#= article.images.count %>
                       <% if article.images.count == 1 %><img src="/assets/no1.gif"><% end %>
@@ -50,7 +50,7 @@
               <% end %>
           	</div>
     
-            <div class="col-sm-8 gutter-0">
+            <div class="col-sm-9 gutter-0">
               <div class="latest col-sm-9">
                 <%= link_to article.title, article_path(article, :usr => article.user_id) %> 
               </div>
