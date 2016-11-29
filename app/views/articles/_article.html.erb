@@ -34,16 +34,21 @@
               <% article.images.each do |t| %>
                 <% if t.picture.url %>
                   <%#= image_tag(t.picture.url, width: '100%') %>
-                  <%= image_tag t.picture.url, size: "200x150" %>
-
-                <div class="property-count">
-                  <%= article.images.count %>
-                </div>
-                <%= link_to article_path(article, :usr => article.user_id), :class => 'click-able' do %>
-                  <span></span>
-                <% end %> 
-               
-                
+                  <%#= image_tag t.picture.url, size: "200x150" %>
+                  <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 100%; height: 140px;">
+                    <div class="property-count">
+                      <%#= article.images.count %>
+                      <% if article.images.count == 1 %><img src="/assets/no1.gif"><% end %>
+                      <% if article.images.count == 2 %><img src="/assets/no2.gif"><% end %>
+                      <% if article.images.count == 3 %><img src="/assets/no3.gif"><% end %>
+                      <% if article.images.count == 4 %><img src="/assets/no4.gif"><% end %>
+                      <% if article.images.count == 5 %><img src="/assets/no5.gif"><% end %>
+                      <% if article.images.count == 6 %><img src="/assets/no6.gif"><% end %>
+                    </div>
+                    <%= link_to article_path(article, :usr => article.user_id), :class => 'click-able' do %>
+                      <span></span>
+                    <% end %> 
+                  </div>
                 <% else %>
                   xx<%= image_tag url('images/noimage.gif'), size: "150x100" %>xx
                 <% end %>
