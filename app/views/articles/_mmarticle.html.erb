@@ -12,14 +12,14 @@
             <% if params[:usr].present? %>
               All Ads from <%= @articles.first.user.name if @articles.present? %>
             <% else %>
-              <h5>Welcome to iDeal Online!</h5>
+              <h5>&nbsp;Welcome to iDeal Online!</h5>
             <% end %>
           <% end %>
         <% end %>
       <% end %>
     <% end %>  
   </div>
-  <div class="col-sm-12 gutter-0"><hr></div>
+  <div class="col-xs-12 gutter-0" style="border-top: 1px solid #1d4d87"><br></div>
 </div>
 
 <%= form_tag root_path, :method => "get", id: "search-form", :class => "form-horizontal project" , :enforce_utf8 => false do %>      

@@ -6,15 +6,15 @@
   <% if session[:mobile] == "Y" %>
     <div class="container-fluid">
       <div class="row">
-        <div class='article-title col-xs-12'>
+        <div class='article-title col-xs-12 gutter-0'>
           <div align="left" class="col-xs-6 gutter-0" >
             <% session[:step2] = "Insert a New Ad" %>
-            <h5>Insert a New Ad</h5>
+            <h5>&nbsp;Insert a New Ad</h5>
           </div>
           <div align="right" class="col-xs-6 gutter-0" >
-            <h5><%= current_user.articles.count+1 %> of <%= session[:m_posting] %></h5>   
+            <h5><%= current_user.articles.count+1 %> of <%= session[:m_posting] %>&nbsp;</h5>   
           </div>
-          <div class="col-xs-12 gutter-0" ><hr></div>
+          <div class="col-xs-12 gutter-0" style="border-top: 1px solid #1d4d87"><br></div>
         </div>          
         <div class='col-xs-12'>      
           <%= render 'mmform' %> 
