@@ -3,11 +3,9 @@
   setTimeout("preventBack()", 0);
   window.onunload=function(){null};
 </script>
-
-  <%= render 'shared/errors', obj: @article %>
-  <div class='col-sm-12'>
-    <!--<h4>&nbsp;Insert a New Ad - No. <%#= current_user.articles.count+1 %> of <%#= session[:m_posting] %></h4>-->
-
+<%= render 'shared/errors', obj: @article %>
+<div class='col-sm-12'>
+  <div class="col-sm-8">
     <%= form_for @article, :html => {:multipart => true,  :class => "form-horizontal project" } do |f| %>
       <% if params[:param1] == 'confirm' %>
         <% if @article.category == "Land" %>
@@ -216,7 +214,7 @@
       <% end %>
 
       <div class="form-group form-actions">
-        <div align="center" class="col-sm-12 gutter-0"><br> 
+        <div align="center" class="col-sm-12 gutter-0"><br> <br>
           <% if params[:param1] == 'confirm' %>
             <%= f.hidden_field :xonline, value: true %>  
             <%= f.submit "CONFIRM", :class => "btn btn-primary btn-block"%>
@@ -228,6 +226,10 @@
       </div>
     <% end %>
 
+  </div><!--col-8-->
+  <div align="center" class="col-sm-4">
+    <img src="/assets/adspace.gif" width=100%>
   </div>
+</div>
 
 
