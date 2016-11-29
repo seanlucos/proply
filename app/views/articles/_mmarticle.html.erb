@@ -1,5 +1,5 @@
 <div class="row"><br>
-  <div align="left" class="latest col-sm-6 gutter-0" >
+  <div align="left" class="col-sm-6 gutter-0" >
     <% if params[:proptype] == 'new Launch' %>
       <%= "Ads: NEW LAUNCH" %>
       <% else if params[:proptype] == 'for Sale' %>
@@ -20,11 +20,11 @@
     <% end %>  
   </div>
   <% if logged_in? and !current_user.admin?%>
-    <div align = "right" class="latest col-sm-2 gutter-0" >
+    <div align = "right" class="col-sm-2 gutter-0" >
       <%= current_user.articles.count %> of <%= session[:m_posting] %> 
     </div>
   <% end %>
-  <div class="latest col-sm-12 gutter-0"><hr></div>
+  <div class="col-sm-12 gutter-0"><hr></div>
 </div>
 
 <%= form_tag root_path, :method => "get", id: "search-form", :class => "form-horizontal project" , :enforce_utf8 => false do %>      
@@ -50,12 +50,14 @@
             <%= link_to article.title, article_path(article,:param1 => "1", :usr => article.user_id) %>         
           </div>
           <div>
-            <%= truncate(article.description, length: 80) %>
+            <% @area = Area.find(article.area) if article.area.present? %><%= @area.name %>, 
+            <% @region = Region.find(article.region) if article.region.present? %><%= @region.name %>, 
+            <% @place = Place.find(article.place) if article.place.present? %><%= @place.name %>.
           </div>
 
           <div class="font-green col-xs-7 gutter-0">
             <% @place = Place.find(article.currency) if article.currency.present? %>
-            <%= @place.currency if @place.present? %> <%= number_with_precision(article.amount, precision: 0, delimiter: ',') %>
+            <%= @place.currency if @place.present? %> <%= number_with_precision(article.amount, precision: 0, delimiter: ' ') %>
           </div>
           <div align="right" class="font-green col-xs-5 gutter-0">
             <%= article.updated_at.to_formatted_s(:short) %>
