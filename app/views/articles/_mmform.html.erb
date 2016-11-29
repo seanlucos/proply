@@ -7,7 +7,7 @@
   <%= render 'shared/errors', obj: @article %>
   <div class='col-xs-offset-0 col-xs-12 gutter-0'>
     <!--<h4>&nbsp;Insert a New Ad - No. <%#= current_user.articles.count+1 %> of <%#= session[:m_posting] %></h4>-->
-    <div class="well" >
+
     <%= form_for @article, :html => {:multipart => true,  :class => "form-horizontal project" } do |f| %>
       <% if params[:param1] == 'confirm' %>
         <% if @article.category == "Land" %>
@@ -206,7 +206,6 @@
       </div>
     <% end %>
 
-    </div> <!--/well-->
   </div>
 
 
