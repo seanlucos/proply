@@ -17,11 +17,11 @@
         <% end %>
       <% end %>  
     </div>
-    <% if logged_in? and !current_user.admin?%>
+    <!--<%# if logged_in? and !current_user.admin?%>
       <div align = "right" class="latest col-sm-2 no-padding" >
-        <%= current_user.articles.count %> of <%= session[:m_posting] %> 
+        <%#= current_user.articles.count %> of <%#= session[:m_posting] %> 
       </div>
-    <% end %>
+    <%# end %>-->
     <div class="no-padding latest col-sm-12"><hr></div>
     
     <%= form_tag root_path, :method => "get", id: "search-form", :class => "form-horizontal project" , :enforce_utf8 => false do %>      
@@ -35,7 +35,7 @@
                 <% if t.picture.url %>
                   <%#= image_tag(t.picture.url, width: '100%') %>
                   <%#= image_tag t.picture.url, size: "200x150" %>
-                  <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 100%; height: 140px;">
+                  <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 200px; height:150px;">
                     <div class="property-count">
                       <%#= article.images.count %>
                       <% if article.images.count == 1 %><img src="/assets/no1.gif"><% end %>
