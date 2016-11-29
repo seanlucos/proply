@@ -319,8 +319,10 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
   <div id="right">
     <div class="left-padding" align="center">
       <!--<img src="assets/joinnow.gif" style="width:100%">-->
-      <%= link_to image_tag("/assets/joinnow.gif", width: "80%"), new_user_registration_path %>
-      <div align="left" class="latest">
+      <div align="center">
+        <img src="/assets/sell.gif" width=100%>
+      </div>
+      <div align="left" class="latest"><br>
         <h3>Other Services</h3>
       </div>
       <div class="div1" style="background-color: #1F497D">
@@ -379,22 +381,10 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
           </div>
         </div>        
       </div>
-      <div align="center">
-        <br><br><img src="/assets/contactus.gif" width=100%>
+
+      <div align="center"><br><br>
+        <%= link_to image_tag("/assets/wanted.gif", width: "90%"), new_user_registration_path %>
       </div>
-      <% if current_user.present? %>
-        <%#= gravatar_for current_user, size:200 %>
-        <%= link_to image_tag("/assets/gprofile.gif", width: "100%"), "http://gravatar.com" %><br>
-        <div class="div1">
-          <b>Gravatar for Profile Picture</b><br>
-          Gravatar stands for Globally Recognized Avatar. It is globally recognized because millions of people and websites use them. 
-          Most popular applications like WordPress have built-in support for Gravatar.<br> 
-          When a user leaves a comment (with email) on a site that supports Gravatar, 
-          it pulls their Globally Recognized Avatar from Gravatar servers. 
-          Then that picture is shown next to the comment. 
-          This allows each commenter to have their identity through out the world wide web.
-        </div>
-      <% end %>  
     </div> 
   </div>
 </div>
