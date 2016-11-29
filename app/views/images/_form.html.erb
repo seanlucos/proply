@@ -1,5 +1,6 @@
 <%#= render 'shared/errors', obj: @image %>
-<table width="100%" border="0" cellspacing=2 cellpadding=2>
+<div align="left" class='col-sm-12 gutter-0'>
+<table width="100%" border="0" cellspacing=0 cellpadding=2>
   <tr valign="center">  
     <% mcount = 6 %>
     <% @article.images.each do |t| %>
@@ -51,15 +52,15 @@
               </div>
             </div>
           <% end %>
-          <%="Add Images?? Amplify your ad ::.."%><br><%="Share more images" %>
+          <br><%="Amplify your ad!"%><br><%="Share more images..." %><br><br>
           <%= f.file_field :picture, accept: 'image/jpg,image/jpeg,image/gif,image/png',  :onchange => "this.form.submit()" %>
         <% end %>
       </td>
       <% mcount = mcount - 1 %>        
     <%end %>
   </tr>
-</table> <br>
-
+</table>
+</div>
 <script type="text/javascript">
   $('#image_picture').bind('change', function() {
   var size_in_megabytes = this.files[0].size/1024/1024;

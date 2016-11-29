@@ -21,34 +21,34 @@
         <% else %>
           <div class="form-group">
             <div class="col-sm-6 gutter-0">
-              &nbsp;Bedroom:<br>
+              &nbsp;<b>Bedroom:</b><br>
               <%= f.select :bedroom, [['Rooms:',''],['1','1'],['2','2'],['3','3'],['4','4'],['5','5'],['6','6'],['7','7'],['8','8'],['9','9'],['10','10']], {}, { class: "form-control" } %>
             </div>
             <div class=" col-sm-6 gutter-0">
-              &nbsp;Bath:<br>
+              &nbsp;<b>Bath:</b><br>
               <%= f.select :bathroom, [['Baths:',''],['1','1'],['2','2'],['3','3'],['4','4'],['5','5'],['6','6'],['7','7'],['8','8'],['9','9'],['10','10']], {}, { class: "form-control" } %>
             </div>
           </div>
           
           <div class="form-group">
             <div class=" col-sm-4 gutter-0">
-              &nbsp;Land Size:<br>
+              &nbsp;<b>Land Size:</b><br>
               <%#= f.number_field :size, :step => 2, class: "form-control", placeholder: "Size", :value => (number_with_precision(f.object.size, :precision => 0) ) %> 
               <%= f.number_field :size, class: "form-control", placeholder: "Land Size", :value => (number_with_precision(f.object.size, :precision => 0) ) %> 
             </div>                 
             <div class=" col-sm-4 gutter-0">
-              &nbsp;Built-up:<br>
+              &nbsp;<b>Built-up:</b><br>
               <%#= f.number_field :size, :step => 2, class: "form-control", placeholder: "Size", :value => (number_with_precision(f.object.size, :precision => 0) ) %> 
               <%= f.number_field :size1, class: "form-control", placeholder: "Built-up", :value => (number_with_precision(f.object.size1, :precision => 0) ) %> 
             </div>  
             <div class=" col-sm-4 gutter-0">
-              &nbsp;Unit of Measurement:<br>
+              &nbsp;<b>Unit of Measurement:</b><br>
               <%= f.select :uom, options_for_select([['SqFt','3'],['SqM','4'],['Acres','5'],['Hectres','6']], @article.uom || current_user.preferuom), {}, { class: "form-control" } %>
             </div>
           </div>
           <div class="form-group">
             <div class="col-sm-12 gutter-0"> 
-              <%= "Facilities:" %>
+              <b><%= "Facilities:" %></b>
             </div> 
             <div class='row'> 
               <div class='col-sm-offset-0 col-sm-12'>
@@ -106,7 +106,7 @@
       
       <% else %> <!--Page 1 top of page -->
         <div class="form-group"> 
-          <div class="col-sm-12 gutter-0">&nbsp;Property Type:</div>
+          <div class="col-sm-12 gutter-0">&nbsp;<b>Property Type:</b></div>
           <div class="col-sm-12 btn-group gutter-0" data-toggle="buttons">
 
             <% if @article.proptype == 'for Sale' or params[:proptype] == 'for Sale' %> 
@@ -149,6 +149,7 @@
         <% if @places_for_dropdown.count.to_i == 1 %>
           <div class="form-group">        
             <div class="col-sm-6 gutter-0">         
+              &nbsp;<b>Country:</b><br>
               <%= select("place", "name", options_for_select(@places_for_dropdown, @places_for_dropdown.first), {}, {class: 'form-control'}) %>            
             </div> 
           </div>
@@ -156,46 +157,52 @@
           <div class="form-group"> 
             <div class="col-sm-6 gutter-0"> 
               <%#= select("place", "name", options_for_select(@places_for_dropdown, :selected => @article.place), {prompt: 'Select Country'}, {class: 'form-control'}) %>
+              &nbsp;<b>Country:</b><br>
               <%= select("place", "name", options_for_select(@places_for_dropdown, @article.place || current_user.prefercountry), {prompt: 'Select Country'}, {class: 'form-control'}) %>
             </div> 
           </div>
         <% end %>
         <div class="form-group">  
           <div class="col-sm-6 gutter-0"> 
+            &nbsp;<b>Region:</b><br>
             <%= select("region", "name", options_for_select(@regions_for_dropdown, :selected => @article.region), {prompt: 'Select Region'}, {class: 'form-control'}) %>
           </div> 
           <div class="col-sm-6 gutter-0"> 
+            &nbsp;<b>Area:</b><br>
             <%= select("area", "name", options_for_select(@areas_for_dropdown, :selected => @article.area), {prompt: 'Select Area'}, {class: 'form-control'}) %>
           </div> 
         </div>    
       
         <div class="form-group"> 
           <div class=" col-sm-4 gutter-0">
+            &nbsp;<b>Category:</b><br>
             <%= f.select :category, [['Category:',''], ['Apartment','Apartment'],['House','House'],['Commercial','Commercial'],['Land','Land'],['Room','Room'],['New','New']], {}, { class: "form-control" } %>
           </div>
           <div class="col-sm-4 gutter-0"> 
+            &nbsp;<b>Title Type:</b><br>
             <%= f.select :titletype, [['Title type:',''], ['Freehold','Freehold'],['Leasehold','Leasehold']], {}, { class: "form-control" } %>
           </div> 
           <div class="col-sm-4 gutter-0"> 
+            &nbsp;<b>Other Info:</b><br>
             <%= select("otherinfo", "name", options_for_select(@otherinfos_for_dropdown, :selected => @article.otherinfo), {prompt: 'Other info:'}, {class: 'form-control'}) %>
           </div> 
         </div>
 
         <div class="form-group"> 
-          <div class="col-sm-12 gutter-0">&nbsp;Title:</div>
+          <div class="col-sm-12 gutter-0">&nbsp;<b>Title:</b></div>
           <div class="col-sm-12 gutter-0"> 
             <%= f.text_field :title, class: "form-control", placeholder: "Title of Ad (Max: 40 characters)", :maxlength => 50 %> 
           </div> 
         </div> 
         <div class="form-group"> 
-          <div class="col-sm-12 gutter-0">&nbsp;Description:</div>
+          <div class="col-sm-12 gutter-0">&nbsp;<b>Description:</b></div>
           <div class="col-sm-12 gutter-0">
             <%= f.text_area :description, rows: 5, class: "form-control", placeholder: "Descriptions (Max: 300 characters)", :maxlength => 500 %> 
           </div> 
         </div> 
       
         <div class="form-group">
-          <div class="col-sm-12 gutter-0">&nbsp;Amount:</div>
+          <div class="col-sm-12 gutter-0">&nbsp;<b>Amount:</b></div>
           <div class=" col-sm-4 gutter-0">
             <%= f.number_field :amount, class: "form-control", placeholder: "Amount" , :value => (number_with_precision(f.object.amount, :precision => 0))%> 
           </div>                 
@@ -205,16 +212,18 @@
         </div> 
 
       <% end %> <!--params1==confirm-->  
+      <div class="form-group">
+        <% if params[:param1] == 'confirm' %>
+          <% current_article = @article.id %>
+          <% session[:current_article] = @article.id %>
+          <%= render :partial => 'images/form', :object => @image %>
+          <%#= render :partial => 'images/form' %>
+        <% end %>
+      </div>
 
-      <% if params[:param1] == 'confirm' %>
-        <% current_article = @article.id %>
-        <% session[:current_article] = @article.id %>
-        <%= render :partial => 'images/form', :object => @image %>
-        <%#= render :partial => 'images/form' %>
-      <% end %>
 
       <div class="form-group form-actions">
-        <div align="center" class="col-sm-12 gutter-0"><br> <br>
+        <div align="center" class="col-sm-12 gutter-0">
           <% if params[:param1] == 'confirm' %>
             <%= f.hidden_field :xonline, value: true %>  
             <%= f.submit "CONFIRM", :class => "btn btn-primary btn-block"%>
@@ -229,6 +238,7 @@
   </div><!--col-8-->
   <div align="center" class="col-sm-4">
     <img src="/assets/adspace.gif" width=100%>
+    <img src="/assets/leasedAd.gif" width=100%>
   </div>
 </div>
 
