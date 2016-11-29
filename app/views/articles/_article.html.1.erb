@@ -25,7 +25,7 @@
     <div class="no-padding latest col-sm-12"><hr></div>
     
     <%= form_tag root_path, :method => "get", id: "search-form", :class => "form-horizontal project" , :enforce_utf8 => false do %>      
-
+      <div  class='col-sm-12 gutter-0'>
         <% obj.each do |article| %> 
 
           <div class="form-group">
@@ -110,7 +110,7 @@
     
           </div><hr>
         <% end %>
-
+    	</div>
     <% end %>
   </div><!--middle-->
   <div id="right">    
