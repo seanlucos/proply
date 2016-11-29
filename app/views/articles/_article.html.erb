@@ -58,28 +58,47 @@
                 <% @place = Place.find(article.currency) if article.currency.present? %>
                 <%= @place.currency if @place.present? %> <%= number_with_precision(article.amount, precision: 0, delimiter: ' ') %>
               </div>
-              <div class="col-sm-12">              
-                <%= article.category %> <%= article.proptype %> - <%= article.titletype %>
-              </div>
-              <div class="col-sm-12">              
-                <% @area = Area.find(article.area) if article.area.present? %><%= @area.name %>, 
-                <% @region = Region.find(article.region) if article.region.present? %><%= @region.name %>, 
-                <% @place = Place.find(article.place) if article.place.present? %><%= @place.name %>.
-              </div>
-              <div class="col-sm-12">              
-                Built-up: <%= article.size1 %> 
-                  <%= "SqFt" if article.uom == "3" %><%= "SqM" if article.uom == "4" %><%= "Acres" if article.uom == "5" %><%= "Hectres" if article.uom == "6" %>
-                    (<%= number_with_precision(article.size1.to_i*0.092903, precision: 2, delimiter: ',') if article.uom == "3" %>
-                    <%= " SqM" if article.uom == "3" %><%= number_with_precision(article.size1.to_i*10.7639, precision: 2, delimiter: ',') if article.uom == "4" and article.size1.present? %><%= " SqFt" if article.uom == "4" %>)
-              </div>
-              <div class="col-sm-12">              
-                Land area: <%= article.size %> 
-                  <%= "SqFt" if article.uom == "3" %><%= "SqM" if article.uom == "4" %><%= "Acres" if article.uom == "5" %><%= "Hectres" if article.uom == "6" %>
-                    (<%= number_with_precision(article.size.to_i*0.092903, precision: 2, delimiter: ',') if article.uom == "3" %>
-                    <%= " SqM" if article.uom == "3" %><%= number_with_precision(article.size.to_i*10.7639, precision: 2, delimiter: ',') if article.uom == "4" and article.size.present? %><%= " SqFt" if article.uom == "4" %>)
-              </div>
-              <div class="col-sm-12"> 
-                Last Updated: <%= article.updated_at %>
+              <div class="col-sm-12">
+                <div class="col-sm-6 gutter-0">                
+                  <div class="col-sm-12 gutter-0">              
+                    <%= article.category %> <%= article.proptype %> - <%= article.titletype %>
+                  </div>
+                  <div class="col-sm-12 gutter-0">              
+                    <% @area = Area.find(article.area) if article.area.present? %><%= @area.name %>, 
+                    <% @region = Region.find(article.region) if article.region.present? %><%= @region.name %>, 
+                    <% @place = Place.find(article.place) if article.place.present? %><%= @place.name %>.
+                  </div>
+                  <div class="col-sm-12 gutter-0">              
+                    Built-up: <%= article.size1 %> 
+                      <%= "SqFt" if article.uom == "3" %><%= "SqM" if article.uom == "4" %><%= "Acres" if article.uom == "5" %><%= "Hectres" if article.uom == "6" %>
+                        (<%= number_with_precision(article.size1.to_i*0.092903, precision: 2, delimiter: ',') if article.uom == "3" %>
+                        <%= " SqM" if article.uom == "3" %><%= number_with_precision(article.size1.to_i*10.7639, precision: 2, delimiter: ',') if article.uom == "4" and article.size1.present? %><%= " SqFt" if article.uom == "4" %>)
+                  </div>
+                  <div class="col-sm-12 gutter-0">              
+                    Land area: <%= article.size %> 
+                      <%= "SqFt" if article.uom == "3" %><%= "SqM" if article.uom == "4" %><%= "Acres" if article.uom == "5" %><%= "Hectres" if article.uom == "6" %>
+                        (<%= number_with_precision(article.size.to_i*0.092903, precision: 2, delimiter: ',') if article.uom == "3" %>
+                        <%= " SqM" if article.uom == "3" %><%= number_with_precision(article.size.to_i*10.7639, precision: 2, delimiter: ',') if article.uom == "4" and article.size.present? %><%= " SqFt" if article.uom == "4" %>)
+                  </div>
+                  <div class="col-sm-12 gutter-0"> 
+                    Last Updated: <%= article.updated_at %>
+                  </div>
+                </div><!--col-6-->
+                <div align="right" class="col-sm-6 gutter-0">
+                  &nbsp;
+                </div>
+                <div align="right" class="col-sm-6 gutter-0">
+                  &nbsp;
+                </div>
+                <div align="right" class="col-sm-6 gutter-0">
+                  <span class="glyphicon glyphicon-bed"></span> <%= article.bedroom %> Bedrooms
+                </div>
+                <div align="right" class="col-sm-6 gutter-0">  
+                  <span class="glyphicon glyphicon-bath-bathtub"></span> <%= article.bathroom %> Bathrooms
+                </div>
+                <div align="right" class="col-sm-6 gutter-0">
+                  Id: <%= article.id %>
+                </div>
               </div>
             </div>
 
