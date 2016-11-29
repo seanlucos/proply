@@ -30,7 +30,7 @@
 
           <div class="form-group">
 
-          	<div class="col-sm-3">
+          	<div class="col-sm-4">
               <% article.images.each do |t| %>
                 <% if t.picture.url %>
                   <%#= image_tag(t.picture.url, width: '100%') %>
@@ -59,7 +59,7 @@
               <% end %>
           	</div>
     
-            <div class="col-sm-9 gutter-0">
+            <div class="col-sm-8 gutter-0">
               <div class="latest col-sm-9">
                 <%= link_to article.title, article_path(article, :usr => article.user_id) %> 
               </div>
