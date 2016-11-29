@@ -1,4 +1,4 @@
-<div class="row"><br>
+<div class="row">
   <div align="left" class="article-title col-xs-6 gutter-0" >
     <% if params[:proptype] == 'new Launch' %>
       <%= "Ads: NEW LAUNCH" %>
@@ -19,11 +19,6 @@
       <% end %>
     <% end %>  
   </div>
-  <% if logged_in? and !current_user.admin?%>
-    <div align = "right" class="article-title col-xs-6" >
-      <%= current_user.articles.count %> of <%= session[:m_posting] %> 
-    </div>
-  <% end %>
   <div class="col-sm-12 gutter-0"><hr></div>
 </div>
 
