@@ -191,13 +191,13 @@
         <div class="form-group"> 
           <div class="col-sm-12 gutter-0">&nbsp;<b>Title:</b></div>
           <div class="col-sm-12 gutter-0"> 
-            <%= f.text_field :title, class: "form-control", placeholder: "Title of Ad (Max: 40 characters)", :maxlength => 50 %> 
+            <%= f.text_field :title, class: "form-control", placeholder: "Title of Ad (Max: 50 characters)", :maxlength => 50 %> 
           </div> 
         </div> 
         <div class="form-group"> 
           <div class="col-sm-12 gutter-0">&nbsp;<b>Description:</b></div>
           <div class="col-sm-12 gutter-0">
-            <%= f.text_area :description, rows: 5, class: "form-control", placeholder: "Descriptions (Max: 300 characters)", :maxlength => 500 %> 
+            <%= f.text_area :description, rows: 5, class: "form-control", placeholder: "Descriptions (Max: 1000 characters)", :maxlength => 1000 %> 
           </div> 
         </div> 
       
