@@ -145,14 +145,14 @@
   
   <div class="form-group">       
     <div align="right" class='col-sm-offset-0 col-sm-2'>  
-      <b>Size:</b>
+      <b>Built-up:</b>
     </div>
     <div align="left"class='col-sm-offset-0 col-sm-3 gutter-0'>
-      <% if @article.size.present? %>   
-        <%= @article.size %> 
+      <% if @article.size1.present? %>   
+        <%= @article.size1 %> 
           <%= "SqFt" if @article.uom == "3" %><%= "SqM" if @article.uom == "4" %><%= "Acres" if @article.uom == "5" %><%= "Hectres" if @article.uom == "6" %>
-            (<%= number_with_precision(@article.size.to_i*0.092903, precision: 2, delimiter: ',') if @article.uom == "3" %><%= " SqM" if @article.uom == "3" %>
-            <%= number_with_precision(@article.size.to_i*10.7639, precision: 2, delimiter: ',') if @article.uom == "4" and @article.size.present? %><%= " SqFt" if @article.uom == "4" %>
+            (<%= number_with_precision(@article.size1.to_i*0.092903, precision: 2, delimiter: ',') if @article.uom == "3" %><%= " SqM" if @article.uom == "3" %>
+            <%= number_with_precision(@article.size1.to_i*10.7639, precision: 2, delimiter: ',') if @article.uom == "4" and @article.size1.present? %><%= " SqFt" if @article.uom == "4" %>
             )
       <% else %>
         NIL
@@ -173,10 +173,18 @@
   
   <div class="form-group"> 
     <div align="right" class='col-sm-offset-0 col-sm-2'>  
-      <b>Amount:</b>
+      <b>Land Size:</b>
     </div>
-    <div align="left" class='col-sm-offset-0 col-sm-3 gutter-0'> 
-      <%= @places.currency if @places.present? %> <%= number_with_precision(@article.amount, precision: 0, delimiter: ' ') %>&nbsp;
+    <div align="left"class='col-sm-offset-0 col-sm-3 gutter-0'>
+      <% if @article.size.present? %>   
+        <%= @article.size %> 
+          <%= "SqFt" if @article.uom == "3" %><%= "SqM" if @article.uom == "4" %><%= "Acres" if @article.uom == "5" %><%= "Hectres" if @article.uom == "6" %>
+            (<%= number_with_precision(@article.size.to_i*0.092903, precision: 2, delimiter: ',') if @article.uom == "3" %><%= " SqM" if @article.uom == "3" %>
+            <%= number_with_precision(@article.size.to_i*10.7639, precision: 2, delimiter: ',') if @article.uom == "4" and @article.size.present? %><%= " SqFt" if @article.uom == "4" %>
+            )
+      <% else %>
+        NIL
+      <% end %>
     </div>
 
     <div align="right" class='col-sm-offset-0 col-sm-3'>          
@@ -189,12 +197,15 @@
         NIL
       <% end %>
     </div>
-
-    <div align="right" class='col-sm-offset-0 col-sm-12'>  
-      <br>
-    </div>
   </div>
-  
+  <div class="form-group"> 
+    <div align="right" class='col-sm-offset-0 col-sm-2'>  
+      <b>Amount:</b>
+    </div>
+    <div align="left" class='col-sm-offset-0 col-sm-10 gutter-0'> 
+      <%= @places.currency if @places.present? %> <%= number_with_precision(@article.amount, precision: 0, delimiter: ' ') %>&nbsp;
+    </div>
+  </div>  
   <div class="form-group"> 
     <div align="right" class='col-sm-offset-0 col-sm-2'>  
       <b>Facilities:</b>
