@@ -11,7 +11,11 @@
             <% else if params[:proptype] == 'for Rent' %>
               <%= "Ads: FOR RENT" %>        
             <% else %>
-              All Ads from <%= @articles.first.user.name %>        
+              <% if @articles.first.present? %>
+                All Ads from <%= @articles.first.user.name %>
+              <% else %>
+                Sorry! No Ads found!
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
