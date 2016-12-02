@@ -105,7 +105,7 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
         <%= "Latest: NEWLY LAUNCHED" %>
       </div>
       <div align="right" class="latest col-md-6 gutter-0" >
-        <b>&#9679;&#9679;&#9679;</b> <%= link_to "more".html_safe, root_path(:proptype => "new Launch", :more => "Y") %>
+        <%= link_to "... more".html_safe, root_path(:proptype => "new Launch", :more => "Y") %>
       </div>
       <div class="latest col-md-12 gutter-0"><hr></div>
       <% mm=1 %>
@@ -159,7 +159,7 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
         <%= "Latest: FOR SALE" %>
       </div>
       <div align="right" class="latest col-md-6 gutter-0" >
-        <b>&#9679;&#9679;&#9679;</b> <%= link_to "more".html_safe, root_path(:proptype => "for Sale", :more => "Y") %>
+        <%= link_to "... more".html_safe, root_path(:proptype => "for Sale", :more => "Y") %>
       </div>
       <div class="latest col-md-12 gutter-0"><hr></div>
       <% mm=1 %>
@@ -207,39 +207,30 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
       	<% end %>
       <% end %>
     </div>
-
-    <div class='col-md-12 gutter-0'><br><br></div>
-
+    
     <div class='col-md-12 gutter-0'>
-      <div class='right-padding col-sm-6 gutter-0'>
-        <div align="left" class="block-title col-sm-12 gutter-0" >
-          <%= "Latest: FOR RENT" %>
-        </div>      
-        <% mm=1 %>
-        <% @articles2.each do |article2| %> 
-          <div class="col-sm-12 main-thumb">
-          	<div align="center" class="col-sm-4 gutter-0"  >
-              <% article2.images.each do |t| %>
-                <% if t.picture.url %>
-                  <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 100%; height: 100px;">
-                    <%= link_to article_path(article2, :usr => article2.user_id), :class => 'click-able' do %>
-                      <span></span>
-                    <% end %>
-                  </div>
-                <% end %>
-                <% break %>
-              <% end %>
-              <% if !article2.images.present? %>
-                <div class="image-std gutter-0" style="background-image: url('/assets/noimage.gif'); width: 100%; height: 100px;">
-                  <%= link_to article_path(article2, :usr => article2.user_id), :class => 'click-able' do %>
-                    <span></span>
-                  <% end %>
+      <div align="left" class="latest col-md-6 gutter-0" >
+        <%= "Latest: FOR RENT" %>
+      </div>
+      <div align="right" class="latest col-md-6 gutter-0" >
+        <%= link_to "... more".html_safe, root_path(:proptype => "for Rent", :more => "Y") %>
+      </div>
+      <div class="latest col-md-12 gutter-0"><hr></div>
+      <% mm=1 %>
+      <% @articles2.each do |article2| %> 
+      	<div align="center" class="col-sm-4 gutter-0" >
+          <% article2.images.each do |t| %>
+            <% if t.picture.url %>
+              <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 100%; height: 188px;">
+                <div class="property-price">
+                  <% @place = Place.find(article2.currency) if article2.currency.present? %>
+                  <%= @place.currency if @place.present? %> <%= number_with_precision(article2.amount, precision: 0, delimiter: ' ') %>
                 </div>
-              <% end %>
-          	</div><!--col-4-->
-            <div class='col-sm-8 gutter-0'>
-              <div class="col-sm-12 gutter-0" style="padding: 5px 8px 5px 8px;">
-                <b><%= article2.title %></b><br>
+                <%= link_to article_path(article2, :usr => article2.user_id), :class => 'click-able' do %>
+                  <span></span>
+                <% end %>
+              </div>
+              <div align = "center">
                 <% if article2.area.present? %>
                   <% @area = Area.find(article2.area)  %>
                   <%= @area.name %>,&nbsp;
@@ -248,57 +239,52 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
                   <% @region = Region.find(article2.region)  %>
                   <%= @region.name %>.
                 <% end %>
+              </div>
+              <div align = "center">
                 <% if article2.place.present? %>
                   <% @place = Place.find(article2.place)  %>
                   <%= @place.name %>
                 <% end %>
-              </div>          
-  
-              <div class="col-sm-12 gutter-0" style="color: red; padding: 5px 8px 5px 8px;">
-                <% @place = Place.find(article2.currency) if article2.currency.present? %>
-                <%= @place.currency if @place.present? %> <%= number_with_precision(article2.amount, precision: 0, delimiter: ' ') %>
-              </div> 
-            </div><!--col-8-->
-          </div><!--col-12-->
+              </div>
+            <% else %>
+              xx<%= image_tag url('images/noimage.gif'), size: "150x100" %>xx
+            <% end %>
+            <% break %>
+          <% end %>
+          <% if !article2.images.present? %>
+            <img src="/assets/noimage.gif" style="width: 100%; height: 188px;">
+          <% end %><br>
+      	</div>
       	<% mm = mm + 1 %>
-      	<% if mm == 6 %>
+      	<% if mm == 4 %>
       	  <% break %>
       	<% end %>
-        <% end %>        
-          <div align="right" class="latest col-sm-12 gutter-0" >
-            	<b>&#9679;&#9679;&#9679;</b> <%= link_to "more".html_safe, root_path(:proptype => "for Rent", :more => "Y") %>
-          </div>
+      <% end %>
+    </div>
+    
+    <div class='col-md-12 gutter-0'>
+      <div align="left" class="latest col-md-6 gutter-0" >
+        <%= "Latest: FOR AUCTION" %>
       </div>
-  
-      <div class='left-padding col-sm-6 gutter-0'>
-        <div align="left" class="block-title col-sm-12 gutter-0" >
-          <%= "Latest: FOR AUCTION" %>
-        </div>      
-        <% mm=1 %>
-        <% @articles3.each do |articles3| %> 
-          <div class="col-sm-12 main-thumb">
-          	<div align="center" class="col-sm-4 gutter-0"  >
-              <% articles3.images.each do |t| %>
-                <% if t.picture.url %>
-                  <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 100%; height: 100px;">
-                    <%= link_to article_path(articles3, :usr => articles3.user_id), :class => 'click-able' do %>
-                      <span></span>
-                    <% end %>
-                  </div>
-                <% end %>
-                <% break %>
-              <% end %>
-              <% if !articles3.images.present? %>
-                <div class="image-std gutter-0" style="background-image: url('/assets/noimage.gif'); width: 100%; height: 100px;">
-                  <%= link_to article_path(articles3, :usr => articles3.user_id), :class => 'click-able' do %>
-                    <span></span>
-                  <% end %>
+      <div align="right" class="latest col-md-6 gutter-0" >
+        <%= link_to "... more".html_safe, root_path(:proptype => "for Auction", :more => "Y") %>
+      </div>
+      <div class="latest col-md-12 gutter-0"><hr></div>
+      <% mm=1 %>
+      <% @articles3.each do |articles3| %> 
+      	<div align="center" class="col-sm-4 gutter-0" >
+          <% articles3.images.each do |t| %>
+            <% if t.picture.url %>
+              <div class="image-std gutter-0" style="background-image: url('<%= t.picture.url %>'); width: 100%; height: 188px;">
+                <div class="property-price">
+                  <% @place = Place.find(articles3.currency) if articles3.currency.present? %>
+                  <%= @place.currency if @place.present? %> <%= number_with_precision(articles3.amount, precision: 0, delimiter: ' ') %>
                 </div>
-              <% end %>
-          	</div><!--col-4-->
-            <div class='col-sm-8 gutter-0'>
-              <div class="col-sm-12 gutter-0" style="padding: 5px 8px 5px 8px;">
-                <b><%= articles3.title %></b><br>
+                <%= link_to article_path(articles3, :usr => articles3.user_id), :class => 'click-able' do %>
+                  <span></span>
+                <% end %>
+              </div>
+              <div align = "center">
                 <% if articles3.area.present? %>
                   <% @area = Area.find(articles3.area)  %>
                   <%= @area.name %>,&nbsp;
@@ -307,30 +293,29 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
                   <% @region = Region.find(articles3.region)  %>
                   <%= @region.name %>.
                 <% end %>
+              </div>
+              <div align = "center">
                 <% if articles3.place.present? %>
                   <% @place = Place.find(articles3.place)  %>
                   <%= @place.name %>
                 <% end %>
-              </div>          
-  
-              <div class="col-sm-12 gutter-0" style="color: red; padding: 5px 8px 5px 8px;">
-                <% @place = Place.find(articles3.currency) if articles3.currency.present? %>
-                <%= @place.currency if @place.present? %> <%= number_with_precision(articles3.amount, precision: 0, delimiter: ' ') %>
-              </div> 
-            </div><!--col-8-->
-          </div><!--col-12-->
+              </div>
+            <% else %>
+              xx<%= image_tag url('images/noimage.gif'), size: "150x100" %>xx
+            <% end %>
+            <% break %>
+          <% end %>
+          <% if !articles3.images.present? %>
+            <img src="/assets/noimage.gif" style="width: 100%; height: 188px;">
+          <% end %>
+      	</div>
       	<% mm = mm + 1 %>
-      	<% if mm == 6 %>
+      	<% if mm == 4 %>
       	  <% break %>
       	<% end %>
-        <% end %>        
-          <div align="right" class="latest col-sm-12 gutter-0" >
-            <b>&#9679;&#9679;&#9679;</b> <%= link_to "more".html_safe, root_path(:proptype => "for Auction", :more => "Y") %>
-          </div>
-      </div>
+      <% end %>
     </div>
   </div>
-  
   <div id="right">
     <div class="left-padding" align="center">
       <!--<img src="assets/joinnow.gif" style="width:100%">-->
