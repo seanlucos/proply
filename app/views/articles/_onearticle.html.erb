@@ -16,6 +16,9 @@
     </div>
     
     <div align="left" class="col-sm-12 w3-content style-image gutter-0">
+      <% if !@article.images.present? %>
+        <img src="/assets/camera.gif" width=100%% >
+      <% end %>
       <% @article.images.each do |t| %>
         <%= image_tag t.picture.url, height: "400", class: " mySlides style-image" %>
       <% end %>

@@ -122,30 +122,32 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
                   <span></span>
                 <% end %>
               </div>
-              <div align = "center">
-                <% if articles4.area.present? %>
-                  <% @area = Area.find(articles4.area)  %>
-                  <%= @area.name %>,&nbsp;
-                <% end %>
-                <% if articles4.region.present? %>
-                  <% @region = Region.find(articles4.region)  %>
-                  <%= @region.name %>.
-                <% end %>
-              </div>
-              <div align = "center">
-                <% if articles4.place.present? %>
-                  <% @place = Place.find(articles4.place)  %>
-                  <%= @place.name %>
-                <% end %>
-              </div>
-            <% else %>
-              xx<%= image_tag url('images/noimage.gif'), size: "150x100" %>xx
             <% end %>
             <% break %>
           <% end %>
           <% if !articles4.images.present? %>
-            <img src="/assets/noimage.gif" style="width: 100%; height: 188px;">
-          <% end %><br>
+            <div class="image-std gutter-0" style="background-image: url('/assets/camera.gif'); width: 100%; height: 188px;">
+              <%= link_to article_path(articles4, :usr => articles4.user_id), :class => 'click-able' do %>
+                <span></span>
+              <% end %>
+            </div>
+          <% end %>
+          <div align = "center">
+            <% if articles4.area.present? %>
+              <% @area = Area.find(articles4.area)  %>
+              <%= @area.name %>,&nbsp;
+            <% end %>
+            <% if articles4.region.present? %>
+              <% @region = Region.find(articles4.region)  %>
+              <%= @region.name %>.
+            <% end %>
+          </div>
+          <div align = "center">
+            <% if articles4.place.present? %>
+              <% @place = Place.find(articles4.place)  %>
+              <%= @place.name %>
+            <% end %>
+          </div>
       	</div>
       	<% mm = mm + 1 %>
       	<% if mm == 4 %>
@@ -153,6 +155,8 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
       	<% end %>
       <% end %>
     </div>
+
+    <div class='col-md-12 gutter-0'><br><br></div>
 
     <div class='col-md-12 gutter-0'>
       <div align="left" class="latest col-md-6 gutter-0" >
@@ -176,30 +180,32 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
                   <span></span>
                 <% end %>
               </div>
-              <div align = "center">
-                <% if article1.area.present? %>
-                  <% @area = Area.find(article1.area)  %>
-                  <%= @area.name %>,&nbsp;
-                <% end %>
-                <% if article1.region.present? %>
-                  <% @region = Region.find(article1.region)  %>
-                  <%= @region.name %>.
-                <% end %>
-              </div>
-              <div align = "center">
-                <% if article1.place.present? %>
-                  <% @place = Place.find(article1.place)  %>
-                  <%= @place.name %>
-                <% end %>
-              </div>
-            <% else %>
-              xx<%= image_tag url('images/noimage.gif'), size: "150x100" %>xx
             <% end %>
             <% break %>
           <% end %>
           <% if !article1.images.present? %>
-            <img src="/assets/noimage.gif" style="width: 100%; height: 188px;">
-          <% end %><br>
+            <div class="image-std gutter-0" style="background-image: url('/assets/camera.gif'); width: 100%; height: 188px;">
+              <%= link_to article_path(article1, :usr => article1.user_id), :class => 'click-able' do %>
+                <span></span>
+              <% end %>
+            </div>
+          <% end %>
+          <div align = "center">
+            <% if article1.area.present? %>
+              <% @area = Area.find(article1.area)  %>
+              <%= @area.name %>,&nbsp;
+            <% end %>
+            <% if article1.region.present? %>
+              <% @region = Region.find(article1.region)  %>
+              <%= @region.name %>.
+            <% end %>
+          </div>
+          <div align = "center">
+            <% if article1.place.present? %>
+              <% @place = Place.find(article1.place)  %>
+              <%= @place.name %>
+            <% end %>
+          </div>
       	</div>
       	<% mm = mm + 1 %>
       	<% if mm == 4 %>
@@ -230,14 +236,14 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
                 <% break %>
               <% end %>
               <% if !article2.images.present? %>
-                <div class="image-std gutter-0" style="background-image: url('/assets/noimage.gif'); width: 100%; height: 100px;">
+                <div class="image-std gutter-0" style="background-image: url('/assets/camera.gif'); width: 100%; height: 100px;">
                   <%= link_to article_path(article2, :usr => article2.user_id), :class => 'click-able' do %>
                     <span></span>
                   <% end %>
                 </div>
               <% end %>
           	</div><!--col-4-->
-            <div class='col-sm-8 gutter-0'>
+            <div  id="header" class='col-sm-8 gutter-0'>
               <div class="col-sm-12 gutter-0" style="padding: 5px 8px 5px 8px;">
                 <b><%= article2.title %></b><br>
                 <% if article2.area.present? %>
@@ -253,11 +259,13 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
                   <%= @place.name %>
                 <% end %>
               </div>          
-  
-              <div class="col-sm-12 gutter-0" style="color: red; padding: 5px 8px 5px 8px;">
+              <div id="header-content" class="col-sm-12 gutter-0" style="color: red; padding: 5px 8px 5px 8px;">
                 <% @place = Place.find(article2.currency) if article2.currency.present? %>
                 <%= @place.currency if @place.present? %> <%= number_with_precision(article2.amount, precision: 0, delimiter: ' ') %>
               </div> 
+              <%= link_to article_path(article2, :usr => article2.user_id), :class => 'click-able' do %>
+                <span></span>
+              <% end %>
             </div><!--col-8-->
           </div><!--col-12-->
       	<% mm = mm + 1 %>
@@ -289,14 +297,14 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
                 <% break %>
               <% end %>
               <% if !articles3.images.present? %>
-                <div class="image-std gutter-0" style="background-image: url('/assets/noimage.gif'); width: 100%; height: 100px;">
+                <div class="image-std gutter-0" style="background-image: url('/assets/camera.gif'); width: 100%; height: 100px;">
                   <%= link_to article_path(articles3, :usr => articles3.user_id), :class => 'click-able' do %>
                     <span></span>
                   <% end %>
                 </div>
               <% end %>
           	</div><!--col-4-->
-            <div class='col-sm-8 gutter-0'>
+            <div id="header" class='col-sm-8 gutter-0'>
               <div class="col-sm-12 gutter-0" style="padding: 5px 8px 5px 8px;">
                 <b><%= articles3.title %></b><br>
                 <% if articles3.area.present? %>
@@ -313,10 +321,13 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
                 <% end %>
               </div>          
   
-              <div class="col-sm-12 gutter-0" style="color: red; padding: 5px 8px 5px 8px;">
+              <div id="header-content" class="col-sm-12 gutter-0" style="color: red; padding: 5px 8px 5px 8px;">
                 <% @place = Place.find(articles3.currency) if articles3.currency.present? %>
                 <%= @place.currency if @place.present? %> <%= number_with_precision(articles3.amount, precision: 0, delimiter: ' ') %>
               </div> 
+              <%= link_to article_path(articles3, :usr => articles3.user_id), :class => 'click-able' do %>
+                <span></span>
+              <% end %>
             </div><!--col-8-->
           </div><!--col-12-->
       	<% mm = mm + 1 %>

@@ -46,7 +46,15 @@ hr {
   vertical-align: top;
   
 }  
-  
+#header { // used for main page - latest rent/ auction
+  position: relative;
+  min-height: 100px;
+}
+#header-content { // used for main page - latest rent/ auction
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}  
 #logo { 
 float: left; 
 font-size: 1.7em; 
