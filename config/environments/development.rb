@@ -40,7 +40,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   
   config.action_mailer.delivery_method = :test
-  config.action_mailer.default_url_options = { :host => 'realestate-alow.c9users.io/'}
+  config.action_mailer.default_url_options = { :host => 'real-estate-chanson.c9users.io/'}
   
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test  # :production when you will use a real Pro Account

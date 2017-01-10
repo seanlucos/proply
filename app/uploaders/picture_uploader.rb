@@ -1,47 +1,19 @@
 class PictureUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  include CarrierWave::MiniMagick
-  process resize_to_limit: [400, 300] 
-  process :watermark
+  # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  if Rails.env.production?
-    storage :fog
-  else
-    storage :file
-  end
+  storage :file
+  # storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    #"#{model.class.to_s.underscore}"
-    "#{model.class.to_s.underscore}/#{model.id}"
-    #"uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  def watermark
-    #second_image = MiniMagick::Image.open("https://s3.amazonaws.com/arealestate1/image/logo.gif")
-    #manipulate! do |img|
-    #  result = img.composite(second_image) do |c|
-    #    c.compose "Over"    # OverCompositeOp
-    #    c.gravity "Center" # copy second_image onto first_image from (20, 20)
-    #  end
-    #  result
-    #end
-    manipulate! do |image|
-      image.combine_options do |c|
-        c.gravity 'Center'
-        c.pointsize '22'
-        c.annotate('+0+0', "http://media.my")
-        c.fill 'grey'
-      end
-      image
-    end
-
-  end
-  
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
@@ -51,7 +23,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  #process scale: [400, 300]
+  # process scale: [200, 300]
   #
   # def scale(width, height)
   #   # do something
@@ -64,9 +36,9 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  def extension_whitelist
-     %w(jpg jpeg gif png)
-  end
+  # def extension_whitelist
+  #   %w(jpg jpeg gif png)
+  # end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
