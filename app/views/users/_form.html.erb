@@ -70,7 +70,7 @@
                 <% if @user.status != 'Premier' %>  
                   &nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :gold %><b>Negotiator's Upgrade</b><br><br>
                   &nbsp;&nbsp;<%= f.radio_button :m_gold, 'PayPal' %>&nbsp;&nbsp;<%= "Upgrade to Package #1 @ RM 350.00/ year for 25 concurrent Ads" %><br>
-                  &nbsp;&nbsp;<%= f.radio_button :m_gold, 'PayPal1' %>&nbsp;&nbsp;<%= "Upgrade to Package #2 @ RM 550.00/ year for 55 concurrent Ads" %><br>
+                  <!-- &nbsp;&nbsp;<%#= f.radio_button :m_gold, 'PayPal1' %>&nbsp;&nbsp;<%#= "Upgrade to Package #2 @ RM 550.00/ year for 55 concurrent Ads" %><br> -->
                   <br><br><%= image_tag("paypal.gif") %>
               <% end %> 
             </div>
