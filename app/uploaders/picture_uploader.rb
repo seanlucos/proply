@@ -17,7 +17,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     #"#{model.class.to_s.underscore}"
-    "#{model.class.to_s.underscore}"
+    "#{model.class.to_s.underscore}/#{model.id}"
     #"uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
@@ -34,7 +34,7 @@ class PictureUploader < CarrierWave::Uploader::Base
       image.combine_options do |c|
         c.gravity 'Center'
         c.pointsize '22'
-        c.annotate('+0+0', "http://landmark.my")
+        c.annotate('+0+0', "http://media.my")
         c.fill 'grey'
       end
       image
