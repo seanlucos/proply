@@ -19,10 +19,14 @@
       <ul class="nav navbar-nav navbar-right ">
         <li><%= link_to "<span class='glyphicon glyphicon-home'></span>&nbsp; Home".html_safe, root_path %></li>
         <% if current_user %>
-          <% if current_user.status == "Premier" %>
-            <% session[:m_posting] = 105 %>
-          <% else %>
-            <% session[:m_posting] = 5 %>
+
+          <% if current_user.status == "Agency" %>
+            <% session[:m_posting] = 1000 %>
+            <% else if current_user.status == "Premier" %>
+              <% session[:m_posting] = 100 %>
+            <% else %>
+              <% session[:m_posting] = 30 %>
+            <% end %>
           <%end %>
           <li><%= link_to "<span class='glyphicon glyphicon-edit'></span>&nbsp; Insert New Ad".html_safe, new_article_path(:param1 => "new", :proptype => "for Sale") %></li>
           <li class="dropdown">
