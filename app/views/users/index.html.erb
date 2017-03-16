@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="latest"><BR>
-      <div class="col-md-6 gutter-0">MANAGE ADS: <%= params[:status] %> Accounts Listings...</div>
+      <div class="col-md-6 gutter-0">MANAGE USERS: <%= params[:status] %> Account Listings...</div>
       <div align="right" class="col-md-6"> 
-        <%= link_to "Basic A/C", users_path(:status => "Basic"), class: "btn btn-warning" %>  
         <%= link_to "Pending", users_path(:status => "Pending"), class: "btn btn-warning" %>  
-        <%= link_to "Premier A/C", users_path(:status => "Premier"), class: "btn btn-warning" %>
+        <%= link_to "Basic-30 A/C", users_path(:status => "Basic"), class: "btn btn-warning" %>  
+        <%= link_to "Premier-100 A/C", users_path(:status => "Premier"), class: "btn btn-warning" %>
+        <%= link_to "Agency-1000 A/C", users_path(:status => "Agency"), class: "btn btn-warning" %>
       </div>
     </div>
     <div class="latest col-md-12 gutter-0"><hr></div>
