@@ -42,7 +42,7 @@
         <div align="right" class="font-green col-md-2">
           <br><%= article.user.name %>
           <br><%= article.user.email %>
-          <br><% @place = Place.find(article.currency) if article.currency.present? %>
+          <br><% @place = Place.find_by_id(article.currency) if article.currency.present? %>
           <%= @place.currency if @place.present? %> <%= number_with_precision(article.amount, precision: 0, delimiter: ',') %>
           <br><%= article.updated_at.to_formatted_s(:short) %>
         </div>

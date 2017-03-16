@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   serialize :notification_params, Hash
   def paypal_url(return_path)
     values = {
-        business: "merchant@windaq.com",
+        business: "landmarketing001@gmail.com",
         cmd: "_xclick",
         upload: 1,
         return: "#{Rails.application.secrets.app_host}#{return_path}",

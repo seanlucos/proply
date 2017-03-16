@@ -124,11 +124,11 @@ class ArticlesController < ApplicationController
   def show 
 # @articles used to list individual ads for public only
       @articles = Article.paginate(page: params[:page], per_page: 10).where(user_id: params[:usr], xonline: true).order('updated_at desc')    
-      @places = Place.find(@article.currency) if @article.currency.present?
-      @place = Place.find(@article.place) if @article.place.present?
-      @region = Region.find(@article.region) if @article.region.present?
-      @area = Area.find(@article.area) if @article.area.present?
-      @otherinfo = Otherinfo.find(@article.otherinfo) if @article.otherinfo.present?
+      @places = Place.find_by_id(@article.currency) if @article.currency.present?
+      @place = Place.find_by_id(@article.place) if @article.place.present?
+      @region = Region.find_by_id(@article.region) if @article.region.present?
+      @area = Area.find_by_id(@article.area) if @article.area.present?
+      @otherinfo = Otherinfo.find_by_id(@article.otherinfo) if @article.otherinfo.present?
   end
   
   def edit 
