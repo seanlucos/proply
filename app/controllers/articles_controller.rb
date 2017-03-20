@@ -203,8 +203,9 @@ class ArticlesController < ApplicationController
     @article.region = params[:region][:name] if params[:region].present?
     @article.area = params[:area][:name] if params[:area].present?
     @article.otherinfo = params[:otherinfo][:name] if params[:otherinfo].present?    
-
-
+    if params[:mmpublish] == "YES"
+      @article.xonline = true
+    end
     @image = Image.new #take out 20/nov seem of no use??
     session[:mpage] = "1"
     current_article = @article.id
