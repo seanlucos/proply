@@ -34,7 +34,7 @@ class PictureUploader < CarrierWave::Uploader::Base
       image.combine_options do |c|
         c.gravity 'Center'
         c.pointsize '22'
-        c.annotate('+0+0', "http://landmark.my")
+        c.annotate('+0+0', "http://media.my")
         c.fill 'grey'
       end
       image
