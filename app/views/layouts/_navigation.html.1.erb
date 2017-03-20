@@ -1,0 +1,55 @@
+<!--<nav class="navbar navbar-default"> #ROUNDEd eDGE-->
+<nav class="navbar-custom navbar-inverse">  
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "a", root_path, class: "navbar-brand", id: "logo" %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+      <ul class="nav navbar-nav navbar-right ">
+        <li><%= link_to "<span class='glyphicon glyphicon-home'></span>&nbsp; Home".html_safe, root_path %></li>
+        <% if current_user %>
+
+          <% if current_user.status == "Agency" %>
+            <% session[:m_posting] = 1000 %>
+            <% else if current_user.status == "Premier" %>
+              <% session[:m_posting] = 100 %>
+            <% else %>
+              <% session[:m_posting] = 30 %>
+            <% end %>
+          <%end %>
+          <li><%= link_to "<span class='glyphicon glyphicon-edit'></span>&nbsp; Insert New Ad".html_safe, new_article_path(:param1 => "new", :proptype => "for Sale") %></li>
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= ('<span class="glyphicon glyphicon-user"></span>&nbsp; ' + truncate(current_user.email, length: 25)).html_safe %> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <% if logged_in? and current_user.admin? %>
+            <li><%= link_to "Manage Users", users_path(:status => "Basic") %></li>
+            <%#= link_to "Manage Ads", articles_path %>
+            <%#= link_to "Add Product", new_product_path(:param1 => "value1", :param2 => "value2") %>
+            <li><%#= link_to "Manage Images", images_path(:param1 => "listonly") %></li>
+            <li><%= link_to "Manage Ads", articles_path(:param1 => "admin") %></li>
+            <li><%= link_to "Manage Country", new_place_path %></li>
+            <li><%= link_to "Manage PayPal Receipts", paypals_path %></li>
+            <li><%= link_to "Manage Credit Cards Receipts", cards_path %></li>
+            <li role="separator" class="divider"></li>
+          <% end %>
+          <li><%= link_to "My Ads", articles_path %></li>
+          <li><%= link_to "My Settings", edit_user_path(current_user.id) %></li>
+          <li ><%= link_to "Sign Out ".html_safe, destroy_user_session_path, :method => :delete %></li>        
+        <% else %>
+          <li><%= link_to "<span class='glyphicon glyphicon-log-in'></span>&nbsp; Sign In".html_safe, new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
