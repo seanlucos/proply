@@ -210,26 +210,34 @@
             <%= f.collection_select(:currency, Place.where(status: true), :id, :currency, {:selected => current_user.prefercountry}, {:class => 'form-control'} ) %>
           </div>
         </div> 
-
       <% end %> <!--params1==confirm-->  
+
+      <div class="form-group form-actions">
+        <div align="center" class="col-sm-12 gutter-0">
+          <% if params[:param1] == 'confirm' %>
+            <%= f.hidden_field :xonline, value: false %>  
+            <%= f.button "SAVE & CONTINUE", name: "mmaction1", value: "NEXT", :class => "btn btn-primary btn-block"%>
+          <% else %>
+            <%= f.hidden_field :xonline, value: false %>  
+            <%= f.submit "NEXT", name: "mmaction1", value: "NEXT", :class => "btn btn-primary btn-block"%>
+          <% end %>
+        </div>
+      </div>
+
       <div class="form-group">
         <% if params[:param1] == 'confirm' %>
+          <h4><%= "NEXT: Upload a maximum of 6 images:" %></h4><br>
           <% current_article = @article.id %>
           <% session[:current_article] = @article.id %>
           <%= render :partial => 'images/form', :object => @image %>
           <%#= render :partial => 'images/form' %>
         <% end %>
       </div>
-
-
       <div class="form-group form-actions">
         <div align="center" class="col-sm-12 gutter-0">
-          <% if params[:param1] == 'confirm' %>
+          <% if params[:param1] == 'confirm' %><br>
             <%= f.hidden_field :xonline, value: true %>  
-            <%= f.submit "CONFIRM", :class => "btn btn-primary btn-block"%>
-          <% else %>
-            <%= f.hidden_field :xonline, value: false %>  
-            <%= f.submit "NEXT", name: "mmaction1", value: "NEXT", :class => "btn btn-primary btn-block"%>
+            <%= f.submit "SAVE & PUBLISH", :class => "btn btn-primary btn-block"%>
           <% end %>
         </div>
       </div>
