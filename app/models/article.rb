@@ -7,10 +7,10 @@ class Article < ActiveRecord::Base
   validates :region, presence: true
   validates :area, presence: true
   validates :category, presence: true
-  
-  
+  validates :amount, :inclusion => 0..10000000
+
  	validates :title, presence: true, length: {minimum: 3, maximum: 50}
-	validates :description, presence: true, length: {minimum: 10, maximum: 1000}
+	validates :description, presence: true, length: {minimum: 10, maximum: 1000} 
 	#has_many :images, dependent: :destroy
 
   # multiple image uploading
