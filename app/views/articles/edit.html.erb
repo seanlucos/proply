@@ -1,24 +1,26 @@
 <% if session[:mobile] == "Y" %>
-  <div class='row'> 
-    <div class='col-xs-offset-0 col-xs-12 gutter-0'><br>
-      <% if params[:param1] == 'confirm' %>
-        <div align="left" class="latest col-sm-6 gutter-0" >
-          <%= session[:step2]%> - Continue...
-        </div>
-        <div align="right" class="latest col-sm-6 gutter-0" >
-          Id: <%= @article.id %>
-        </div>
-        <div class="latest col-sm-12 gutter-0"><hr></div>
-      <% else %>
-        <div align="left" class="latest col-sm-6 gutter-0" >
-          Modify Ad
-        </div>
-        <div align="right" class="latest col-sm-6 gutter-0" >
-          Id: <%= @article.id %>
-        </div> 
-        <div class="latest col-sm-12 gutter-0"><hr></div>        
-        <% session[:step2] = "Modify Ad" %>
-      <% end %>
+  <div class="container-fluid">
+    <div class='row'> 
+      <div class='col-xs-offset-0 col-xs-12 gutter-0'><br>
+        <% if params[:param1] == 'confirm' %>
+          <div align="left" class="latest col-sm-6 gutter-0" >
+            <%= session[:step2]%> - Continue...
+          </div>
+          <div align="right" class="latest col-sm-6 gutter-0" >
+            Id: <%= @article.id %>
+          </div>
+          <div class="latest col-sm-12 gutter-0"><hr></div>
+        <% else %>
+          <div align="left" class="latest col-sm-6 gutter-0" >
+            Modify Ad
+          </div>
+          <div align="right" class="latest col-sm-6 gutter-0" >
+            Id: <%= @article.id %>
+          </div> 
+          <div class="latest col-sm-12 gutter-0"><hr></div>        
+          <% session[:step2] = "Modify Ad" %>
+        <% end %>
+      </div>
     </div>
   </div>
   <%= render 'mmform' %>
