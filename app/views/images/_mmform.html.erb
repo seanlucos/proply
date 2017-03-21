@@ -45,11 +45,11 @@
         <% if @article.images.count < 6 %>
           <div class="form-group">
             <div class='tdbg col-xs-12'>
-              <br><br><br><br><br><br><br>
+              <br><br><br>
               <%="Add Images?? Amplify your ad ::.."%><br><%="Share more images" %>
               <%#= f.hidden_field :name, :value => "test hide" %>
               <%= f.file_field :picture, accept: 'image/jpg,image/jpeg,image/gif,image/png',  :onchange => "this.form.submit()" %>
-              <br><br><br><br>
+              <br>
             </div>
           </div>
         <% end %>
