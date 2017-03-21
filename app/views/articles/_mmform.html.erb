@@ -228,7 +228,7 @@
           <h4><%= "NEXT: Upload a maximum of 6 images:" %></h4><br>
           <% current_article = @article.id %>
           <% session[:current_article] = @article.id %>
-          <%= render :partial => 'images/form', :object => @image %>
+          <%= render :partial => 'images/mmform', :object => @image %>
         <% end %>
       </div>
       <div class="form-group form-actions">
