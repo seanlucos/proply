@@ -1,7 +1,7 @@
 <% if session[:mobile] == "Y" %>
   <div class="container-fluid">
     <div class='row'> 
-      <div class='col-xs-offset-0 col-xs-12 gutter-0'><br>
+      <br>
         <% if params[:param1] == 'confirm' %>
           <div align="left" class="latest col-sm-8 gutter-0" >
             <%= session[:step2]%> - Cont...
@@ -21,7 +21,6 @@
           <% session[:step2] = "Modify Ad" %>
         <% end %>
       </div>
-    </div>
   </div>
   <%= render 'mmform' %>
   <br><br><br><br>
