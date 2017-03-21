@@ -46,62 +46,39 @@
               <%= f.select :uom, options_for_select([['SqFt','3'],['SqM','4'],['Acres','5'],['Hectres','6']], @article.uom || current_user.preferuom), {}, { class: "form-control" } %>
             </div>
           </div>
-          <div class="form-group">
-            <div class="col-sm-12 gutter-0"> 
-              <b><%= "Facilities:" %></b>
-            </div> 
-            <div class='row'> 
-              <div class='col-sm-offset-0 col-sm-12'>
-                <div class="well well-sm ">
-                  <div class="form-group">
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
-                      <%= f.check_box :xlift  %><%= 'Lift'%>
-                    </div> 
-            
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
-                      <%= f.check_box :xpool %><%= 'Swim Pool'%>          
-                    </div>   
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
-                      <%= f.check_box :xsqua %><%= 'Squash Court'%>          
-                    </div>
-                  </div>       
-                  <div class="form-group">
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
-                      <%= f.check_box :xplay %><%= 'Playground'%>
-                    </div> 
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
-                      <%= f.check_box :xbalc %><%= 'Balcony'%>          
-                    </div>   
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
-                      <%= f.check_box :xgymn %><%= 'Gymnasium'%>          
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
-                      <%= f.check_box :xmini %><%= 'Mini Market'%>
-                    </div> 
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
-                      <%= f.check_box :xjogg %><%= 'Jog Tracks'%>          
-                    </div>   
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
-                      <%= f.check_box :xcabl %><%= 'Cable TV'%>          
-                    </div>
-                  </div>        
-                  <div class="form-group">
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
-                      <%= f.check_box :xtenn %><%= 'Tennis Court'%>
-                    </div> 
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
-                      <%= f.check_box :xpark %><%= 'Car Park'%>          
-                    </div>   
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
-                      <%= f.check_box :xsecu %><%= 'Security'%>          
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <div class="form-group">
+          <div class=" col-xs-12">
+            <Div class="dropdown">
+              <button style="width: 100%;" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Facilities
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li>&nbsp;&nbsp;&nbsp;<%= f.check_box :xlift %>&nbsp;&nbsp;&nbsp;&nbsp;<%= 'Lift/ Elevator'%></li>
+                <li class="divider"></li>
+                <li>&nbsp;&nbsp;&nbsp;<%= f.check_box :xpool %>&nbsp;&nbsp;&nbsp;&nbsp;<%= 'Swimming Pool'%></li>
+                <li class="divider"></li>
+                <li>&nbsp;&nbsp;&nbsp;<%= f.check_box :xsqua %>&nbsp;&nbsp;&nbsp;&nbsp;<%= 'Squash Courts'%></li> 
+                <li class="divider"></li>
+                <li>&nbsp;&nbsp;&nbsp;<%= f.check_box :xplay %>&nbsp;&nbsp;&nbsp;&nbsp;<%= 'Playground'%></li>   
+                <li class="divider"></li>
+                <li>&nbsp;&nbsp;&nbsp;<%= f.check_box :xbalc %>&nbsp;&nbsp;&nbsp;&nbsp;<%= 'Balcony'%></li>  
+                <li class="divider"></li>
+                <li>&nbsp;&nbsp;&nbsp;<%= f.check_box :xgymn %>&nbsp;&nbsp;&nbsp;&nbsp;<%= 'Gymnasium'%></li>
+                <li class="divider"></li>
+                <li>&nbsp;&nbsp;&nbsp;<%= f.check_box :xmini %>&nbsp;&nbsp;&nbsp;&nbsp;<%= 'Mini Market'%></li>
+                <li class="divider"></li>
+                <li>&nbsp;&nbsp;&nbsp;<%= f.check_box :xjogg %>&nbsp;&nbsp;&nbsp;&nbsp;<%= 'Jogging Tracks'%></li>
+                <li class="divider"></li>
+                <li>&nbsp;&nbsp;&nbsp;<%= f.check_box :xcabl %>&nbsp;&nbsp;&nbsp;&nbsp;<%= 'Cable TV'%></li>  
+                <li class="divider"></li>
+                <li>&nbsp;&nbsp;&nbsp;<%= f.check_box :xtenn %>&nbsp;&nbsp;&nbsp;&nbsp;<%= 'Tennis Courts'%></li>
+                <li class="divider"></li>
+                <li>&nbsp;&nbsp;&nbsp;<%= f.check_box :xpark %>&nbsp;&nbsp;&nbsp;&nbsp;<%= 'Car Park'%></li> 
+                <li class="divider"></li>
+                <li>&nbsp;&nbsp;&nbsp;<%= f.check_box :xsecu %>&nbsp;&nbsp;&nbsp;&nbsp;<%= 'Security'%></li>
+              </ul>
             </div>
-          </div><!--form group[-->
+          </div>
+        </div>
         <% end %><!--land or else-->
       
       <% else %> <!--Page 1 top of page -->
