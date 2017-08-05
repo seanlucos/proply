@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
 # must check the following during updates only
   # validates :name, presence: true, :on => :update --- taken out coz forgot password issue 20/10/2016
   # validates :telephone, presence: true, :on => :update   --- taken out coz forgot password issue 20/10/2016
+  validates_presence_of :name, :agentno, :company, :telephone
   
   serialize :notification_params, Hash
   def paypal_url(return_path)

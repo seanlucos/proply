@@ -176,7 +176,10 @@
         <div class="form-group"> 
           <div class=" col-sm-4 gutter-0">
             &nbsp;<b>Category:</b><br>
-            <%= f.select :category, [['Category:',''], ['Apartment','Apartment'],['House','House'],['Commercial','Commercial'],['Land','Land'],['Room','Room'],['New','New']], {}, { class: "form-control" } %>
+            <%= f.select :category, [['Category:',''], ['Flat','Flat'],['Townhouse','Townhouse'],['Condo','Condo'],['Serviced Apartment','Serviced Apartment'],
+            ['Terrace house','Terrace house'],['Semi D','Semi D'],['Bungalow','Bungalow'],['Villa','Villa'],['Office','Office'],['Retail','Retail'],['Shoplot','Shoplot'],
+            ['Factory','Factory'],['Warehouse','Warehouse'],['Agricultural Land','Agricultural Land'],['Residential Land','Residential Land'],['Commercial Land','Commercial Land'],
+            ['Industrial Land','Industrial Land']], {}, { class: "form-control" } %>
           </div>
           <div class="col-sm-4 gutter-0"> 
             &nbsp;<b>Title Type:</b><br>
@@ -211,7 +214,7 @@
             <%= f.number_field :amount, class: "form-control", placeholder: "Amount" , :value => (number_with_precision(f.object.amount, :precision => 0))%> 
           </div>                 
           <div class=" col-sm-5 gutter-0">
-            &nbsp;<b>Valuation:</b><br>
+            &nbsp;<b>Bank Value:</b><br>
             <%= f.number_field :valuation, class: "form-control", placeholder: "Valuation" , :value => (number_with_precision(f.object.valuation, :precision => 0))%> 
           </div>
         </div> 
