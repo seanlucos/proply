@@ -102,7 +102,7 @@ body {font-family: Verdana,sans-serif;margin:0}
 
 <body>
 <div class='col-xs-12 gutter-0 article-title'>
-  <br><%= @article.title %><hr>
+  <br><%= strip_tags(@article.title) %><hr>
 </div>  
 <br>
 <div class="slideshow-container">
@@ -226,16 +226,16 @@ function showSlides(n) {
   <%= @otherinfo.name if @otherinfo.present? %>&nbsp;
 </div>
 <div align="right" class='font-green col-xs-3 gutter-0'>
-  <%= "Amount:" %>&nbsp;
+  <%= "Price:" %>&nbsp;
 </div>
 <div class='col-xs-9 gutter-0'>
   <%= @places.currency if @places.present? %> <%= number_with_precision(@article.amount, precision: 0, delimiter: ',') %>
 </div>
 <div align="right" class='font-green col-xs-3 gutter-0'>
-  <%= "Updates:" %>&nbsp;
+  <%= "Last update:" %>&nbsp;
 </div>
 <div class='col-xs-9 gutter-0'>
-  <%= @article.updated_at %>
+  <%= (@article.updated_at + 8.hours).to_formatted_s(:long) %>
 </div>
 <div align="right" class='font-green col-xs-3 gutter-0'>
   <%= "Description:" %>&nbsp;

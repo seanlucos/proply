@@ -254,7 +254,7 @@ class ArticlesController < ApplicationController
   def article_params #(method for whitelisting) 
     params.require(:article).permit(:title, :description, :proptype, :category, :created_at, :place,
     :region, :area, :bedroom, :bathroom, :size, :amount, :uom, :currency, :xlift, :xsqua, :xplay, :xbalc,
-    :xgymn, :xmini, :xjogg, :xcabl, :xtenn, :xpark, :xsecu, :xpool, :otherinfo, :size1, :titletype, :xonline, :valuation,
+    :xgymn, :xmini, :xjogg, :xcabl, :xtenn, :xpark, :xsecu, :xpool, :otherinfo, :size1, :titletype, :xonline, :valuation,  :ceiling, :zoning, :furnishing, :lot,
     :images_attributes => [:picture]) 
   end 
   

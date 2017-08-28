@@ -56,11 +56,11 @@
     
             <div class="col-sm-9 gutter-0">
               <div class="latest col-sm-9">
-                <%= link_to article.title, article_path(article, :usr => article.user_id) %> 
+                <%= link_to strip_tags(article.title), article_path(article, :usr => article.user_id) %> 
               </div>
               <div align="right" class="latest col-sm-3">
                 <% @place = Place.find_by_id(article.currency) if article.currency.present? %>
-                <%= @place.currency if @place.present? %> <%= number_with_precision(article.amount, precision: 0, delimiter: ' ') %>
+                <%= @place.currency if @place.present? %> <%= number_with_precision(article.amount, precision: 0, delimiter: ',') %>
               </div>
               <div class="col-sm-12">
                 <div class="col-sm-6 gutter-0">                
@@ -85,7 +85,7 @@
                         <%= " SqM" if article.uom == "3" %><%= number_with_precision(article.size.to_i*10.7639, precision: 2, delimiter: ',') if article.uom == "4" and article.size.present? %><%= " SqFt" if article.uom == "4" %>)
                   </div>
                   <div class="col-sm-12 gutter-0"> 
-                    Last Updated: <%= article.updated_at %>
+                    Last Updated: <%= (article.updated_at + 8.hours).to_formatted_s(:long) %>
                   </div>
                 </div><!--col-6-->
                 <div align="right" class="col-sm-6 gutter-0">

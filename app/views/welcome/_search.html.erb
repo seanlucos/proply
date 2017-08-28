@@ -53,7 +53,7 @@
         <div class="form-group">
           <div class="col-sm-offset-0 col-sm-3"> 
             <select class="form-control" name="category" id="category">
-              <option value="">All types</option>
+              <option value="">All category</option>
               <% if params[:category].present? %>
                 <option value=<%= params[:category] %> selected="selected"><%= params[:category] %></option>
               <% end %>
@@ -128,19 +128,25 @@
           </div>
         </div>
 
+
+        <!---------EXTENDED SEARCH---------------------------------------------------------------------------------------------------------->
+        
         <section id="comments-section">
           <div class="form-group">
-            <div class="control-label col-sm-offset-0 col-sm-2"> 
-              <%= "Rooms:" %>
-            </div>
+            
+            <!-------- row: Rooms: ------------------------------------------------------------------------------------->
+            <!--<div class="control-label col-sm-offset-0 col-sm-2">  
+            <!--  <%# "Rooms:" %>-->
+            <!--</div>-->
             <div class="col-sm-offset-0 col-sm-2"> 
               <% if params[:chainb].present? %>
                 <%= select("chainb", "name", options_for_select(@roomsmin_for_dropdown, :selected => params[:chainb][:name] ),
-                  {prompt: 'Min'}, {class: 'form-control'}) %>
+                  {prompt: 'Rooms: Min'}, {class: 'form-control'}) %>
               <% else %>
-                <%= select("chainb", "name", options_for_select(@roomsmin_for_dropdown), {prompt: 'Min'}, {class: 'form-control'}) %>
+                <%= select("chainb", "name", options_for_select(@roomsmin_for_dropdown), {prompt: 'Rooms: Min'}, {class: 'form-control'}) %>
               <% end %>
             </div>
+            <!--<div class="guion">-</div>-->
             <div class="col-sm-offset-0 col-sm-2"> 
               <% if params[:chainc].present? %>
                 <%= select("chainc", "name", options_for_select(@roomsmax_for_dropdown, :selected => params[:chainc][:name] ), 
@@ -151,7 +157,7 @@
               <% end %>
             </div>
 
-            <div class="control-label col-sm-offset-0 col-sm-4"> 
+            <div class="control-label col-sm-offset-0 col-sm-2"> 
               <%= "Measurement:" %>
             </div>
             <div class="col-sm-offset-0 col-sm-2"> 
@@ -166,17 +172,19 @@
               <% end %>
             </div>  
           </div>
-
+          
+          
+          <!-------- row: Baths: ------------------------------------------------------------------------------------->
           <div class="form-group">
-            <div class="control-label col-sm-offset-0 col-sm-2"> 
-              <%= "Baths:" %>
-            </div>
+            <!--<div class="control-label col-sm-offset-0 col-sm-2">  
+            <!--  <%# "Baths:" %>-->
+            <!--</div>-->
             <div class="col-sm-offset-0 col-sm-2"> 
               <% if params[:chainb].present? %>
                 <%= select("chainb", "bath", options_for_select(@roomsmin_for_dropdown, :selected => params[:chainb][:bath] ),
-                  {prompt: 'Min'}, {class: 'form-control'}) %>
+                  {prompt: 'Baths: Min'}, {class: 'form-control'}) %>
               <% else %>
-                <%= select("chainb", "bath", options_for_select(@roomsmin_for_dropdown), {prompt: 'Min'}, {class: 'form-control'}) %>
+                <%= select("chainb", "bath", options_for_select(@roomsmin_for_dropdown), {prompt: 'Baths: Min'}, {class: 'form-control'}) %>
               <% end %>
             </div>
             <div class="col-sm-offset-0 col-sm-2"> 
@@ -189,15 +197,15 @@
               <% end %>
             </div>
 
-            <div class="control-label col-sm-offset-0 col-sm-2"> 
-              <%= "Land area:" %>
-            </div>
+            <!--<div class="control-label col-sm-offset-0 col-sm-2">  
+            <!--  <%# "Land size:" %>-->
+            <!--</div>-->
             <div class="col-sm-offset-0 col-sm-2"> 
               <% if params[:chainb].present? %>
                 <%= select("chainb", "landarea", options_for_select(@buildupmin_for_dropdown, :selected => params[:chainb][:landarea] ),
-                  {prompt: 'Min'}, {class: 'form-control'}) %>
+                  {prompt: 'Size: Min'}, {class: 'form-control'}) %>
               <% else %>
-                <%= select("chainb", "landarea", options_for_select(@buildupmin_for_dropdown), {prompt: 'Min'}, {class: 'form-control'}) %>
+                <%= select("chainb", "landarea", options_for_select(@buildupmin_for_dropdown), {prompt: 'Size: Min'}, {class: 'form-control'}) %>
               <% end %>
             </div>
             <div class="col-sm-offset-0 col-sm-2"> 
@@ -211,16 +219,18 @@
             </div> 
           </div>
 
+          
+          <!-------- row: Prices: ------------------------------------------------------------------------------------->
           <div class="form-group">
-            <div class="control-label col-sm-offset-0 col-sm-2"> 
-              <%= "Price:" %>
-            </div>
+            <!--<div class="control-label col-sm-offset-0 col-sm-2">  
+            <!--  <%# "Price:" %>-->
+            <!--</div>-->
             <div class="col-sm-offset-0 col-sm-2"> 
               <% if params[:chainb].present? %>
                 <%= select("chainb", "price", options_for_select(@pricemin_for_dropdown, :selected => params[:chainb][:price] ),
-                  {prompt: 'Min'}, {class: 'form-control'}) %>
+                  {prompt: 'Price: Min'}, {class: 'form-control'}) %>
               <% else %>
-                <%= select("chainb", "price", options_for_select(@pricemin_for_dropdown), {prompt: 'Min'}, {class: 'form-control'}) %>
+                <%= select("chainb", "price", options_for_select(@pricemin_for_dropdown), {prompt: 'Price: Min'}, {class: 'form-control'}) %>
               <% end %>
             </div>
             <div class="col-sm-offset-0 col-sm-2"> 
@@ -233,15 +243,15 @@
               <% end %>
             </div>
             
-            <div class="control-label col-sm-offset-0 col-sm-2"> 
-              <%= "Built-up area:" %>
-            </div>
+            <!--<div class="control-label col-sm-offset-0 col-sm-2">  
+            <!--  <%#= "Built-up area:" %>-->
+            <!--</div>-->
            <div class="col-sm-offset-0 col-sm-2"> 
               <% if params[:chainb].present? %>
                 <%= select("chainb", "buildup", options_for_select(@buildupmin_for_dropdown, :selected => params[:chainb][:buildup] ),
-                  {prompt: 'Min'}, {class: 'form-control'}) %>
+                  {prompt: 'Built: Min'}, {class: 'form-control'}) %>
               <% else %>
-                <%= select("chainb", "buildup", options_for_select(@buildupmin_for_dropdown), {prompt: 'Min'}, {class: 'form-control'}) %>
+                <%= select("chainb", "buildup", options_for_select(@buildupmin_for_dropdown), {prompt: 'Built: Min'}, {class: 'form-control'}) %>
               <% end %>
             </div>
             <div class="col-sm-offset-0 col-sm-2"> 
@@ -260,4 +270,5 @@
       <% end %>
     </div>
   </div>
+  
 </div>

@@ -11,7 +11,7 @@
         Ad Id:&nbsp;<%= @article.id %>
       </div>
       <div align="right" class='col-sm-6 gutter-0'>          
-        <%= @article.updated_at.to_formatted_s(:short) %>
+        <%= (@article.updated_at + 8.hours).to_formatted_s(:short) %>
       </div>
     </div>
     
@@ -109,7 +109,7 @@
 
 <div class='col-sm-offset-0 col-sm-12 gutter-0' style="background-color: #C8D9E2; width: 100%; height: 100%">
   <div class='col-sm-12 latest'>
-    <h4><%= @article.title.upcase %></h4><hr>
+    <h4><%= strip_tags(@article.title.upcase) %></h4><hr>
   </div>
   <div class="form-group"> 
     <div align="right" class='col-sm-offset-0 col-sm-2'>          
@@ -145,6 +145,59 @@
       <% end %>
     </div>
   </div>
+  
+  <!-- Zoning; Furnishing -->
+  <div class="form-group"> 
+    <div align="right" class='col-sm-offset-0 col-sm-2'>          
+      <b>Zoning:</b>
+    </div>
+    <div align="left" class='col-sm-offset-0 col-sm-3 gutter-0'>             
+      <%# @article.zoning %> 
+      <% if @article.zoning.present? %>
+        <%= @article.zoning %>
+      <% else %>
+        NIL
+      <% end %>    
+    </div>   
+    <div align="right" class='col-sm-offset-0 col-sm-3'>  
+      <b>Furnishing:</b>
+    </div>
+    <div align="left" class='col-sm-offset-0 col-sm-3 gutter-0'> 
+      <%# @article.furnishing %>
+      <% if @article.furnishing.present? %>
+        <%= @article.furnishing %>
+      <% else %>
+        NIL
+      <% end %>    
+    </div>
+  </div>
+  
+  <!-- Lot; ceiling; -->
+  <div class="form-group"> 
+    <div align="right" class='col-sm-offset-0 col-sm-2'>  
+      <b>Lot:</b>
+    </div>
+    <div align="left" class='col-sm-offset-0 col-sm-3 gutter-0'> 
+      <%# @article.lot %>
+      <% if @article.lot.present? %>
+        <%= @article.lot %>
+      <% else %>
+        NIL
+      <% end %>    
+    </div>  
+
+    <div align="right" class='col-sm-offset-0 col-sm-3'>          
+      <b>Ceiling Height:</b>
+    </div>    
+    <div align="left" class='col-sm-offset-0 col-sm-3 gutter-0'>             
+      <% if @article.ceiling.present? %>
+        <%= @article.ceiling %>m
+      <% else %>
+        NIL
+      <% end %>
+    </div>   
+  </div>
+  
   
   <div class="form-group">       
     <div align="right" class='col-sm-offset-0 col-sm-2'>  
@@ -203,12 +256,24 @@
   </div>
   <div class="form-group"> 
     <div align="right" class='col-sm-offset-0 col-sm-2'>  
-      <b>Amount:</b>
+      <b>Price:</b>
     </div>
-    <div align="left" class='col-sm-offset-0 col-sm-10 gutter-0'> 
-      <%= @places.currency if @places.present? %> <%= number_with_precision(@article.amount, precision: 0, delimiter: ' ') %>&nbsp;
+    <div align="left" class='col-sm-offset-0 col-sm-3 gutter-0'> 
+      <%# @places.currency if @places.present? %> <%# number_with_precision(@article.amount, precision: 0, delimiter: ' ') %><!--&nbsp;-->
+      <%= @places.currency if @places.present? %> <%= number_with_precision(@article.amount, precision: 0, delimiter: ',') %>
+      <%# @places.currency if @places.present? %> <%# number_with_delimiter(@article.amount) %>&nbsp;
     </div>
-  </div>  
+
+    <div align="right" class='col-sm-offset-0 col-sm-3'>  
+      <b>Bank value:</b>
+    </div>
+    <div align="left" class='col-sm-offset-0 col-sm-3 gutter-0'> 
+      <%= @places.currency if @places.present? %> <%= number_with_precision(@article.valuation, precision: 0, delimiter: ',') %>
+    </div>
+  </div>
+  
+  
+  
   <div class="form-group"> 
     <div align="right" class='col-sm-offset-0 col-sm-2'>  
       <b>Facilities:</b>

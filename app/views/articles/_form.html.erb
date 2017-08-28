@@ -20,11 +20,17 @@
           </div> 
         <% else %>
           <div class="form-group">
-            <div class="col-sm-6 gutter-0">
+            
+            <div class=" col-sm-4 gutter-0">
+              &nbsp;<b>Ceiling (m):</b><br>
+              <%= f.number_field :ceiling, class: "form-control", placeholder: "Ceiling", :value => (number_with_precision(f.object.ceiling, :precision => 0) ) %> 
+            </div>                 
+
+            <div class="col-sm-4 gutter-0">
               &nbsp;<b>Bedroom:</b><br>
               <%= f.select :bedroom, [['Rooms:',''],['1','1'],['2','2'],['3','3'],['4','4'],['5','5'],['6','6'],['7','7'],['8','8'],['9','9'],['10','10']], {}, { class: "form-control" } %>
             </div>
-            <div class=" col-sm-6 gutter-0">
+            <div class=" col-sm-4 gutter-0">
               &nbsp;<b>Bath:</b><br>
               <%= f.select :bathroom, [['Baths:',''],['1','1'],['2','2'],['3','3'],['4','4'],['5','5'],['6','6'],['7','7'],['8','8'],['9','9'],['10','10']], {}, { class: "form-control" } %>
             </div>
@@ -191,6 +197,22 @@
           </div> 
         </div>
 
+        <!-- extra3 -->
+        <div class="form-group"> 
+          <div class=" col-sm-4 gutter-0">
+            &nbsp;<b>Zoning:</b><br>
+            <%= f.select :zoning, [['Zoning:',''], ['Agricultural','Agricultural'],['Residential','Residential'],['Commercial','Commercial'],['Industrial','Industrial']], {}, { class: "form-control" } %>
+          </div>
+          <div class="col-sm-4 gutter-0"> 
+            &nbsp;<b>Furnishing:</b><br>
+            <%= f.select :furnishing, [['Furnishing:',''], ['Bare','Bare'],['Semi','Semi'],['Full','Full']], {}, { class: "form-control" } %>
+          </div> 
+          <div class="col-sm-4 gutter-0"> 
+            &nbsp;<b>Lot:</b><br>
+            <%= f.select :lot, [['Lot:',''], ['Intermediate','Intermediate'],['Endlot','Endlot'],['Corner','Corner']], {}, { class: "form-control" } %>
+          </div> 
+        </div>
+        
         <div class="form-group"> 
           <div class="col-sm-12 gutter-0">&nbsp;<b>Title:</b></div>
           <div class="col-sm-12 gutter-0"> 
@@ -204,6 +226,7 @@
           </div> 
         </div> 
       
+        <!-- using col sm 2 -->
         <div class="form-group">
           <div class="col-sm-2 gutter-0"> 
             &nbsp;<b>Currency:</b><br>

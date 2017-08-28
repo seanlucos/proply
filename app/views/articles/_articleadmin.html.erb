@@ -9,7 +9,7 @@
       <div class="form-group">
         <div class="latest col-md-9">
           Id: <%= article.id %> - <%= article.category %> <%= article.proptype%> - 
-          <%= link_to article.title, article_path(article, :usr => article.user_id) %>         
+          <%= link_to strip_tags(article.title), article_path(article, :usr => article.user_id) %>         
         </div>
         <% if current_user %>
           <% if params[:displayedit] == "Y" && current_user == article.user || current_user.admin? %>
@@ -44,7 +44,7 @@
           <br><%= article.user.email %>
           <br><% @place = Place.find_by_id(article.currency) if article.currency.present? %>
           <%= @place.currency if @place.present? %> <%= number_with_precision(article.amount, precision: 0, delimiter: ',') %>
-          <br><%= article.updated_at.to_formatted_s(:short) %>
+          <br><%= (article.updated_at + 8.hours).to_formatted_s(:short) %>
         </div>
       </div><hr>
     <% end %>

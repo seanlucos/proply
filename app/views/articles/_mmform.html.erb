@@ -20,11 +20,17 @@
           </div> 
         <% else %>
           <div class="form-group">
-            <div class="col-sm-6 gutter-0">
+              
+            <div class=" col-sm-4 gutter-0">
+              &nbsp;<b>Ceiling (m):</b><br>
+              <%= f.number_field :ceiling, class: "form-control", placeholder: "Ceiling", :value => (number_with_precision(f.object.size, :precision => 0) ) %> 
+            </div>                 
+
+            <div class="col-sm-4 gutter-0">
               &nbsp;<b>Bedroom:</b><br>
               <%= f.select :bedroom, [['Rooms:',''],['1','1'],['2','2'],['3','3'],['4','4'],['5','5'],['6','6'],['7','7'],['8','8'],['9','9'],['10','10']], {}, { class: "form-control" } %>
             </div>
-            <div class=" col-sm-6 gutter-0">
+            <div class=" col-sm-4 gutter-0">
               &nbsp;<b>Bath:</b><br>
               <%= f.select :bathroom, [['Baths:',''],['1','1'],['2','2'],['3','3'],['4','4'],['5','5'],['6','6'],['7','7'],['8','8'],['9','9'],['10','10']], {}, { class: "form-control" } %>
             </div>
@@ -153,7 +159,10 @@
         <div class="form-group"> 
           <div class=" col-sm-4 gutter-0">
             &nbsp;<b>Category:</b><br>
-            <%= f.select :category, [['Category:',''], ['Apartment','Apartment'],['House','House'],['Commercial','Commercial'],['Land','Land'],['Room','Room'],['New','New']], {}, { class: "form-control" } %>
+            <%= f.select :category, [['Category:',''], ['Flat','Flat'],['Townhouse','Townhouse'],['Condo','Condo'],['Serviced Apartment','Serviced Apartment'],
+            ['Terrace house','Terrace house'],['Semi D','Semi D'],['Bungalow','Bungalow'],['Villa','Villa'],['Office','Office'],['Retail','Retail'],['Shoplot','Shoplot'],
+            ['Factory','Factory'],['Warehouse','Warehouse'],['Agricultural Land','Agricultural Land'],['Residential Land','Residential Land'],['Commercial Land','Commercial Land'],
+            ['Industrial Land','Industrial Land']], {}, { class: "form-control" } %>
           </div>
           <div class="col-sm-4 gutter-0"> 
             &nbsp;<b>Title Type:</b><br>
@@ -162,6 +171,21 @@
           <div class="col-sm-4 gutter-0"> 
             &nbsp;<b>Other Info:</b><br>
             <%= select("otherinfo", "name", options_for_select(@otherinfos_for_dropdown, :selected => @article.otherinfo), {prompt: 'Other info:'}, {class: 'form-control'}) %>
+          </div> 
+        </div>
+
+        <div class="form-group"> 
+          <div class=" col-sm-4 gutter-0">
+            &nbsp;<b>Zoning:</b><br>
+            <%= f.select :zoning, [['Zoning:',''], ['Agricultural','Agricultural'],['Residential','Residential'],['Commercial','Commercial'],['Industrial','Industrial']], {}, { class: "form-control" } %>
+          </div>
+          <div class="col-sm-4 gutter-0"> 
+            &nbsp;<b>Furnishing:</b><br>
+            <%= f.select :furnishing, [['Furnishing:',''], ['Bare','Bare'],['Semi','Semi'],['Full','Full']], {}, { class: "form-control" } %>
+          </div> 
+          <div class="col-sm-4 gutter-0"> 
+            &nbsp;<b>Lot:</b><br>
+            <%= f.select :lot, [['Lot:',''], ['Intermediate','Intermediate'],['Endlot','Endlot'],['Corner','Corner']], {}, { class: "form-control" } %>
           </div> 
         </div>
 
@@ -178,13 +202,19 @@
           </div> 
         </div> 
       
+        <!-- using col xs 2 -->
         <div class="form-group">
-          <div class="col-sm-12 gutter-0">&nbsp;<b>Amount:</b></div>
-          <div class=" col-sm-4 gutter-0">
+          <div class="col-sm-4 gutter-0"> 	
+            &nbsp;<b>Currency:</b><br>	
+            <%= f.collection_select(:currency, Place.where(status: true), :id, :currency, {:selected => current_user.prefercountry}, {:class => 'form-control'} ) %>	
+          </div>	
+          <div class="col-sm-4 gutter-0"> 	
+            &nbsp;<b>Amount:</b><br>
             <%= f.number_field :amount, class: "form-control", placeholder: "Amount" , :value => (number_with_precision(f.object.amount, :precision => 0))%> 
           </div>                 
-          <div class=" col-sm-3 gutter-0">
-            <%= f.collection_select(:currency, Place.where(status: true), :id, :currency, {:selected => current_user.prefercountry}, {:class => 'form-control'} ) %>
+          <div class=" col-sm-4 gutter-0">	
+            &nbsp;<b>Bank Value:</b><br>	
+            <%= f.number_field :valuation, class: "form-control", placeholder: "Valuation" , :value => (number_with_precision(f.object.valuation, :precision => 0))%> 	
           </div>
         </div> 
       <% end %> <!--params1==confirm-->  
