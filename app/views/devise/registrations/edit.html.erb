@@ -5,10 +5,12 @@
   </div>
   <div class="panel-body">
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      
       <div class="form-group">
         <%= f.label :email %>
         <%= f.email_field :email, autofocus: true, class: "form-control" %>
       </div>
+      
       <div class="form-group">
         <div class="col-md-6 no-padding">
           <%= f.label :name %>
@@ -19,6 +21,7 @@
           <%= f.text_field :agentno, class: "form-control" %>
         </div>
       </div>
+      
       <div class="form-group">
         <div class="col-md-6 no-padding">
           <%= f.label :telephone %>
@@ -29,6 +32,7 @@
           <%= f.text_field :prefercountry, class: "form-control" %>
         </div>
       </div>
+      
       <div class="form-group">
         <div class="col-md-6 no-padding">
           <%= f.label :password %><br />
@@ -39,7 +43,9 @@
           <%= f.password_field :password_confirmation, class: "form-control" %>
         </div>
       </div>
+      
       <%= f.submit t('.update', :default => "Update"), class: "btn btn-primary" %>
+    
     <% end %>
   </div>
 </div>

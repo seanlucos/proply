@@ -37,11 +37,15 @@ class UsersController < ApplicationController
   end
   
   def edit
+    #byebug
     @places = Place.where(status: true)
     @user = User.find(params[:id]) 
   end
   
   def update
+    
+    #byebug
+    
     if @user.update(user_params)
       flash[:success] = "Your account was updated successfully"
       if @user.gold?

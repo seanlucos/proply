@@ -3,6 +3,8 @@
   <div class='col-xs-12'>
     <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %> 
 
+
+      <!-- Line 1: Email; Premier -->
       <div class="form-group"> 
         <div class="control-label col-sm-2"> 
           <%= "Email" %> 
@@ -18,13 +20,18 @@
           </div>
         <% end %>
       </div> 
+      
+      
+      <!-- Line 2: Name; Telephone -->
       <div class="form-group"> 
         <div class="control-label col-sm-2"> 
           <%="Agent Name" %> 
         </div> 
         <div class="col-sm-4"> 
-          <%= f.text_field :name, class: "form-control", :disabled=>true, placeholder: "Agent Name", autofocus: true %>
-          <%= hidden_field(:user, :name) %>          
+          <%= f.text_field :name, class: "form-control", placeholder: "Agent Name", autofocus: true %>
+          <% if logged_in? and !current_user.admin? %>
+            <%= hidden_field(:user, :name) %>
+          <% end %>          
         </div> 
         <div class="control-label col-sm-2"> 
           <%= "Telephone" %> 
@@ -33,13 +40,18 @@
           <%= f.text_field :telephone, class: "form-control", placeholder: "Contact Number", autofocus: true %> 
         </div> 
       </div>
+      
+      
+      <!-- Line 3: REN No; Agency name -->
       <div class="form-group"> 
         <div class="control-label col-sm-2"> 
           <%= "Agent/ REN No" %> 
         </div> 
         <div class="col-sm-4"> 
-          <%= f.text_field :agentno, class: "form-control", :disabled=>true, placeholder: "", autofocus: true %>
-          <%= hidden_field(:user, :agentno) %>            
+          <%= f.text_field :agentno, class: "form-control", placeholder: "", autofocus: true %>
+          <% if logged_in? and !current_user.admin? %>
+            <%= hidden_field(:user, :agentno) %>            
+          <% end %>           
         </div> 
         <div class="control-label col-sm-2"> 
           <%= "Agency Name" %> 
@@ -48,6 +60,9 @@
           <%= f.text_field :company, class: "form-control", placeholder: "Agency Name", autofocus: true %> 
         </div> 
       </div>
+      
+      
+      <!-- Line 4: Country -->
       <div class="form-group"> 
         <div class="control-label col-sm-2"> 
           <%= "Default Country" %> 
@@ -121,6 +136,7 @@
               <%= f.text_field :current_sign_in_at, class: "form-control", :disabled=>true %> 
             </div> 
           </div>
+          
           <div class="form-group"> 
             <div class="control-label col-sm-2"> 
               <%= "Signed-In Count" %> 
@@ -135,6 +151,7 @@
               <%= f.text_field :current_sign_in_ip, class: "form-control", :disabled=>true %> 
             </div> 
           </div>
+          
           <div class="form-group"> 
             <div class="control-label col-sm-2"> 
               <%= "Last Signed-In IP" %> 
@@ -149,6 +166,7 @@
               <%= f.text_field :created_at, class: "form-control", :disabled=>true %> 
             </div> 
           </div> 
+          
           <div class="form-group"> 
             <div class="control-label col-sm-2"> 
               <%= "Confirmed" %> 
@@ -163,6 +181,7 @@
               <%= f.text_field :updated_at, class: "form-control", :disabled=>true %> 
             </div> 
           </div>
+          
           <div class="form-group"> 
             <div class="control-label col-sm-2"> 
               <%= "Status" %> 
@@ -177,7 +196,9 @@
               <%= f.text_field :purchased_at, class: "form-control" %> 
             </div> 
           </div>
+          
         <% end %>
+        
         <div class="form-group"> 
           <div class="col-sm-offset-2 col-sm-3"> 
             <br><%= f.submit "Update Settings", class: 'btn btn-primary btn-block' %> 

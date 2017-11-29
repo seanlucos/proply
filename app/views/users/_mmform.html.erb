@@ -12,12 +12,16 @@
           <%= hidden_field(:user, :email) %>
         </div> 
       </div>
+      
       <div class="form-group"> 
         <div align="right" class="gutter-0  col-xs-3"> 
           <span><%="Name:" %>&nbsp;</span> 
         </div> 
         <div class="gutter-0 col-xs-9"> 
           <%= f.text_field :name, class: "form-control", placeholder: "Agent Name", autofocus: true %> 
+          <% if logged_in? and !current_user.admin? %>
+            <%= hidden_field(:user, :name) %>
+          <% end %>
         </div> 
       </div>
       <div class="form-group"> 
@@ -28,12 +32,16 @@
           <%= f.text_field :telephone, class: "form-control", placeholder: "Contact Number", autofocus: true %> 
         </div> 
       </div>
+      
       <div class="form-group"> 
         <div align="right" class="gutter-0  col-xs-3"> 
           <span><%= "Agent No:" %>&nbsp;</span> 
         </div> 
         <div class="gutter-0 col-xs-9"> 
           <%= f.text_field :agentno, class: "form-control", placeholder: "", autofocus: true %> 
+          <% if logged_in? and !current_user.admin? %>
+            <%= hidden_field(:user, :agentno) %>
+          <% end %>
         </div> 
       </div>
       <div class="form-group"> 
@@ -44,6 +52,7 @@
           <%= f.text_field :company, class: "form-control", placeholder: "Company Name", autofocus: true %> 
         </div> 
       </div>
+      
       <div class="form-group"> 
         <div align="right" class="gutter-0  col-xs-7"> 
          <span> <%= "Default Country:" %>&nbsp;</span> 
