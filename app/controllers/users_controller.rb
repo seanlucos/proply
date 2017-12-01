@@ -73,10 +73,16 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    #byebug
+    
     @user = User.find(params[:id])
     @user.destroy
     flash[:danger] = "User and all articles created by user have been deleted"
-    redirect_to users_path
+    
+    # users_path must have :status params >> users_path(:status => "Basic")
+    # redirect_to users_path << will fail!!
+    
+    redirect_to users_path(:status => "Basic")
   end
   
   protect_from_forgery except: [:hook]

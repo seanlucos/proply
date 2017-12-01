@@ -68,7 +68,7 @@
             <!--  <%# end %>-->
             <!--  <option value="Flat">Flat</option>-->
             <!--  <option value="Townhouse">Townhouse</option>-->
-            <!--  <option value="Condominium">Condo</option>-->
+            <!--  <option value="Condominium">Condominium</option>-->
             <!--  <option value="Serviced Apartment">Serviced Apartment</option>-->
             <!--  <option value="Terrace house">Terrace house</option>-->
             <!--  <option value="Semi D">Semi D</option>-->
@@ -82,20 +82,20 @@
             <!--  <option value="Agricultural Land">Agricultural Land</option>-->
             <!--  <option value="Residential Land">Residential Land</option>-->
             <!--  <option value="Commercial Land">Commercial Land</option>-->
-            <!--  <option value="Industrial Land">Industrial Land</option>          -->
+            <!--  <option value="Industrial Land">Industrial Land</option>-->
             <!--</select> -->
             <% if params[:category].present? %>
               <%= select_tag(:category, options_for_select([['Category:',''], ['Flat','Flat'],['Townhouse','Townhouse'],['Condominium','Condominium'],['Serviced Apartment','Serviced Apartment'],
               ['Terrace house','Terrace house'],['Semi D','Semi D'],['Bungalow','Bungalow'],['Villa','Villa'],['Office','Office'],['Retail','Retail'],['Shoplot','Shoplot'],
               ['Factory','Factory'],['Warehouse','Warehouse'],['Agricultural Land','Agricultural Land'],['Residential Land','Residential Land'],['Commercial Land','Commercial Land'],
               ['Industrial Land','Industrial Land']], :selected => params[:category] ),
-              {class: 'form-control'}) %><!-- without class, looks better -->
+              {class: 'form-control'})%>     <!-- without class, looks better -->
             <% else %>
               <%= select_tag(:category, options_for_select([['Category:',''], ['Flat','Flat'],['Townhouse','Townhouse'],['Condominium','Condominium'],['Serviced Apartment','Serviced Apartment'],
               ['Terrace house','Terrace house'],['Semi D','Semi D'],['Bungalow','Bungalow'],['Villa','Villa'],['Office','Office'],['Retail','Retail'],['Shoplot','Shoplot'],
               ['Factory','Factory'],['Warehouse','Warehouse'],['Agricultural Land','Agricultural Land'],['Residential Land','Residential Land'],['Commercial Land','Commercial Land'],
               ['Industrial Land','Industrial Land']]),
-              {class: 'form-control'}) %>
+              {class: 'form-control'})%>            
               <!--{ :class => 'span3 controls controls-row' }) -->           
             <% end %>
           </div>           
@@ -105,22 +105,22 @@
               <%= radio_button_tag 'proptype', 'for Sale', checked = true if params[:proptype] == 'for Sale' %> For sale&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <% else %>
               <%#= radio_button_tag 'proptype', 'for Sale', checked = true %>
-              <%= radio_button_tag 'proptype', 'for Sale'%> For sale&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <%= radio_button_tag 'proptype', 'for Sale'%> For Sale&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <% end %>
             <% if params[:proptype] == 'for Rent' %>
               <%= radio_button_tag 'proptype', 'for Rent', checked = true if params[:proptype] == 'for Rent' %> For rent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <% else %>
-              <%= radio_button_tag 'proptype', 'for Rent' %> For rent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <%= radio_button_tag 'proptype', 'for Rent' %> For Rent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <% end %>
             <% if params[:proptype] == 'for Auction' %>
               <%= radio_button_tag 'proptype', 'for Auction', checked = true if params[:proptype] == 'for Auction' %> For auction&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <% else %>
-              <%= radio_button_tag 'proptype', 'for Auction' %> For auction&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <%= radio_button_tag 'proptype', 'for Auction' %> For Auction&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <% end %>
             <% if params[:proptype] == 'new Launch' %>
-              <%= radio_button_tag 'proptype', 'new Launch', checked = true if params[:proptype] == 'new Launch' %> New launch
+              <%= radio_button_tag 'proptype', 'new Launch', checked = true if params[:proptype] == 'new Launch' %> New Launch
             <% else %>
-              <%= radio_button_tag 'proptype', 'new Launch' %> New launch
+              <%= radio_button_tag 'proptype', 'new Launch' %> New Launch
             <% end %>
           </div>
 
@@ -170,7 +170,7 @@
             <!--</div>-->
             <div class="col-sm-offset-0 col-sm-2"> 
               <% if params[:chainb].present? %>
-                <%= select("chainb", "name", options_for_select(@roomsmin_for_dropdown, :selected => params[:chainb][:name] ),
+                <%= select("chainb", "name", options_for_select(@roomsmin_for_dropdown, :selected => params[:chainb][:name]),
                   {prompt: 'Rooms: Min'}, {class: 'form-control'}) %>
               <% else %>
                 <%= select("chainb", "name", options_for_select(@roomsmin_for_dropdown), {prompt: 'Rooms: Min'}, {class: 'form-control'}) %>
@@ -179,7 +179,7 @@
             <!--<div class="guion">-</div>-->
             <div class="col-sm-offset-0 col-sm-2"> 
               <% if params[:chainc].present? %>
-                <%= select("chainc", "name", options_for_select(@roomsmax_for_dropdown, :selected => params[:chainc][:name] ), 
+                <%= select("chainc", "name", options_for_select(@roomsmax_for_dropdown, :selected => params[:chainc][:name]), 
                   {prompt: 'Max'}, {class: 'form-control'}) %>
               <% else %>
                 <%= select("chainc", "name", options_for_select(@roomsmax_for_dropdown), {prompt: 'Max'},
