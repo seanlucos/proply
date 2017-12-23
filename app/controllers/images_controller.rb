@@ -43,6 +43,7 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
+    
     @image = Image.new(image_params)
     @image.article_id =  session[:current_article]
    #@article = Article.find(@image1.article_idxxxxxxxxxxxxxxxxx)

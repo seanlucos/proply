@@ -32,6 +32,14 @@ Rails.application.routes.draw do
   # get 'welcome/mmindex' => 'welcome#mmindex', :proptype => "for Sale"
   get 'welcome/mmindex' => 'welcome#mmindex'
   
+  # ---------------------------------------------------------------------------
+  get 'ref_:name', to: 'articles#view' 
+  get '_:name', to: 'articles#view' 
+  get ':name', to: 'articles#view' 
+  
+  
+  
+  # ---------------------------------------------------------------------------
   #get 'oneuser/list', to: 'oneuser#list'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

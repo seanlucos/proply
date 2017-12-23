@@ -1,13 +1,14 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index, :view]
   before_action :set_article, only: [:edit, :update, :show, :destroy]
-  before_action :require_user, except: [:index, :show]
+  before_action :require_user, except: [:index, :show, :view]
   before_action :require_same_user, only: [:edit, :update, :destroy]
   #before_action :require_admin, only: [:index]
-  before_action :enforce_tenancy, except: [:index, :show]
+  before_action :enforce_tenancy, except: [:index, :show, :view]
 
   def index
-#for managed ads(admin) and user's listing only
+  #for managed ads(admin) and user's listing only
+  
     if logged_in? 
       if current_user.admin?
         if params[:usr].present?
@@ -26,6 +27,23 @@ class ArticlesController < ApplicationController
     else  
       @articles = Article.paginate(page: params[:page], per_page: 10).where(xonline: true, user_id: params[:usr]).order('updated_at desc')      
     end
+  end
+
+  def view
+    # byebug
+    # puts 'params_name at art-view' 
+    
+    @user = User.find_by_name(params[:name])
+    
+    # puts @user.id                               ## got '2'
+    # params[:usr] = @user.id                     ## returns .2 should be just '2'
+    
+    # @articles = Article.paginate(page: params[:page], per_page: 10).where(xonline: true, user_id: params[:usr]).order('updated_at desc')  
+    # redirect_to articles_path(@articles)      ## /articles.%23%3CArticle::ActiveRecord_Relation:0x007f9f9dffcfa0%3E
+    # redirect_to articles_path(@user.id)       ## /articles.2
+    # redirect_to articles_path(params[:usr])   ## /articles.2
+    
+    redirect_to articles_path(:usr => @user.id)
   end
 
   def new 

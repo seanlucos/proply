@@ -1,5 +1,6 @@
 <div id="container">
   <div id="middle">
+    
     <div align="left" class="latest col-sm-10 no-padding" >
       <span class='glyphicon glyphicon-list'></span>&nbsp;
       <% if params[:proptype] == 'new Launch' %>
@@ -11,19 +12,27 @@
             <% else if params[:proptype] == 'for Rent' %>
               <%= "Ads: FOR RENT" %>        
             <% else %>
+            
+<!-- ALL ADS FROM -->
               <% if @articles.first.present? %>
                 All Ads from <%= @articles.first.user.name %>
               <% else %>
                 Sorry! No Ads found!
               <% end %>
+              
             <% end %>
           <% end %>
         <% end %>
       <% end %>  
     </div>
+    
     <div class="no-padding latest col-sm-12"><hr></div>
     <%= form_tag root_path, :method => "get", id: "search-form", :class => "form-horizontal project" , :enforce_utf8 => false do %>      
+        
+        <!-- obj:    as THE Ref_params -->
+        
         <% obj.each do |article| %> 
+        
           <div class="form-group">
           	<div class="col-sm-3">
               <% article.images.each do |t| %>

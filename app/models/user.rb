@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  # validates_format_of :name, with: /^[a-zA-Z0-9 ]*$/
+  validates_format_of :name, with: /\A[a-zA-Z0-9 &_();:'$!]*\z/
+  validates_uniqueness_of :name
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

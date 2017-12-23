@@ -48,7 +48,7 @@
           <%= "Agent/ REN No" %> 
         </div> 
         <div class="col-sm-4"> 
-          <%= f.text_field :agentno, class: "form-control", placeholder: "", autofocus: true %>
+          <%= f.text_field :agentno, class: "form-control", placeholder: "Agent REN No", autofocus: true %>
           <% if logged_in? and !current_user.admin? %>
             <%= hidden_field(:user, :agentno) %>            
           <% end %>           
@@ -57,7 +57,7 @@
           <%= "Agency Name" %> 
         </div> 
         <div class="col-sm-4"> 
-          <%= f.text_field :company, class: "form-control", placeholder: "Agency Name", autofocus: true %> 
+          <%= f.text_field :company, class: "form-control", :disabled=>false, placeholder: "Agency Name", autofocus: true %> 
         </div> 
       </div>
       
@@ -84,8 +84,9 @@
             <div class="well">
                 <% if @user.status != 'Premier' %>  
                   &nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :gold %><b>Negotiator's Upgrade</b><br><br>
-                  &nbsp;&nbsp;<%= f.radio_button :m_gold, 'PayPal' %>&nbsp;&nbsp;<%= "Upgrade to Package #1 @ RM 350.00/ year for 25 concurrent Ads" %><br>
-                  <!-- &nbsp;&nbsp;<%#= f.radio_button :m_gold, 'PayPal1' %>&nbsp;&nbsp;<%#= "Upgrade to Package #2 @ RM 550.00/ year for 55 concurrent Ads" %><br> -->
+                  &nbsp;&nbsp;<%= f.radio_button :m_gold, 'PayPal' %>&nbsp;&nbsp;<%= "Upgrade to Package #1 @ RM 350.00/ year for 30 concurrent Ads" %><br> <!--25 ads-->
+                  &nbsp;&nbsp;<%= f.radio_button :m_gold, 'PayPal2' %>&nbsp;&nbsp;<%= "Upgrade to Package #2 @ RM 500.00/ year for 100 concurrent Ads" %><br> <!--55 ads-->
+                  &nbsp;&nbsp;<%= f.radio_button :m_gold, 'PayPal3' %>&nbsp;&nbsp;<%= "Upgrade to Package #3 @ RM 3000.00/ year for 1000 concurrent Ads" %><br> <!--no exist-->
                   <br><br><%= image_tag("paypal.gif") %>
               <% end %> 
             </div>
