@@ -1,15 +1,27 @@
 <div class="container">
   <div class="row">
+    
     <div class="latest"><BR>
       <div class="col-md-6 gutter-0">MANAGE USERS: <%= params[:status] %> Account Listings...</div>
+
+      <div class="form-group form-group-sm">
       <div align="right" class="col-md-6"> 
-        <%= link_to "Pending", users_path(:status => "Pending"), class: "btn btn-warning" %>  
-        <%= link_to "Basic-30 A/C", users_path(:status => "Basic"), class: "btn btn-warning" %>  
-        <%= link_to "Premier-100 A/C", users_path(:status => "Premier"), class: "btn btn-warning" %>
-        <%= link_to "Agency-1000 A/C", users_path(:status => "Agency"), class: "btn btn-warning" %>
+        <%= link_to "Pending",     users_path(:status => "Pending"),  class: "btn btn-warning" if params[:status] != 'Pending' %>  <!--default-->
+        <%= link_to "Pending",     users_path(:status => "Pending"),  class: "btn btn-default" if params[:status] == 'Pending' %>  <!--default-->
+        <%= link_to "Premier A/C", users_path(:status => "Premier"),  class: "btn btn-warning" if params[:status] != 'Premier' %>  <!--Basic-30 info-->
+        <%= link_to "Premier A/C", users_path(:status => "Premier"),  class: "btn btn-default" if params[:status] == 'Premier' %>  <!--Basic-30 info-->
+      <!--</div>-->
+      <!--<div align="right" class="col-md-3">                 <label class="btn btn-primary btn-sm">   -->     
+        <%= link_to "Gold A/C",    users_path(:status => "Gold"),     class: "btn btn-warning" if params[:status] != 'Gold' %>  <!--Premier-100 info-->
+        <%= link_to "Gold A/C",    users_path(:status => "Gold"),     class: "btn btn-default" if params[:status] == 'Gold' %>  <!--Premier-100 info-->
+        <%= link_to "Platinum A/C", users_path(:status => "Platinum"), class: "btn btn-warning" if params[:status] != 'Platinum' %> <!--Agency-1000 info-->
+        <%= link_to "Platinum A/C", users_path(:status => "Platinum"), class: "btn btn-default" if params[:status] == 'Platinum' %> <!--Agency-1000 info btn-sm :style=>'color:#FFFFFF;'-->
+      </div>
       </div>
     </div>
+
     <div class="latest col-md-12 gutter-0"><hr></div>
+
     <div class='row'> 
       <div class='col-sm-offset-0 col-xs-12'>
         <%= will_paginate %>
@@ -17,20 +29,35 @@
           <% @users.each do |user| %>
             <tr>
               <td>
-                <%= link_to gravatar_for(user), user_path(user) %>
+                <%#= link_to gravatar_for(user), user_path(user) %>
+                <%= link_to gravatar_for(user), edit_user_path(user) %>
               </td>
               <td>
                 <b>Id: <%= user.id %>- <%= user.name %></b><br>
                 Email: <%= user.email %>
                 <%#= link_to pluralize(user.articles.count, "article"), user_path(user) if user.articles %>
                 <li><%= link_to pluralize(user.articles.count, "article"), articles_path(:usr => user.id) if user.articles %></li>
-                <li>Premier Date: <%= user.purchased_at %></li>
+
+                <% if user.purchased_at.present? %>                
+                  <li>Subscription Date: <%= (user.purchased_at + 8.hours).to_formatted_s(:long) %></li>
+                <% else %>
+                  <li>Subscription Date: Nil</li>
+                <% end %>
+                
               </td>
               <td>
                 <% if logged_in? and current_user.admin? %>
-                  <br><%= link_to "Delete user", user_path(user), method: :delete,
-                  data: { confirm: "Are you sure you want to delete the user and all their articles?" }, class: "btn btn-xs btn-danger" %>&nbsp;
+                  <br>
+                  
+                  <!--DELETE /users/:id(.:format)              users#destroy-->
+                  <%= link_to "Delete user", user_path(user), method: :delete,
+                  data: { confirm: "Are you sure you want to delete this user and all its articles?" }, class: "btn btn-xs btn-danger" %>&nbsp;
+                  
                   <%= link_to "Update user", edit_user_path(user), class: "btn btn-xs btn-primary" %>
+                
+                  <%#= link_to "Suspend user", user_path(user), method: :delete,
+                  data: { confirm: "Are you sure you want to suspend this user?" }, class: "btn btn-xs btn-info" %>&nbsp;
+                  
                 <% end %>
               </td>
             </tr>

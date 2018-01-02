@@ -7,16 +7,20 @@ class UsersController < ApplicationController
   before_action :enforce_tenancy, except: [:index]
   
   def index
-    if params[:status] == "Premier"
+    if params[:status] != "Pending" #Premier
       @users = User.paginate(page: params[:page], per_page: 10).where(:status => params[:status]).order('updated_at desc')
+      
       else if params[:status] == "Pending"
-        @users = User.paginate(page: params[:page], per_page: 10).where(:status => [nil,""], gold: true).order('updated_at desc')
-        else if params[:status] == "Basic"
-          @users = User.paginate(page: params[:page], per_page: 10).where(:status => [nil,""]).order('updated_at desc')
-          else if params[:status] == "Agency"
-            @users = User.paginate(page: params[:page], per_page: 10).where(:status => params[:status]).order('updated_at desc')
-          end
-        end
+        @users = User.paginate(page: params[:page], per_page: 10).where(:status => [nil,""]).order('updated_at desc')
+        # @users = User.paginate(page: params[:page], per_page: 10).where(:status => [nil,""], gold: true).order('updated_at desc')
+        
+        # else if params[:status] == "Basic"
+        #   @users = User.paginate(page: params[:page], per_page: 10).where(:status => [nil,""]).order('updated_at desc')
+          
+        #   else if params[:status] == "Agency"
+        #     @users = User.paginate(page: params[:page], per_page: 10).where(:status => params[:status]).order('updated_at desc')
+        #   end
+        # end
       end
     end
   end
@@ -82,7 +86,7 @@ class UsersController < ApplicationController
     # users_path must have :status params >> users_path(:status => "Basic")
     # redirect_to users_path << will fail!!
     
-    redirect_to users_path(:status => "Basic")
+    redirect_to users_path(:status => "Premier") #Basic
   end
   
   protect_from_forgery except: [:hook]

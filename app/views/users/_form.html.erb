@@ -6,17 +6,19 @@
 
       <!-- Line 1: Email; Premier -->
       <div class="form-group"> 
-        <div class="control-label col-sm-2"> 
-          <%= "Email" %> 
+        <div class="control-label col-sm-2"> <!--font-weight-bold-->
+          Email  
         </div> 
-        <div class="col-sm-4"> 
+        <div class="col-sm-4 "> 
           <%#= @user.email %> 
-          <%= f.text_field :email, class: "form-control", :disabled=>true %> 
+          <b><%= f.text_field :email, class: "form-control", :disabled=>true %></b> 
           <%= hidden_field(:user, :email) %>
         </div> 
-        <% if @user.status == 'Premier' %>
-          <div align = "right" class="col-sm-2 btn btn-warning ">
-            <%= "Premier Account" %>
+        <% if @user.status? %> <!-- ==Premier-->
+          <div class="control-label col-sm-1"> 
+          </div> 
+          <div align = "right" class="col-sm-3 btn btn-warning ">
+            <%= @user.status %>&nbsp;Account<!--"Premier Account"-->
           </div>
         <% end %>
       </div> 
@@ -45,7 +47,7 @@
       <!-- Line 3: REN No; Agency name -->
       <div class="form-group"> 
         <div class="control-label col-sm-2"> 
-          <%= "Agent/ REN No" %> 
+          Agent/ REN No
         </div> 
         <div class="col-sm-4"> 
           <%= f.text_field :agentno, class: "form-control", placeholder: "Agent REN No", autofocus: true %>
@@ -79,30 +81,82 @@
       </div> 
     
       <div id="container">
-        <div id="middle">
-          <div class="checkbox  col-sm-12">
+        <div id="left">
+          
+          <div class="col-xs-12"><!--checkbox  -->
             <div class="well">
-                <% if @user.status != 'Premier' %>  
-                  &nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :gold %><b>Negotiator's Upgrade</b><br><br>
-                  &nbsp;&nbsp;<%= f.radio_button :m_gold, 'PayPal' %>&nbsp;&nbsp;<%= "Upgrade to Package #1 @ RM 350.00/ year for 30 concurrent Ads" %><br> <!--25 ads-->
-                  &nbsp;&nbsp;<%= f.radio_button :m_gold, 'PayPal2' %>&nbsp;&nbsp;<%= "Upgrade to Package #2 @ RM 500.00/ year for 100 concurrent Ads" %><br> <!--55 ads-->
-                  &nbsp;&nbsp;<%= f.radio_button :m_gold, 'PayPal3' %>&nbsp;&nbsp;<%= "Upgrade to Package #3 @ RM 3000.00/ year for 1000 concurrent Ads" %><br> <!--no exist-->
-                  <br><br><%= image_tag("paypal.gif") %>
-              <% end %> 
+              
+              <%# if @user.status != 'Premier' %>  
+                <!--&nbsp;&nbsp;&nbsp;&nbsp;<%#= f.check_box :gold %><b>Negotiator's Upgrade</b>-->
+                
+                <div class="row">
+                  
+                <div class="form-group form-group-sm"> 
+                <div class="col-xs-1" ></div>
+                <div class="col-xs-11" >
+                  <b>Negotiator's Upgrade Options:</b>
+                </div></div>
+                
+                <div class="form-group form-group-sm"> 
+                <div class="col-xs-3" align="right" >
+                  <%= f.radio_button :m_gold, 'prem350', disabled: true if @user.status == 'Premier' %>
+                  <%= (f.radio_button :m_gold, 'prem350') if @user.status != 'Premier' %></div>
+                <div class="col-xs-9">
+                  <%= "Premier:&nbsp; RM 350 -- 30 listings".html_safe %> <!--PayPal 25 ads-->
+                </div></div>
+                
+                <div class="form-group form-group-sm"> 
+                <div class="col-xs-3" align="right" >
+                  <%= f.radio_button :m_gold, 'gold500', disabled: true if @user.status == 'Gold' %>
+                  <%= (f.radio_button :m_gold, 'gold500') if @user.status != 'Gold' %></div>
+                <div class="col-xs-9">
+                  <%= "Gold:&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp; RM 500 -- 100 listings".html_safe %> <!--CreditCard 55 ads-->
+                </div></div>
+                
+                <div class="form-group form-group-sm"> 
+                <div class="col-xs-3" align="right" >
+                  <%= f.radio_button :m_gold, 'plat3K', disabled: true if @user.status == 'Platinum' %>
+                  <%= (f.radio_button :m_gold, 'plat3K') if @user.status != 'Platinum' %></div>
+                <div class="col-xs-9">
+                  <%= "Platinum: RM 3000 -- 1000 listings" %> <!--PayPal3 no exist-->
+                </div></div>
+
+                </div>
+                <br>
+                <div class="form-group form-group-sm"> 
+                <div class="col-xs-1" ></div>
+                <div class="col-xs-11" >
+                 
+                <%= image_tag("paypal.gif") %> 
+                <!-- 4card-image: master,visa,amex,disco -->
+                </div></div> 
+
+              <%# end %>
+              
             </div>
           </div>
-        </div><!--middle-->
+          
+        </div><!--left-->
+        
+        
         <div align="center" id="right"><br>
           <% if current_user && current_user == @user || current_user && current_user.admin? %>
-            <%= gravatar_for @user, size:180 %><br><br>
-            Profile from <%= link_to "http://gravatar.com", "http://gravatar.com" %><br>
+            <%= gravatar_for @user, size:180 %>
+            <br><br>
+            Profile from <%= link_to "http://gravatar.com", "http://gravatar.com" %>
+            <br>
           <% else %>
-            <%= link_to image_tag("/assets/gprofile.gif", width: "100%"), "http://gravatar.com" %><br>
-            <b>User Profile</b><br>Gravatar stands for Globally Recognized Avatar. It is globally recognized because millions of people and websites use them. 
+            <%= link_to image_tag("/assets/gprofile.gif", width: "100%"), "http://gravatar.com" %>
+            <br>
+            <b>User Profile</b>
+            <br>
+            Gravatar stands for Globally Recognized Avatar. It is globally recognized because millions of people and websites use them. 
             Most popular applications like WordPress have built-in support for Gravatar.
           <% end %>
         </div><!--right-->
       </div><!--container-->
+      
       <!--
       <div class="form-group"> 
         <div class="control-label col-sm-2"> 
@@ -114,7 +168,7 @@
         </div> 
       </div> -->
 
-
+      <!--------------------------------------------------------------------->
       <% if logged_in? and current_user.admin? %>
         <%# AJAX
         1. id and section id and id here
@@ -185,10 +239,11 @@
           
           <div class="form-group"> 
             <div class="control-label col-sm-2"> 
-              <%= "Status" %> 
+              <%= "Subscription" %> 
             </div> 
             <div class="col-sm-4"> 
-          <%= f.select :status, options_for_select([['Basic-30',''],['Premier-100','Premier'],['Agency-1000','Agency']], @user.status), {}, { class: "form-control" } %>
+              <%#= f.select :status, options_for_select([['Basic-30',''],['Premier-100','Premier'],['Agency-1000','Agency']], @user.status), {}, { class: "form-control" } %>
+              <%= f.select :status, options_for_select([['Subscription:',''],['Premier','Premier'],['Gold','Gold'],['Platinum','Platinum']], @user.status), {}, { class: "form-control" } %>
             </div> 
             <div class="control-label col-sm-2"> 
               <%= "Purchase Date" %> 
@@ -202,7 +257,13 @@
         
         <div class="form-group"> 
           <div class="col-sm-offset-2 col-sm-3"> 
-            <br><%= f.submit "Update Settings", class: 'btn btn-primary btn-block' %> 
+            <br>
+            <%= f.submit "Update Settings", class: 'btn btn-primary btn-block btn-info', 
+              title: '', 'data-toggle' => 'tooltip', 'data-placement' => 'right' do %> 
+              <!--Goto Payment When Upgrade Selected.-->
+              <!--<span class="glyphicon glyphicon-search"></span>-->
+            <% end %>
+            
             <%#= f.submit class: 'btn btn-primary btn-lg' %> 
             <%#= link_to "Change Password", edit_user_registration_path, class: 'btn btn-primary btn-lg' %>
           </div> 
