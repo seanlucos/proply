@@ -6,7 +6,7 @@ class BtTransactionsController < ApplicationController
     sql = "
       SELECT u.name, b.* 
       FROM bt_transactions b
-      LEFT JOIN users u on u.id = cu_id
+      LEFT JOIN users u on u.id = CAST(cu_id as int)
       ORDER BY bt_updated_at desc
       "
 
