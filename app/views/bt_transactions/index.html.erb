@@ -1,0 +1,84 @@
+<div class="well col-xs-12 col-xs-offset-0">
+  <h4 align="center">Braintree transaction Receipts</h4><br>
+  
+  <%#= will_paginate %>
+        
+  <table border="0" width="100%">
+    <thead>
+      <div class="row">
+      <div class="form-group">
+        <div class="col-xs-2"><b>Date</b></div>
+        <div class="col-xs-2"><b>User</b></div>
+        <div class="col-xs-2"><b>Package</b></div> 
+         
+        <div class="col-xs-2"><b>Reference #</b></div>
+        <div class="col-xs-2"><b>Card Type</b></div>
+        <div class="col-xs-1"><b>Expiry</b></div>
+           
+        <div class="col-xs-1"><b>?</b></div>
+      </div>
+      </div>
+      
+      <tr><td colspan=9><hr></td></tr>
+    </thead>
+    <tbody>
+      
+    
+    <div class='row'> 
+      <div class='col-xs-offset-0 col-xs-12'>
+      <%#= will_paginate %>
+      <table class="table table-striped">
+      <!--<div class="zebra">-->
+        
+      <% @bts.each do |bts| %>
+        <div class="row row-striped">
+        <div class="form-group">
+          <div class="col-xs-2"><%= (bts.bt_created_at + 8.hours).strftime("%d/%m/%Y %H:%M") if bts.bt_created_at.present? %></div>
+          <div class="col-xs-2">
+            <%#= bts.name / cu_id %>
+            <%= link_to bts.name, edit_user_path(bts, :param1 => "1", :id => bts.cu_id) %>
+            <%#= link_to bts.name, edit_user_path(user, :param1 => "1", :usr => bts.cu_id) %>         <!-- Error -->
+            <%#= link_to article.title, article_path(article,:param1 => "1", :usr => article.user_id) %><!--REF -->
+            </div>
+          
+          
+          <div class="col-xs-2"><%= bts.cc_holder %></div>
+          
+          <div class="col-xs-2"><%= bts.bt_id %></div>
+          <div class="col-xs-2">
+            <%#= image_tag("b2_visa.png",       style: "height:21%;width:auto;")+" Ending "+bts.cc_last4 if bts.cc_type == "Visa" %>
+            <%#= image_tag("bt_mastercard.png", style: "height:40%;width:auto;")+" Ending "+bts.cc_last4 if bts.cc_type == "MasterCard" %>
+            <%#= image_tag("bt_paypal_account.png", style: "height:40%;width:auto;") if !bts.cc_type.present? %>
+            <!--/div-->
+
+            <% if bts.cc_type == "Visa" %>      <img src="/assets/b2_visa.png"           alt=" " style="max-height:40px; width:40px;"><%= " Ending "+bts.cc_last4 %><% end %>
+            <% if bts.cc_type == "MasterCard" %><img src="/assets/bt_mastercard.png"     alt=" " style="max-height:40px; width:40px;"><%= " Ending "+bts.cc_last4 %><% end %>
+            <% if bts.cc_type == "American Express" %><img src="/assets/bt_amex.png"     alt=" " style="max-height:40px; width:40px;"><%= " Ending "+bts.cc_last4 %><% end %>
+            <% if bts.cc_type == "Discover" %>  <img src="/assets/bt_discover.jpg"       alt=" " style="max-height:40px; width:40px;"><%= " Ending "+bts.cc_last4 %><% end %>
+            <% if bts.cc_type == "JCB" %>       <img src="/assets/bt_jcb.jpg"            alt=" " style="max-height:40px; width:40px;"><%= " Ending "+bts.cc_last4 %><% end %>
+            <% if !bts.cc_type.present? %>      <img src="/assets/bt_paypal_account.png" alt=" " style="max-height:40px; width:40px;"><% end %>
+            </div>
+          <div class="col-xs-1"><%= (bts.cc_expire_on).strftime("%m/%Y") if bts.cc_expire_on.present? %>
+            </div>  
+          
+              <!--<span class='glyphicon glyphicon-ok'></span>-->
+          <div class="col-xs-1">
+            <%#= link_to "<span class='glyphicon glyphicon-print'></span>".html_safe %>
+            <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, bts, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
+        </div>
+      <% end %>
+      
+      <!--</div>-->
+      </table>
+      <%#= will_paginate %>
+      </div>
+    </div>  
+      
+    </tbody>
+  </table>
+
+  <div align="left">
+  </div>
+</div>

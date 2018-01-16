@@ -29,18 +29,20 @@
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
     
-    <%= javascript_include_tag "https://js.stripe.com/v2/" %>
+    <%#= javascript_include_tag "https://js.stripe.com/v2/" %>
     <%= javascript_include_tag "application" %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
     <![endif]-->
+    
   </head>
   <body>
     <%= render 'layouts/navigation' %> 
     <%#= render 'layouts/messages'%>
-<!--
+    
+    <!--
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -49,7 +51,8 @@
         </div>
       </div>
     </div> -->
-          <%= bootstrap_flash %>
+    
+    <%= bootstrap_flash %>
     <%= yield %>
     
     <%= debug(params) if Rails.env.development? %>

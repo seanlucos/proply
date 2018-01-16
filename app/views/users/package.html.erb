@@ -1,42 +1,59 @@
 <%#= render 'shared/errors', obj: @user %>
 <div class="container">
-<div class="col-xs-12 col-xs-offset-0"><!--align="center"-->
+<div class="row">
+<div class="col-sm-12">
+  
   <h2>Three Subscription Package available:</h2>
   <br>
   
-  <%#= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %> 
+  <div class="carousel-inner">
+  <div class="item active">
+  <div class="row">
 
-  <h4>Upgrade to Package #1</h4><hr>
-  <p><strong>Membership: </strong>Premier</p><%#= f.radio_button :m_gold, 'PayPal' %>
-  <p><strong>Yearly fee: </strong>RM 350.00</p>
-  <p><strong>Concurrent Ads Listing: </strong>30</p>
-  <br>
-  
-  <h4>Upgrade to Package #2</h4><hr>
-  <p><strong>Membership:   </strong>Gold</p><%#= f.radio_button :m_gold, 'PayPal' %>
-  <p><strong>Yearly fee:   </strong>RM 500.00</p>
-  <p><strong>Concurrent Ads Listing: </strong>100</p>
-  <br>
-  
-  <h4>Upgrade to Package #3</h4><hr>
-  <p><strong>Membership: </strong>Platinum</p><%#= f.radio_button :m_gold, 'PayPal' %>
-  <p><strong>Yearly fee: </strong>RM 3000.00</p>
-  <p><strong>Concurrent Ads Listing: </strong>1000</p>
-  <br>
-  
-  <!--Premier: rm 350  - 30 listings-->
-  <!--Gold: rm 500 - 100 listings-->
-  <!--Platinum: rm 3000 - 1000 listings-->
-  
-  <!--Negotiator's Upgrade -->
-  <!--Upgrade to Package #1 @ RM 350.00/ year for 30 concurrent Ads-->
-  <!--Upgrade to Package #2 @ RM 500.00/ year for 100 concurrent Ads-->
-  <!--Upgrade to Package #3 @ RM 3000.00/ year for 1000 concurrent Ads-->
+    <div class="col-sm-4">
+      <img src="assets/col_prim.png" class="img-responsive">
+      <div class="carousel-caption">
       
-  <!--Premier Silver, -->
-  <!--Premier Gold, -->
-  <!--Premier Platinum, -->
+        <h4>Upgrade to Package #1</h4><hr>
+        <p><strong>Membership: </strong>Premier</p>
+        <p><strong>Yearly fee: </strong>RM 350.00</p>
+        <p><strong>Concurrent Ads Listing: </strong>30</p>
+        <br>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <img src="assets/col_gold2.png" class="img-responsive">
+      <div class="carousel-caption">
+
+        <h4 style="color:gold">Upgrade to Package #2</h4><hr>
+        <p style="color:gold"><strong>Membership:   </strong>Gold</p>
+        <p style="color:gold"><strong>Yearly fee:   </strong>RM 500.00</p>
+        <p style="color:gold"><strong>Concurrent Ads Listing: </strong>100</p>
+        <br>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <img src="assets/col_wallss.png" class="img-responsive">
+      <div class="carousel-caption">
+
+        <h4>Upgrade to Package #3</h4><hr>
+        <p><strong>Membership: </strong>Platinum</p>
+        <p><strong>Yearly fee: </strong>RM 3000.00</p>
+        <p><strong>Concurrent Ads Listing: </strong>1000</p>
+        <br>
+      </div>
+    </div>
+      
+  </div>
+  </div>
+  </div>
+
+  <br>
   
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
   
   <% if logged_in? %> 
     <% if current_user.status? %>
@@ -45,8 +62,8 @@
       <%= link_to 'Update your Subscription', edit_user_path(current_user.id), class: "btn btn-info" %>
     <% end %>
   <% end %>
-  
-  <%# end %> 
+   
   <br><br>
+</div>
 </div>
 </div>

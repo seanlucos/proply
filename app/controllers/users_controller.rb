@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
-  def create
+  def create    ## POST /user ( addnew )
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
@@ -43,29 +43,43 @@ class UsersController < ApplicationController
   def edit
     #byebug
     @places = Place.where(status: true)
-    @user = User.find(params[:id]) 
+    @user = User.find(params[:id])    ## selected id (not sysAdmin), from user index page
   end
   
-  def update
+  def update    ## PATCH /user/id (someone else id)
     
     #byebug
-    
+
     if @user.update(user_params)
-      flash[:success] = "Your account was updated successfully"
-      if @user.gold?
-        if @user.m_gold == "PayPal" #m_gold defined at attr_accessor
-          redirect_to @user.paypal_url(paypal_path)
-        else 
-          if @user.m_gold == "CreditCard"
-            redirect_to new_card_path
-          else
-            redirect_to edit_user_path(current_user.id)
-          end
-        end 
+      session[:m_gold] = @user.m_gold   ## avail only after .update 
+      session[:m_id] = @user.id  
+      session[:m_name] = @user.name
+
+      if session[:m_gold] == "Premier" or  
+        session[:m_gold] == "Gold"  or
+        session[:m_gold] == "Platinum" 
+        redirect_to new_checkout_path
+      
       else
-        #redirect_to 'http://www.yahoo.com'
+        flash[:success] = "Your account was updated successfully"
         redirect_to edit_user_path(current_user.id)
       end
+    
+      # flash[:success] = "Your account was updated successfully"
+      # if @user.gold?
+      #   if @user.m_gold == "PayPal"         #m_gold defined at attr_accessor
+      #     redirect_to @user.paypal_url(paypal_path)
+      #   else 
+      #     if @user.m_gold == "CreditCard"
+      #       redirect_to new_card_path
+      #     else
+      #       redirect_to edit_user_path(current_user.id)
+      #     end
+      #   end 
+      # else
+      #   #redirect_to 'http://www.yahoo.com'
+      #   redirect_to edit_user_path(current_user.id)
+      # end
       
     else
       render 'edit'
@@ -105,7 +119,8 @@ class UsersController < ApplicationController
   
   def user_params
     params.require(:user).permit(:username, :email, :password, :admin, :name, :telephone, :agentno, :company, :preferuom,
-        :prefercountry, :gold, :notification_params, :status, :transaction_id, :purchased_at, :m_gold)
+        :prefercountry, :gold, :notification_params, :status, :transaction_id, :purchased_at, :m_gold,
+        :referral_name, :referral_contact)
   end
   
   def set_user

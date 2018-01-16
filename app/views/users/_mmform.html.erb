@@ -26,7 +26,7 @@
         </div> 
       </div>
       
-      
+      <!-- Line 2: Name; Telephone -->
       <div class="form-group"> 
         <div align="right" class="gutter-0  col-xs-3"> 
           <span><%="Name:" %>&nbsp;</span> 
@@ -47,6 +47,7 @@
         </div> 
       </div>
       
+      <!-- Line 3: REN No; Agency name -->
       <div class="form-group"> 
         <div align="right" class="gutter-0  col-xs-3"> 
           <span><%= "Agent No:" %>&nbsp;</span> 
@@ -67,6 +68,25 @@
         </div> 
       </div>
       
+      <!-- Line NEW: Referral Name Contact -->
+      <div class="form-group"> 
+        <div align="right" class="gutter-0  col-xs-3"> 
+          <span><%="Ref. Name:" %>&nbsp;</span> 
+        </div> 
+        <div class="gutter-0 col-xs-9"> 
+          <%= f.text_field :referral_name, class: "form-control", placeholder: "Referral Name", autofocus: true %> 
+        </div> 
+      </div>
+      <div class="form-group"> 
+        <div align="right" class="gutter-0  col-xs-3"> 
+          <span><%= "Ref. Contact:" %>&nbsp;</span> 
+        </div> 
+        <div class="gutter-0 col-xs-9"> 
+          <%= f.text_field :referral_contact, class: "form-control", placeholder: "Referral Contact", autofocus: true %> 
+        </div> 
+      </div>
+      
+      <!-- Line 4: Country -->
       <div class="form-group"> 
         <div align="right" class="gutter-0  col-xs-7"> 
          <span> <%= "Default Country:" %>&nbsp;</span> 
@@ -100,16 +120,16 @@
                 
                 <div class="form-group form-group-sm"> 
                 <div class="col-xs-3" align="right" >
-                  <%= f.radio_button :m_gold, 'prem350', disabled: true if @user.status == 'Premier' %>
-                  <%= (f.radio_button :m_gold, 'prem350') if @user.status != 'Premier' %></div>
+                  <%= f.radio_button :m_gold, 'Premier', disabled: true if @user.status == 'Premier' %>
+                  <%= (f.radio_button :m_gold, 'Premier') if @user.status != 'Premier' %></div>
                 <div class="col-xs-9">
                   <%= "Premier:&nbsp; RM 350 -- 30 listings".html_safe %> <!--PayPal 25 ads-->
                 </div></div>
                 
                 <div class="form-group form-group-sm"> 
                 <div class="col-xs-3" align="right" >
-                  <%= f.radio_button :m_gold, 'gold500', disabled: true if @user.status == 'Gold' %>
-                  <%= (f.radio_button :m_gold, 'gold500') if @user.status != 'Gold' %></div>
+                  <%= f.radio_button :m_gold, 'Gold', disabled: true if @user.status == 'Gold' %>
+                  <%= (f.radio_button :m_gold, 'Gold') if @user.status != 'Gold' %></div>
                 <div class="col-xs-9">
                   <%= "Gold:&nbsp;&nbsp;&nbsp;
                   &nbsp;&nbsp;&nbsp; RM 500 -- 100 listings".html_safe %> <!--CreditCard 55 ads-->
@@ -117,8 +137,8 @@
                 
                 <div class="form-group form-group-sm"> 
                 <div class="col-xs-3" align="right" >
-                  <%= f.radio_button :m_gold, 'plat3K', disabled: true if @user.status == 'Platinum' %>
-                  <%= (f.radio_button :m_gold, 'plat3K') if @user.status != 'Platinum' %></div>
+                  <%= f.radio_button :m_gold, 'Platinum', disabled: true if @user.status == 'Platinum' %>
+                  <%= (f.radio_button :m_gold, 'Platinum') if @user.status != 'Platinum' %></div>
                 <div class="col-xs-9">
                   <%= "Platinum: RM 3000 -- 1000 listings" %> <!--PayPal3 no exist-->
                 </div></div>
@@ -232,7 +252,8 @@
             </div> 
             <div class="col-xs-4"> 
               <%#= f.select :status, options_for_select([['',''],['Premier','Premier'],['Gold','Gold'],['Platinum','Platinum']], @user.status), {}, { class: "form-control" } %>
-              <%= f.select :status, options_for_select([['Subscription:',''],['Premier','Premier'],['Gold','Gold'],['Platinum','Platinum']], @user.status), {}, { class: "form-control" } %>
+              <%= f.select :status, options_for_select([['Subscription:',''],
+                ['Premier','Premier'],['Gold','Gold'],['Platinum','Platinum']], @user.status), {}, { class: "form-control" } %>
             </div>
             <div class="control-label col-xs-2"> 
               <%= "Purchase Date" %> 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170825080444) do
+ActiveRecord::Schema.define(version: 20180114074017) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "name"
@@ -60,6 +60,30 @@ ActiveRecord::Schema.define(version: 20170825080444) do
     t.text     "zoning"
     t.text     "furnishing"
     t.text     "lot"
+  end
+
+  create_table "bt_transactions", force: :cascade do |t|
+    t.string   "bt_id"
+    t.string   "bt_type"
+    t.decimal  "bt_amount",     precision: 10, scale: 2
+    t.string   "bt_status"
+    t.datetime "bt_created_at"
+    t.datetime "bt_updated_at"
+    t.string   "cc_token"
+    t.string   "cc_bin"
+    t.string   "cc_last4"
+    t.string   "cc_type"
+    t.datetime "cc_expire_on"
+    t.string   "cc_holder"
+    t.string   "cc_origin"
+    t.string   "cu_id"
+    t.string   "cu_firstname"
+    t.string   "cu_lastname"
+    t.string   "cu_email"
+    t.string   "cu_company"
+    t.string   "cu_website"
+    t.string   "cu_phone"
+    t.string   "cu_fax"
   end
 
   create_table "card_transactions", force: :cascade do |t|
@@ -224,6 +248,8 @@ ActiveRecord::Schema.define(version: 20170825080444) do
     t.string   "status"
     t.string   "transaction_id"
     t.datetime "purchased_at"
+    t.text     "referral_name"
+    t.text     "referral_contact"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

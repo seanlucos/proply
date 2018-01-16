@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   
-  resources :paypals
-  resources :cards
+  # resources :paypals
+  # resources :cards
   resources :images
   resources :places
   resources :regions
   resources :areas
-  resources :otherinfos 
+  resources :otherinfos
+  resources :checkouts,  only: [:new, :create, :show]
+  resources :bt_transactions,  only: [:index, :destroy] 
   #for coder use only
   #resources :rawplaces
   #resources :rawregions
