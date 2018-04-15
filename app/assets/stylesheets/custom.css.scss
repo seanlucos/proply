@@ -5,6 +5,7 @@ $navbar-default-bg: #3C4042; /*top bar background color */
 #comments-section {
   display: none;
 }
+
 hr {
     display: block;
     height: 1px;
@@ -90,24 +91,26 @@ hr {
 .logout {
 padding-left: 0;
 }
+
+
 .nav.navbar-right {
-padding-bottom: 10px;
-padding-top: 5px;
+  // padding-bottom: 10px;
+  // padding-top: 5px;
 }
 .nav.navbar-nav {
-.navbar-link {
-border-radius: 0px;
-color: #ffffff;
-margin-top: 150px;
-padding: 8px;
-}
-.navbar-link:focus, .navbar-link:hover {
-background: #ffffff;
-color: #ffffff ;
-}
-li a {
-margin-right: 5px;
-}
+  .navbar-link {
+    border-radius: 0px;
+    color: #ffffff;
+    // margin-top: 150px;
+    // padding: 8px;
+  }
+  .navbar-link:focus, .navbar-link:hover {
+    background: #ffffff;
+    color: #ffffff ;
+  }
+  li a {
+    margin-right: 5px;
+  }
 }
 
 .btn {
@@ -393,6 +396,23 @@ padding: 1px 1px 1px 1px;
 //margin: 1px 1px 1px 1px;
 //border: 1px solid red;
 }
+
+.gutterR-0 {
+  //padding: 1px 1px 1px 1px;
+  padding-top: 1px !important;
+  padding-right: 1px !important;
+}
+
+#search-label{
+  //vertical-align:center;
+  font-size:12px;
+  padding: 5px;
+}
+
+#idUOM{
+  display: none;  
+}
+
 #column-content {
   display: inline-block;
 }

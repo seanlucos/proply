@@ -45,13 +45,16 @@ class ApplicationController < ActionController::Base
         end
       end
     end  
-    @articles = @articles.place(params[:place][:name]) if params[:place].present? and params[:place][:name] !=""
-    @articles = @articles.region(params[:region][:name]) if params[:region].present? and params[:region][:name] !=""
-    @articles = @articles.area(params[:area][:name]) if params[:area].present? and params[:area][:name] !=""
-    @articles = @articles.category(params[:category]) if params[:category].present? and params[:category] !=""
+    @articles = @articles.place(params[:place][:name])    if params[:place].present? and params[:place][:name] !=""
+    @articles = @articles.region(params[:region][:name])  if params[:region].present? and params[:region][:name] !=""
+    @articles = @articles.area(params[:area][:name])      if params[:area].present? and params[:area][:name] !=""
+    @articles = @articles.category(params[:category])     if params[:category].present? and params[:category] !=""
     @articles = @articles.otherinfo(params[:otherinfo][:name]) if params[:otherinfo].present? and params[:otherinfo][:name] !=""
-    @articles = @articles.proptype(params[:proptype]) if params[:proptype].present? and params[:proptype] !=""
-    @articles = @articles.titletype(params[:titletype]) if params[:titletype].present? and params[:titletype] !=""
+    @articles = @articles.proptype(params[:proptype])     if params[:proptype].present? and params[:proptype] !=""
+    @articles = @articles.titletype(params[:titletype])   if params[:titletype].present? and params[:titletype] !=""
+    @articles = @articles.furnishing(params[:furnishing]) if params[:furnishing].present? and params[:furnishing] !=""
+    @articles = @articles.zoning(params[:zoning])         if params[:zoning].present? and params[:zoning] !=""
+    @articles = @articles.lot(params[:lot])               if params[:lot].present? and params[:lot] !=""
 
 # filter bedrooms
     @temp0 = Chainb.find(params[:chainb][:name].to_i) if params[:chainb].present? and params[:chainb][:name] !=""
@@ -109,7 +112,7 @@ class ApplicationController < ActionController::Base
     end    
 
 # filter buildup area (Sqft or SqM)
-    if params[:chanb].present?
+    if params[:chainb].present?
       @temp8 = Chainb.find(params[:chainb][:buildup].to_i) if params[:chainb][:buildup].present? and params[:chainb][:buildup] !=""
     end
     if params[:chaina].present?
@@ -153,6 +156,7 @@ class ApplicationController < ActionController::Base
       @otherinfos_for_dropdown << [i.name, i.id, {class: i.place.id}]
     end
 
+# ------------------------------------------------------------------------------
 # for bedrooms and bathrooms where id=1. they share same min and max    
     @roomsmin = Chainb.where(:chaina_id => '1')
     @roomsmin_for_dropdown = []
@@ -165,6 +169,7 @@ class ApplicationController < ActionController::Base
       @roomsmax_for_dropdown << [i.name, i.id, {class: i.chainb.id}]
     end 
 
+# ------------------------------------------------------------------------------
 # for price only where id=2
     @pricemin = Chainb.where(:chaina_id => '2')
     @pricemin_for_dropdown = []
@@ -191,16 +196,20 @@ class ApplicationController < ActionController::Base
 
 # for Sqft and SqM UOM where id=3 and id=4
     #@uoms = Chaina.where(status: true)
-    @uoms = Chaina.find([3,4])
+    @uoms = Chaina.find([3,4])   ## 5,6
     @uoms_for_dropdown = []
     @uoms.each do |i|
       @uoms_for_dropdown << [i.name, i.id]
     end
+    
+    
     @buildupmin = Chainb.all
     @buildupmin_for_dropdown = []
     @buildupmin.each do |i|
       @buildupmin_for_dropdown << [i.name, i.id, {class: i.chaina.id}]
     end
+    
+    
     @buildupmax = Chainc.all
     @buildupmax_for_dropdown = []
     @buildupmax.each do |i|

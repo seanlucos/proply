@@ -51,7 +51,7 @@
         </div> 
         
         <!--Search titles & descriptions-->
-        <div class="form-group">
+        <div class="form-group form-group-sm">
           <div class="col-xs-12 gutter-0">
             Search titles & descriptions:<br>
             <%= text_field_tag :search, params[:search], placeholder: "Search titles & descriptions", class: 'form-control' %>
@@ -59,13 +59,13 @@
         </div>
 
         <% if @places_for_dropdown.count.to_i == 1 %>
-          <div class="form-group">        
+          <div class="form-group form-group-sm">        
             <div class="col-xs-6 gutter-0">         
               <%= select("place", "name", options_for_select(@places_for_dropdown, @places_for_dropdown.first), {}, {class: 'form-control'}) %>            
             </div> 
           </div>
         <% else %>
-          <div class="form-group">        
+          <div class="form-group form-group-sm">        
             <div class="col-xs-6 gutter-0"> 
             
               <!-- HIDE search by COUNTRY -->
@@ -74,6 +74,8 @@
                   {prompt: 'Select country'}, {class: 'form-control'}) %>
                 <% else if current_user.present? %>
                     <%= select("place", "name", options_for_select(@places_for_dropdown, current_user.prefercountry), {prompt: 'Select country'}, {class: 'form-control'}) %>            
+                  
+                  
                   <% else if @places_for_dropdown.count.to_i == 1 %>
                       <%= select("place", "name", options_for_select(@places_for_dropdown, @places_for_dropdown.first), {prompt: 'Select country'}, {class: 'form-control'}) %>            
                     <% else%>
@@ -87,7 +89,7 @@
           </div>
         <% end %>
         
-        <div class="form-group">          
+        <div class="form-group form-group-sm">          
           <div class="col-xs-6 gutter-0"> 
             <% if params[:region].present? %>
               <%= select("region", "name", options_for_select(@regions_for_dropdown, :selected => params[:region][:name] ),
@@ -108,7 +110,7 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group form-group-sm">
           <div class="col-xs-offset-0 col-xs-4 gutter-0"> 
             <!--<select class="form-control" name="category" id="category">-->
             <!--  <option value="">All category</option>-->

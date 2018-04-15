@@ -20,87 +20,88 @@
           </div> 
         <% else %>
           <div class="form-group">
-            
-            <div class=" col-sm-4 gutter-0">
+
+            <div class=" col-sm-4 col-xs-4 gutter-0">
               &nbsp;<b>Ceiling (m):</b><br>
               <%= f.number_field :ceiling, class: "form-control", placeholder: "Ceiling", :value => (number_with_precision(f.object.ceiling, :precision => 0) ) %> 
             </div>                 
 
-            <div class="col-sm-4 gutter-0">
+            <div class="col-sm-4 col-xs-4 gutter-0">
               &nbsp;<b>Bedroom:</b><br>
               <%= f.select :bedroom, [['Rooms:',''],['1','1'],['2','2'],['3','3'],['4','4'],['5','5'],['6','6'],['7','7'],['8','8'],['9','9'],['10','10']], {}, { class: "form-control" } %>
             </div>
-            <div class=" col-sm-4 gutter-0">
+            <div class=" col-sm-4 col-xs-4 gutter-0">
               &nbsp;<b>Bath:</b><br>
               <%= f.select :bathroom, [['Baths:',''],['1','1'],['2','2'],['3','3'],['4','4'],['5','5'],['6','6'],['7','7'],['8','8'],['9','9'],['10','10']], {}, { class: "form-control" } %>
             </div>
           </div>
           
           <div class="form-group">
-            <div class=" col-sm-4 gutter-0">
+            <div class=" col-sm-4 col-xs-4 gutter-0">
               &nbsp;<b>Land Size:</b><br>
               <%#= f.number_field :size, :step => 2, class: "form-control", placeholder: "Size", :value => (number_with_precision(f.object.size, :precision => 0) ) %> 
               <%= f.number_field :size, class: "form-control", placeholder: "Land Size", :value => (number_with_precision(f.object.size, :precision => 0) ) %> 
             </div>                 
-            <div class=" col-sm-4 gutter-0">
+            <div class=" col-sm-4 col-xs-4 gutter-0">
               &nbsp;<b>Built-up:</b><br>
               <%#= f.number_field :size, :step => 2, class: "form-control", placeholder: "Size", :value => (number_with_precision(f.object.size, :precision => 0) ) %> 
               <%= f.number_field :size1, class: "form-control", placeholder: "Built-up", :value => (number_with_precision(f.object.size1, :precision => 0) ) %> 
             </div>  
-            <div class=" col-sm-4 gutter-0">
+            <div class=" col-sm-4 col-xs-4 gutter-0">
               &nbsp;<b>Unit of Measurement:</b><br>
               <%= f.select :uom, options_for_select([['SqFt','3'],['SqM','4'],['Acres','5'],['Hectres','6']], @article.uom || current_user.preferuom), {}, { class: "form-control" } %>
             </div>
           </div>
+          
           <div class="form-group">
-            <div class="col-sm-12 gutter-0"> 
+            <div class="col-sm-12 col-xs-12 gutter-0"> 
               <b><%= "Facilities:" %></b>
             </div> 
             <div class='row'> 
-              <div class='col-sm-offset-0 col-sm-12'>
+              <div class='col-sm-offset-0 col-sm-12 col-xs-12'>
                 <div class="well well-sm ">
                   <div class="form-group">
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
+                    <div class="checkbox col-sm-offset-1 col-sm-3 col-xs-3">
                       <%= f.check_box :xlift  %><%= 'Lift'%>
                     </div> 
             
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
+                    <div class="checkbox col-sm-offset-1 col-sm-3 col-xs-3">
                       <%= f.check_box :xpool %><%= 'Swim Pool'%>          
                     </div>   
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
+                    <div class="checkbox col-sm-offset-1 col-sm-3 col-xs-3">
                       <%= f.check_box :xsqua %><%= 'Squash Court'%>          
                     </div>
                   </div>       
                   <div class="form-group">
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
+                    <div class="checkbox col-sm-offset-1 col-sm-3 col-xs-3">
                       <%= f.check_box :xplay %><%= 'Playground'%>
                     </div> 
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
+                    <div class="checkbox col-sm-offset-1 col-sm-3 col-xs-3">
                       <%= f.check_box :xbalc %><%= 'Balcony'%>          
                     </div>   
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
+                    <div class="checkbox col-sm-offset-1 col-sm-3 col-xs-3">
                       <%= f.check_box :xgymn %><%= 'Gymnasium'%>          
                     </div>
                   </div>
                   <div class="form-group">
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
+                    <div class="checkbox col-sm-offset-1 col-sm-3 col-xs-3">
                       <%= f.check_box :xmini %><%= 'Mini Market'%>
                     </div> 
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
+                    <div class="checkbox col-sm-offset-1 col-sm-3 col-xs-3">
                       <%= f.check_box :xjogg %><%= 'Jog Tracks'%>          
                     </div>   
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
+                    <div class="checkbox col-sm-offset-1 col-sm-3 col-xs-3">
                       <%= f.check_box :xcabl %><%= 'Cable TV'%>          
                     </div>
                   </div>        
                   <div class="form-group">
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
+                    <div class="checkbox col-sm-offset-1 col-sm-3 col-xs-3">
                       <%= f.check_box :xtenn %><%= 'Tennis Court'%>
                     </div> 
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
+                    <div class="checkbox col-sm-offset-1 col-sm-3 col-xs-3">
                       <%= f.check_box :xpark %><%= 'Car Park'%>          
                     </div>   
-                    <div class="checkbox col-sm-offset-1 col-sm-3">
+                    <div class="checkbox col-sm-offset-1 col-sm-3 col-xs-3">
                       <%= f.check_box :xsecu %><%= 'Security'%>          
                     </div>
                   </div>
@@ -180,34 +181,34 @@
         </div>    
       
         <div class="form-group"> 
-          <div class=" col-sm-4 gutter-0">
+          <div class=" col-sm-4 col-xs-4 gutter-0">
             &nbsp;<b>Category:</b><br>
             <%= f.select :category, [['Category:',''], ['Flat','Flat'],['Townhouse','Townhouse'],['Condominium','Condominium'],['Serviced Apartment','Serviced Apartment'],
             ['Terrace house','Terrace house'],['Semi D','Semi D'],['Bungalow','Bungalow'],['Villa','Villa'],['Office','Office'],['Retail','Retail'],['Shoplot','Shoplot'],
             ['Factory','Factory'],['Warehouse','Warehouse'],['Agricultural Land','Agricultural Land'],['Residential Land','Residential Land'],['Commercial Land','Commercial Land'],
             ['Industrial Land','Industrial Land']], {}, { class: "form-control" } %>
           </div>
-          <div class="col-sm-4 gutter-0"> 
+          <div class="col-sm-4 col-xs-4 gutter-0"> 
             &nbsp;<b>Title Type:</b><br>
             <%= f.select :titletype, [['Title type:',''], ['Freehold','Freehold'],['Leasehold','Leasehold']], {}, { class: "form-control" } %>
           </div> 
-          <div class="col-sm-4 gutter-0"> 
+          <div class="col-sm-4 col-xs-4 gutter-0"> 
             &nbsp;<b>Other Info:</b><br>
             <%= select("otherinfo", "name", options_for_select(@otherinfos_for_dropdown, :selected => @article.otherinfo), {prompt: 'Other info:'}, {class: 'form-control'}) %>
           </div> 
         </div>
-
+        
         <!-- extra3 -->
         <div class="form-group"> 
-          <div class=" col-sm-4 gutter-0">
+          <div class=" col-sm-4 col-xs-4 gutter-0">
             &nbsp;<b>Zoning:</b><br>
             <%= f.select :zoning, [['Zoning:',''], ['Agricultural','Agricultural'],['Residential','Residential'],['Commercial','Commercial'],['Industrial','Industrial']], {}, { class: "form-control" } %>
           </div>
-          <div class="col-sm-4 gutter-0"> 
+          <div class="col-sm-4 col-xs-4 gutter-0"> 
             &nbsp;<b>Furnishing:</b><br>
             <%= f.select :furnishing, [['Furnishing:',''], ['Bare','Bare'],['Semi','Semi'],['Full','Full']], {}, { class: "form-control" } %>
           </div> 
-          <div class="col-sm-4 gutter-0"> 
+          <div class="col-sm-4 col-xs-4 gutter-0"> 
             &nbsp;<b>Lot:</b><br>
             <%= f.select :lot, [['Lot:',''], ['Intermediate','Intermediate'],['Endlot','Endlot'],['Corner','Corner']], {}, { class: "form-control" } %>
           </div> 

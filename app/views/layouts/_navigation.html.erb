@@ -10,7 +10,7 @@
         <span class="icon-bar"></span>
       </button>
       <%#= link_to image_tag("Landmark.my_logo_black_30_70_65.jpg"), root_path, class: "navbar-brand", id: "logo" %>
-      <%= link_to "Landmark.my", root_path, class: "navbar-brand", id: "logo" %>
+      <%= link_to "Landmark.com.my", root_path, class: "navbar-brand", id: "logo" %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -19,39 +19,36 @@
 
         <!-- (1) HOME -->    
         <li><%= link_to "<span class='glyphicon glyphicon-home'></span>&nbsp; Home".html_safe, root_path %></li>
-
-
-        <!-- if current_user -->
-        <% if current_user %>
-        
-          <!-- ORI Agency:1000, Premier:100, else:30 -->
-          <% if current_user.status == "Platinum" %>   <!--Agency-->
-            <% session[:m_posting] = 1000 %>
-          <% else if current_user.status == "Gold" %>  <!--Premier-->
-            <% session[:m_posting] = 100 %>
-          <% else if current_user.status == "Premier" %>
-            <% session[:m_posting] = 30 %> 
-          <% else %>
-            <% session[:m_posting] = 0 %> 
-          <% end %>
-          <% end %>
-          <% end %>
-          
-          <!-- (2) New Ads -->  
-          <% if logged_in? %>
-            <% if current_user.status? %>
-              <li><%= link_to "<span class='glyphicon glyphicon-edit'></span>&nbsp; Insert New Ad".html_safe, 
-                new_article_path(:param1 => "new", :proptype => "for Sale") %></li>
+          <!-- ORI Agency:1000, Premier:100, else:30 --> 
+          <% if current_user %>
+            <% if current_user.status == "Platinum" %>   <!--Agency-->
+              <% session[:m_posting] = 1000 %>
+            <% else if current_user.status == "Gold" %>  <!--Premier-->
+              <% session[:m_posting] = 100 %>
+            <% else if current_user.status == "Premier" %>
+              <% session[:m_posting] = 30 %> 
             <% else %>
-               <li><%= link_to "<span class='glyphicon glyphicon-info-sign'></span>&nbsp; Package".html_safe, package_path %></li>
+              <% session[:m_posting] = 0 %> 
             <% end %>
           <% end %>
+          <% end %>
           
-          <!-- (3) EMAIL -->
-          <li class="dropdown">
+        <!-- (2) New Ads -->  
+        <% if logged_in? %>
+          <% if current_user.status? %>
+            <li><%= link_to "<span class='glyphicon glyphicon-edit'></span>&nbsp; Insert New Ad".html_safe, 
+              new_article_path(:param1 => "new", :proptype => "for Sale") %></li>
+          <% else %>
+             <li><%= link_to "<span class='glyphicon glyphicon-info-sign'></span>&nbsp; Package".html_safe, package_path %></li>
+          <% end %>
+        <% end %>
+          
+        <!-- (3) EMAIL -->
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <%= ('<span class="glyphicon glyphicon-user"></span>&nbsp; ' + truncate(current_user.email, length: 25)).html_safe %> 
             <span class="caret"></span></a>
+
           <ul class="dropdown-menu">
             
               <% if logged_in? and current_user.admin? %>
@@ -69,18 +66,20 @@
                 <li role="separator" class="divider"></li>
               <% end %>
             
+              <!-- logged_in but non-Admin -->
               <li><%= link_to "My Ads", articles_path %></li>
               <li><%= link_to "My Settings", edit_user_path(current_user.id) %></li>
               <li><%= link_to "Sign Out ".html_safe, destroy_user_session_path, :method => :delete %></li>        
-          </ul>
+
+          </ul><!-- class="dropdown" -->  
     
   
-        <!-- if current_user -->
+        <!-- if NOT logged_in (2) New Ads -->
         <% else %>
           <li><%= link_to "<span class='glyphicon glyphicon-log-in'></span>&nbsp; Sign In".html_safe, new_user_session_path %></li>
         <% end %>
         
-      
+      </ul> <!-- class="nav navbar-nav navbar-right "-->
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
