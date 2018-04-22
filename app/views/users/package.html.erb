@@ -1,7 +1,7 @@
 <%#= render 'shared/errors', obj: @user %>
 <div class="container">
 <div class="row">
-<div class="col-sm-12">
+<div class="col-sm-12 col-xs-12">
   
   <h2>Three Subscription Package available:</h2>
   <br>
@@ -10,36 +10,36 @@
   <div class="item active">
   <div class="row">
 
-    <div class="col-sm-4">
-      <img src="assets/col_prim.png" class="img-responsive">
+    <div class="col-sm-4 col-xs-4 gutter-0">
+      <img src="assets/P1 Premier.jpg" class="img-responsive">
       <div class="carousel-caption">
       
-        <h4>Upgrade to Package #1</h4><hr>
-        <p><strong>Membership: </strong>Premier</p>
-        <p><strong>Yearly fee: </strong>RM 350.00</p>
-        <p><strong>Concurrent Ads Listing: </strong>30</p>
+        <!--<h4>Upgrade to Package #1</h4><hr>-->
+        <!--<p><strong>Membership: </strong>Premier</p>-->
+        <!--<p><strong>Yearly fee: </strong>RM 350.00</p>-->
+        <!--<p><strong>Concurrent Ads Listing: </strong>30</p>-->
         <br>
       </div>
     </div>
-    <div class="col-sm-4">
-      <img src="assets/col_gold2.png" class="img-responsive">
+    <div class="col-sm-4 col-xs-4 gutter-0">
+      <img src="assets/P2 Gold.jpg" class="img-responsive">
       <div class="carousel-caption">
 
-        <h4 style="color:gold">Upgrade to Package #2</h4><hr>
-        <p style="color:gold"><strong>Membership:   </strong>Gold</p>
-        <p style="color:gold"><strong>Yearly fee:   </strong>RM 500.00</p>
-        <p style="color:gold"><strong>Concurrent Ads Listing: </strong>100</p>
+        <!--<h4 style="color:gold">Upgrade to Package #2</h4><hr>-->
+        <!--<p style="color:gold"><strong>Membership:   </strong>Gold</p>-->
+        <!--<p style="color:gold"><strong>Yearly fee:   </strong>RM 500.00</p>-->
+        <!--<p style="color:gold"><strong>Concurrent Ads Listing: </strong>100</p>-->
         <br>
       </div>
     </div>
-    <div class="col-sm-4">
-      <img src="assets/col_wallss.png" class="img-responsive">
+    <div class="col-sm-4 col-xs-4 gutter-0">
+      <img src="assets/P3 Platinum.jpg" class="img-responsive">
       <div class="carousel-caption">
 
-        <h4>Upgrade to Package #3</h4><hr>
-        <p><strong>Membership: </strong>Platinum</p>
-        <p><strong>Yearly fee: </strong>RM 3000.00</p>
-        <p><strong>Concurrent Ads Listing: </strong>1000</p>
+        <!--<h4>Upgrade to Package #3</h4><hr>-->
+        <!--<p><strong>Membership: </strong>Platinum</p>-->
+        <!--<p><strong>Yearly fee: </strong>RM 3000.00</p>-->
+        <!--<p><strong>Concurrent Ads Listing: </strong>1000</p>-->
         <br>
       </div>
     </div>
@@ -53,7 +53,7 @@
 </div>
 </div>
 <div class="row">
-<div class="col-sm-12">
+<div class="col-sm-12 col-xs-12">
   
   <% if logged_in? %> 
     <% if current_user.status? %>
