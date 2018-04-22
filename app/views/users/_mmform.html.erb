@@ -100,7 +100,8 @@
           <span><%= "Default Area:" %>&nbsp;</span> 
         </div> 
         <div class="gutter-0 col-xs-5"> 
-          <%= f.select :preferuom, options_for_select([['SqFt','3'],['SqM','4'],['Acres','5'],['Hectres','6']], @user.preferuom), {}, { class: "form-control" } %>
+          <%#= f.select :preferuom, options_for_select([['SqFt','3'],['SqM','4'],['Acres','5'],['Hectres','6']], @user.preferuom), {}, { class: "form-control" } %>
+          <%= f.select :preferuom, options_for_select([['SqFt','3']], @user.preferuom), {}, { class: "form-control" } %>
         </div> 
       </div> 
       

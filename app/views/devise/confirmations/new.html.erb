@@ -1,4 +1,9 @@
 <%= bootstrap_devise_error_messages! %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4><%= t('.resend_confirmation_instructions', :default => 'Resend confirmation instructions') %></h4>
@@ -16,3 +21,7 @@
 </div>
 
 <%= render "devise/shared/links" %>
+
+    </div>
+  </div>
+</div>

@@ -28,13 +28,13 @@
         <table class="table table-striped">
           <% @users.each do |user| %>
           
-            <tr>
-              <td>
+            <tr><!--div class='row'-->
+              <td><!--div class='col-xs-3'-->
                 <%#= link_to gravatar_for(user), user_path(user) %>
                 <%= link_to gravatar_for(user), edit_user_path(user) %>
               </td>
               
-              <td>
+              <td><!--div class='col-xs-4'-->
                 <b>Id: <%= user.id %>- <%= user.name %></b><br>
                 Email: <%= user.email %>
                 <%#= link_to pluralize(user.articles.count, "article"), user_path(user) if user.articles %>

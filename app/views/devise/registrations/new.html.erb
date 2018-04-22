@@ -2,6 +2,11 @@
   Stripe.setPublishableKey("<%= ENV['STRIPE_TEST_PUBLISHABLE_KEY'] %>");
 </script>
 <%= bootstrap_devise_error_messages! %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4><%= t('.sign_up', :default => "Sign up") %></h4>
@@ -11,42 +16,42 @@
   <div class="container">
 
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-8 col-sm-8 col-xs-10 gutter-0">
         <div class="panel-body">
           <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { role: "form" }) do |f| %>
           <%#= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { role: "form", class: 'cc_form' }) do |f| %>
             
             <div class="form-group">
-              <div class="col-md-12 no-padding">
+              <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
               <%= f.label :email %>
               <%= f.email_field :email, autofocus: true, class: "form-control" %>
               </div>
             </div>
             
             <div class="form-group">
-              <div class="col-md-6 no-padding">
+              <div class="col-md-6 col-sm-6 col-xs-6 no-padding">
                 <%= f.label :name %>
                 <%= f.text_field :name, placeholder: "Full name as in REN", class: "form-control" %>
               </div>
-              <div class="col-md-6 no-padding left-padding">
+              <div class="col-md-6 col-sm-6 col-xs-6 no-padding left-padding">
                 <%= f.label :telephone %>
                 <%= f.text_field :telephone, class: "form-control" %>
               </div> 
             </div>
             
             <div class="form-group">
-              <div class="col-md-6 no-padding">
+              <div class="col-md-6 col-sm-6 col-xs-6 no-padding">
                 <%= f.label :company %>
                 <%= f.text_field :company, placeholder: "Agency Name", class: "form-control" %>
               </div>
-              <div class="col-md-6 no-padding left-padding">
+              <div class="col-md-6 col-sm-6 col-xs-6 no-padding left-padding">
                 <%=  f.label :agentno %>
                 <%= f.text_field :agentno,  placeholder: "REN Number", class: "form-control" %>
               </div>
             </div>        
             
             <div class="form-group">
-              <div class="col-md-6 no-padding">
+              <div class="col-md-6 col-sm-6 col-xs-6 no-padding">
                 <%= f.label :country %>
                 <%#= f.text_field :prefercountry, class: "form-control" %>
                 <%
@@ -60,21 +65,21 @@
             </div>
             
             <div class="form-group">
-              <div class="col-md-12 no-padding">
+              <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
                 <%= f.label :password %>
                 <%= f.password_field :password, class: "form-control" %>
               </div>
             </div>
             
             <div class="form-group">
-              <div class="col-md-12 no-padding">
+              <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
                 <%= f.label :password_confirmation %>
                 <%= f.password_field :password_confirmation, class: "form-control" %>
               </div>
             </div>
             
             <div class="form-group">
-              <div class="col-md-12 no-padding">
+              <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
                 <%= f.submit t('.sign_up', :default => "Sign up"), class: "btn btn-primary" %>
               </div>
             </div>
@@ -83,7 +88,7 @@
           
         </div> <!--panel-body-->
       </div> <!-- md-8-->
-      <div class="col-md-4">
+      <div class="col-md-4 col-sm-4 col-xs-2 gutter-0">
         <br><img src="../assets/thankyou.gif" style="width:80%"><br>
       </div>
     </div> <!--row-->
@@ -93,4 +98,8 @@
     <br><br>
     
   </div> <!--container-->
+</div>
+
+    </div>
+  </div>
 </div>

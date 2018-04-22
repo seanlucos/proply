@@ -31,7 +31,7 @@ class Article < ActiveRecord::Base
   scope :lot, -> (lot) { where lot: lot }
   
   def self.search(search)
-   where(['title LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%"])
+   where(['LOWER(title) LIKE ? OR LOWER(description) LIKE ?', "%#{search.downcase}%", "%#{search.downcase}%"])
   end
 
 end

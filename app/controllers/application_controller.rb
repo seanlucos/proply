@@ -57,27 +57,45 @@ class ApplicationController < ActionController::Base
     @articles = @articles.lot(params[:lot])               if params[:lot].present? and params[:lot] !=""
 
 # filter bedrooms
-    @temp0 = Chainb.find(params[:chainb][:name].to_i) if params[:chainb].present? and params[:chainb][:name] !=""
-    @articles = @articles.where('bedroom >= ?', @temp0.name) if params[:chainb].present? and params[:chainb][:name] !=""
-    if params[:chainc].present?
-      @temp1 = Chainc.find(params[:chainc][:name].to_i) if params[:chainc][:name].present? and params[:chainc][:name] !=""
-      @articles = @articles.where('bedroom <= ?', @temp1.name) if params[:chainc][:name].present? and params[:chainc][:name] !=""
+    # @temp0 = Chainb.find(params[:chainb][:name].to_i) if params[:chainb].present? and params[:chainb][:name] !=""
+    # @articles = @articles.where('bedroom >= ?', @temp0.name) if params[:chainb].present? and params[:chainb][:name] !=""
+    # if params[:chainc].present?
+    #   @temp1 = Chainc.find(params[:chainc][:name].to_i) if params[:chainc][:name].present? and params[:chainc][:name] !=""
+    #   @articles = @articles.where('bedroom <= ?', @temp1.name) if params[:chainc][:name].present? and params[:chainc][:name] !=""
+    # end
+    if params[:roomFR].present?
+      @articles = @articles.where('bedroom >= ?', params[:roomFR].to_i) if params[:roomFR].present? and params[:roomFR] !=""
+    end
+    if params[:roomTO].present?
+      @articles = @articles.where('bedroom <= ?', params[:roomTO].to_i) if params[:roomTO].present? and params[:roomTO] !=""
     end
     
 # filter bathrooms
-    @temp2 = Chainb.find(params[:chainb][:bath].to_i) if params[:chainb].present? and params[:chainb][:bath] !=""
-    @articles = @articles.where('bathroom >= ?', @temp2.name) if params[:chainb].present? and params[:chainb][:bath] !=""
-    if params[:chainc].present?
-      @temp3 = Chainc.find(params[:chainc][:bath].to_i) if params[:chainc][:bath].present? and params[:chainc][:bath] !=""
-      @articles = @articles.where('bathroom <= ?', @temp3.name) if params[:chainc][:bath].present? and params[:chainc][:bath] !=""
+    # @temp2 = Chainb.find(params[:chainb][:bath].to_i) if params[:chainb].present? and params[:chainb][:bath] !=""
+    # @articles = @articles.where('bathroom >= ?', @temp2.name) if params[:chainb].present? and params[:chainb][:bath] !=""
+    # if params[:chainc].present?
+    #   @temp3 = Chainc.find(params[:chainc][:bath].to_i) if params[:chainc][:bath].present? and params[:chainc][:bath] !=""
+    #   @articles = @articles.where('bathroom <= ?', @temp3.name) if params[:chainc][:bath].present? and params[:chainc][:bath] !=""
+    # end
+    if params[:bathFR].present?
+      @articles = @articles.where('bathroom >= ?', params[:bathFR].to_i) if params[:bathFR].present? and params[:bathFR] !=""
     end
-
+    if params[:bathTO].present?
+      @articles = @articles.where('bathroom <= ?', params[:bathTO].to_i) if params[:bathTO].present? and params[:bathTO] !=""
+    end
+    
 # filter price
-    @temp4 = Chainb.find(params[:chainb][:price].to_i) if params[:chainb].present? and params[:chainb][:price] !=""
-    @articles = @articles.where('amount >= ?', @temp4.name) if params[:chainb].present? and params[:chainb][:price] !=""
-    if params[:chainc].present?
-      @temp5 = Chainc.find(params[:chainc][:price].to_i) if params[:chainc][:price].present? and params[:chainc][:price] !=""
-      @articles = @articles.where('amount <= ?', @temp5.name) if params[:chainc][:price].present? and params[:chainc][:price] !=""
+    # @temp4 = Chainb.find(params[:chainb][:price].to_i) if params[:chainb].present? and params[:chainb][:price] !=""
+    # @articles = @articles.where('amount >= ?', @temp4.name) if params[:chainb].present? and params[:chainb][:price] !=""
+    # if params[:chainc].present?
+    #   @temp5 = Chainc.find(params[:chainc][:price].to_i) if params[:chainc][:price].present? and params[:chainc][:price] !=""
+    #   @articles = @articles.where('amount <= ?', @temp5.name) if params[:chainc][:price].present? and params[:chainc][:price] !=""
+    # end
+    if params[:amtFR].present?
+      @articles = @articles.where('amount >= ?', params[:amtFR].to_i) if params[:amtFR].present? and params[:amtFR] !=""
+    end
+    if params[:amtTO].present?
+      @articles = @articles.where('amount <= ?', params[:amtTO].to_i) if params[:amtTO].present? and params[:amtTO] !=""
     end
 
 # filter land area (Sqft or SqM)
@@ -91,45 +109,57 @@ class ApplicationController < ActionController::Base
     # @articles = @articles.where("(size <= ? AND uom = ?)" ,@temp7.name, "4") if params[:chainc][:landarea].present? and params[:chainc][:landarea] !=""
     # @articles = @articles.where("(size <= ? AND uom = ?)" ,@temp7.name.to_i*10.7639, "3") if params[:chainc][:landarea].present? and params[:chainc][:landarea] !=""
 
-    if params[:chainb].present?
-      @temp6 = Chainb.find(params[:chainb][:landarea].to_i) if params[:chainb][:landarea].present? and params[:chainb][:landarea] !=""
+    # if params[:chainb].present?
+    #   @temp6 = Chainb.find(params[:chainb][:landarea].to_i) if params[:chainb][:landarea].present? and params[:chainb][:landarea] !=""
+    # end
+    # if params[:chaina].present?
+    #   if params[:chaina][:uom]=="3" and params[:chainb].present?
+    #     @articles = @articles.where("(size >= ? AND uom = ?) OR (size >= ? AND uom = ?)",@temp6.name, "3", @temp6.name.to_i*0.092903, "4" ) if params[:chainb][:landarea].present? and params[:chainb][:landarea] !=""
+    #   end
+    #   if params[:chaina][:uom]=="4" and params[:chainb].present? 
+    #     @articles = @articles.where("(size >= ? AND uom = ?) OR (size >= ? AND uom = ?)",@temp6.name, "4", @temp6.name.to_i*10.7639, "3" ) if params[:chainb][:landarea].present? and params[:chainb][:landarea] !=""
+    #   end
+    #   if params[:chaina][:uom]=="3" and params[:chainc].present?
+    #     @temp7 = Chainc.find(params[:chainc][:landarea].to_i) if params[:chainc][:landarea].present? and params[:chainc][:landarea] !=""
+    #     @articles = @articles.where("(size <= ? AND uom = ?) OR (size <= ? AND uom = ?)",@temp7.name, "3", @temp7.name.to_i*10.7639, "4" ) if params[:chainc][:landarea].present? and params[:chainb][:landarea] !=""
+    #   end
+    #   if params[:chaina][:uom]=="4" and params[:chainc].present?
+    #     @temp7 = Chainc.find(params[:chainc][:landarea].to_i) if params[:chainc][:landarea].present? and params[:chainc][:landarea] !=""
+    #     @articles = @articles.where("(size <= ? AND uom = ?) OR (size <= ? AND uom = ?)",@temp7.name, "4", @temp7.name.to_i*0.092903, "3" ) if params[:chainc][:landarea].present? and params[:chainb][:landarea] !=""
+    #   end
+    # end 
+    if params[:landFR].present?
+      @articles = @articles.where('size >= ?', params[:landFR].to_i) if params[:landFR].present? and params[:landFR] !=""
     end
-    if params[:chaina].present?
-      if params[:chaina][:uom]=="3" and params[:chainb].present?
-        @articles = @articles.where("(size >= ? AND uom = ?) OR (size >= ? AND uom = ?)",@temp6.name, "3", @temp6.name.to_i*0.092903, "4" ) if params[:chainb][:landarea].present? and params[:chainb][:landarea] !=""
-      end
-      if params[:chaina][:uom]=="4" and params[:chainb].present? 
-        @articles = @articles.where("(size >= ? AND uom = ?) OR (size >= ? AND uom = ?)",@temp6.name, "4", @temp6.name.to_i*10.7639, "3" ) if params[:chainb][:landarea].present? and params[:chainb][:landarea] !=""
-      end
-      if params[:chaina][:uom]=="3" and params[:chainc].present?
-        @temp7 = Chainc.find(params[:chainc][:landarea].to_i) if params[:chainc][:landarea].present? and params[:chainc][:landarea] !=""
-        @articles = @articles.where("(size <= ? AND uom = ?) OR (size <= ? AND uom = ?)",@temp7.name, "3", @temp7.name.to_i*10.7639, "4" ) if params[:chainc][:landarea].present? and params[:chainb][:landarea] !=""
-      end
-      if params[:chaina][:uom]=="4" and params[:chainc].present?
-        @temp7 = Chainc.find(params[:chainc][:landarea].to_i) if params[:chainc][:landarea].present? and params[:chainc][:landarea] !=""
-        @articles = @articles.where("(size <= ? AND uom = ?) OR (size <= ? AND uom = ?)",@temp7.name, "4", @temp7.name.to_i*0.092903, "3" ) if params[:chainc][:landarea].present? and params[:chainb][:landarea] !=""
-      end
+    if params[:landTO].present?
+      @articles = @articles.where('size <= ?', params[:landTO].to_i) if params[:landTO].present? and params[:landTO] !=""
     end    
 
 # filter buildup area (Sqft or SqM)
-    if params[:chainb].present?
-      @temp8 = Chainb.find(params[:chainb][:buildup].to_i) if params[:chainb][:buildup].present? and params[:chainb][:buildup] !=""
+    # if params[:chainb].present?
+    #   @temp8 = Chainb.find(params[:chainb][:buildup].to_i) if params[:chainb][:buildup].present? and params[:chainb][:buildup] !=""
+    # end
+    # if params[:chaina].present?
+    #   if params[:chaina][:uom]=="3" and params[:chainb].present?
+    #     @articles = @articles.where("(size1 >= ? AND uom = ?) OR (size1 >= ? AND uom = ?)",@temp8.name, "3", @temp8.name.to_i*0.092903, "4" ) if params[:chainb][:buildup].present? and params[:chainb][:buildup] !=""
+    #   end
+    #   if params[:chaina][:uom]=="4" and params[:chainb].present? 
+    #     @articles = @articles.where("(size1 >= ? AND uom = ?) OR (size1 >= ? AND uom = ?)",@temp8.name, "4", @temp8.name.to_i*10.7639, "3" ) if params[:chainb][:buildup].present? and params[:chainb][:buildup] !=""
+    #   end
+    #   if params[:chaina][:uom]=="3" and params[:chainc].present?
+    #     @temp9 = Chainc.find(params[:chainc][:buildup].to_i) if params[:chainc][:buildup].present? and params[:chainc][:buildup] !=""
+    #     @articles = @articles.where("(size1 <= ? AND uom = ?) OR (size1 <= ? AND uom = ?)",@temp9.name, "3", @temp9.name.to_i*10.7639, "4" ) if params[:chainc][:buildup].present? and params[:chainb][:buildup] !=""
+    #   end
+    #   if params[:chaina][:uom]=="4" and params[:chainc].present?
+    #     @temp9 = Chainc.find(params[:chainc][:buildup].to_i) if params[:chainc][:buildup].present? and params[:chainc][:buildup] !=""
+    #     @articles = @articles.where("(size1 <= ? AND uom = ?) OR (size1 <= ? AND uom = ?)",@temp9.name, "4", @temp9.name.to_i*0.092903, "3" ) if params[:chainc][:buildup].present? and params[:chainb][:landarea] !=""
+    #   end
+    # end
+    if params[:builtFR].present?
+      @articles = @articles.where('size1 >= ?', params[:builtFR].to_i) if params[:builtFR].present? and params[:builtFR] !=""
     end
-    if params[:chaina].present?
-      if params[:chaina][:uom]=="3" and params[:chainb].present?
-        @articles = @articles.where("(size1 >= ? AND uom = ?) OR (size1 >= ? AND uom = ?)",@temp8.name, "3", @temp8.name.to_i*0.092903, "4" ) if params[:chainb][:buildup].present? and params[:chainb][:buildup] !=""
-      end
-      if params[:chaina][:uom]=="4" and params[:chainb].present? 
-        @articles = @articles.where("(size1 >= ? AND uom = ?) OR (size1 >= ? AND uom = ?)",@temp8.name, "4", @temp8.name.to_i*10.7639, "3" ) if params[:chainb][:buildup].present? and params[:chainb][:buildup] !=""
-      end
-      if params[:chaina][:uom]=="3" and params[:chainc].present?
-        @temp9 = Chainc.find(params[:chainc][:buildup].to_i) if params[:chainc][:buildup].present? and params[:chainc][:buildup] !=""
-        @articles = @articles.where("(size1 <= ? AND uom = ?) OR (size1 <= ? AND uom = ?)",@temp9.name, "3", @temp9.name.to_i*10.7639, "4" ) if params[:chainc][:buildup].present? and params[:chainb][:buildup] !=""
-      end
-      if params[:chaina][:uom]=="4" and params[:chainc].present?
-        @temp9 = Chainc.find(params[:chainc][:buildup].to_i) if params[:chainc][:buildup].present? and params[:chainc][:buildup] !=""
-        @articles = @articles.where("(size1 <= ? AND uom = ?) OR (size1 <= ? AND uom = ?)",@temp9.name, "4", @temp9.name.to_i*0.092903, "3" ) if params[:chainc][:buildup].present? and params[:chainb][:landarea] !=""
-      end
+    if params[:builtTO].present?
+      @articles = @articles.where('size1 <= ?', params[:builtTO].to_i) if params[:builtTO].present? and params[:builtTO] !=""
     end
     
 # location chained-select    

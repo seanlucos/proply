@@ -346,7 +346,7 @@ body {font-family: Verdana,sans-serif; background-color: #e4685d; }
       <div align="center" class="main-thumb">
         <!-- <img src="/assets/sell.gif" width=100%> -->
         <%# link_to image_tag("sell.gif", width: "100%"), "https://vast-retreat-95360.herokuapp.com/articles/new?param1=new&proptype=for+Sale" %>
-        <img src="/assets/LM Main Side Ad.jpg" width=100%> 
+        <%= link_to image_tag("/assets/LM Main Side Ad.jpg", width: "100%"), new_user_registration_path %>
       </div>
       <div align="center" class="main-thumb">
         <img src="/assets/Side Banner 1.jpg" width=100%>
