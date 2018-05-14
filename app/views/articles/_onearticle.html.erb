@@ -1,11 +1,12 @@
 <div class='row'> <br>
-  <div class='col-sm-8'>
+  <div class='col-sm-8 col-xs-8'>
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">-->
     <style>
     .mySlides {display:none}
     .demo {cursor:pointer}
     </style>
+    
     <div class="form-group">
       <div align="left" class='col-sm-6 gutter-0'>          
         Ad Id:&nbsp;<%= @article.id %>
@@ -81,7 +82,7 @@
   </div> <!--end of sm-8-->
    
   <div class='row'> 
-    <div class='col-sm-4'><br>
+    <div class='col-sm-4 col-xs-4'><br>
       <div class="well">
           <% if @article.user %>
             <div align="center">
@@ -107,51 +108,64 @@
 </div>
 
 
-<div class='col-sm-offset-0 col-sm-12 gutter-0' style="background-color: #C8D9E2; width: 100%; height: 100%">
-  <div class='col-sm-12 latest'>
+<div class='col-sm-offset-0 col-sm-12 col-xs-12 gutter-0' style="background-color: #C8D9E2; width: 100%; height: 100%">
+  <div class='col-sm-12 col-xs-12 latest'>
     <h4><%= strip_tags(@article.title.upcase) %></h4><hr>
   </div>
-  <div class="form-group"> 
-    <div align="right" class='col-sm-offset-0 col-sm-2'>          
+  
+  <!-- SOMEHOW Mobile COME in-HERE -->
+  
+  <div class='form-group'>
+    <div class="form-group-sm col-sm-6 col-xs-6">
+    <div align="right" class='col-sm-offset-0 col-sm-4 col-xs-4'>          
       <b>Category:</b>
     </div>
-    <div align="left" class='col-sm-offset-0 col-sm-3 gutter-0'>        
+    <div align="left" class='col-sm-offset-0 col-sm-8 col-xs-8 gutter-0'>        
       <%= @article.category %> <%= @article.proptype %>
     </div>
-    <div align="right" class='col-sm-offset-0 col-sm-3'>  
+    </div>
+  
+    <div class="form-group-sm col-sm-6 col-xs-6">
+    <div align="right" class='col-sm-offset-0 col-sm-4 col-xs-4'>  
       <b>Bedrooms:</b>
       </div>
-    <div align="left" class=' col-sm-offset-0 col-sm-3 gutter-0'>  
+    <div align="left" class=' col-sm-offset-0 col-sm-8 col-xs-8 gutter-0'>  
       <%= @article.bedroom %>&nbsp;
+    </div>
     </div>
   </div>
   
-  <div class="form-group"> 
-    <div align="right" class='col-sm-offset-0 col-sm-2'>          
+  <div class='form-group'>
+    <div class="form-group-sm col-sm-6 col-xs-6">
+    <div align="right" class='col-sm-offset-0 col-sm-4 col-xs-4'>         
       <b>Location:</b>
     </div>
-    <div align="left" class='col-sm-offset-0 col-sm-3 gutter-0'>        
+    <div align="left" class='col-sm-offset-0 col-sm-8 col-xs-8 gutter-0'>        
       <%= @area.name if @area.present? %>, <%= @region.name if @region.present?%>, <%= @place.name if @place.present?%>.
-    </div>        
-
-    <div align="right" class='col-sm-offset-0 col-sm-3'>  
+    </div>   
+    </div>   
+    
+    <div class="form-group-sm col-sm-6 col-xs-6">
+    <div align="right" class='col-sm-offset-0 col-sm-4 col-xs-4'>    
       <b>Bathrooms:</b>
     </div>
-    <div align="left" class='col-sm-offset-0 col-sm-3 gutter-0'> 
+    <div align="left" class='col-sm-offset-0 col-sm-8 col-xs-8 gutter-0'> 
       <% if @article.bathroom.present? %>
         <%= @article.bathroom %>
       <% else %>
         NIL
       <% end %>
     </div>
+    </div>
   </div>
   
   <!-- Zoning; Furnishing -->
-  <div class="form-group"> 
-    <div align="right" class='col-sm-offset-0 col-sm-2'>          
+  <div class="form-group">
+    <div class="form-group-sm col-sm-6 col-xs-6">
+    <div align="right" class='col-sm-offset-0 col-sm-4 col-xs-4'>       
       <b>Zoning:</b>
     </div>
-    <div align="left" class='col-sm-offset-0 col-sm-3 gutter-0'>             
+    <div align="left" class='col-sm-offset-0 col-sm-8 col-xs-8 gutter-0'>             
       <%# @article.zoning %> 
       <% if @article.zoning.present? %>
         <%= @article.zoning %>
@@ -159,10 +173,13 @@
         NIL
       <% end %>    
     </div>   
-    <div align="right" class='col-sm-offset-0 col-sm-3'>  
+    </div>   
+    
+    <div class="form-group-sm col-sm-6 col-xs-6">
+    <div align="right" class='col-sm-offset-0 col-sm-4 col-xs-4'>  
       <b>Furnishing:</b>
     </div>
-    <div align="left" class='col-sm-offset-0 col-sm-3 gutter-0'> 
+    <div align="left" class='col-sm-offset-0 col-sm-8 col-xs-8 gutter-0'> 
       <%# @article.furnishing %>
       <% if @article.furnishing.present? %>
         <%= @article.furnishing %>
@@ -170,40 +187,45 @@
         NIL
       <% end %>    
     </div>
+    </div>
   </div>
   
   <!-- Lot; ceiling; -->
-  <div class="form-group"> 
-    <div align="right" class='col-sm-offset-0 col-sm-2'>  
+  <div class="form-group">
+    <div class="form-group-sm col-sm-6 col-xs-6"> 
+    <div align="right" class='col-sm-offset-0 col-sm-4 col-xs-4'>  
       <b>Lot:</b>
     </div>
-    <div align="left" class='col-sm-offset-0 col-sm-3 gutter-0'> 
+    <div align="left" class='col-sm-offset-0 col-sm-8 col-xs-8 gutter-0'> 
       <%# @article.lot %>
       <% if @article.lot.present? %>
         <%= @article.lot %>
       <% else %>
         NIL
       <% end %>    
+    </div>    
     </div>  
 
-    <div align="right" class='col-sm-offset-0 col-sm-3'>          
-      <b>Ceiling Height:</b>
+    <div class="form-group-sm col-sm-6 col-xs-6"> 
+    <div align="right" class='col-sm-offset-0 col-sm-4 col-xs-4'>          
+      <b>Ceiling&nbsp;Hgt:</b>
     </div>    
-    <div align="left" class='col-sm-offset-0 col-sm-3 gutter-0'>             
+    <div align="left" class='col-sm-offset-0 col-sm-8 col-xs-8 gutter-0'>             
       <% if @article.ceiling.present? %>
         <%= @article.ceiling %>m
       <% else %>
         NIL
       <% end %>
     </div>   
+    </div>  
   </div>
   
-  
-  <div class="form-group">       
-    <div align="right" class='col-sm-offset-0 col-sm-2'>  
-      <b>Built-up:</b>
+  <div class="form-group">
+    <div class="form-group-sm col-sm-6 col-xs-6">      
+    <div align="right" class='col-sm-offset-0 col-sm-4 col-xs-4'>  
+      <b>Built&nbsp;up:</b>
     </div>
-    <div align="left"class='col-sm-offset-0 col-sm-3 gutter-0'>
+    <div align="left"class='col-sm-offset-0 col-sm-8 col-xs-8 gutter-0'>
       <% if @article.size1.present? %>   
         <%= @article.size1 %> 
           <%= "SqFt" if @article.uom == "3" %><%= "SqM" if @article.uom == "4" %><%= "Acres" if @article.uom == "5" %><%= "Hectres" if @article.uom == "6" %>
@@ -214,24 +236,28 @@
         NIL
       <% end %>
     </div>
-
-    <div align="right" class='col-sm-offset-0 col-sm-3'>  
-      <b>Other info:</b>
     </div>
-    <div align="left" class='col-sm-offset-0 col-sm-3 gutter-0'>         
+
+    <div class="form-group-sm col-sm-6 col-xs-6">
+    <div align="right" class='col-sm-offset-0 col-sm-4 col-xs-4'>  
+      <b>Other&nbsp;info:</b>
+    </div>
+    <div align="left" class='col-sm-offset-0 col-sm-8 col-xs-8 gutter-0'>         
       <% if @otherinfo.present? %>
         <%= @otherinfo.name if @otherinfo.present? %>
       <% else %>
         NIL
       <% end %>
     </div>
+    </div>
   </div>
   
-  <div class="form-group"> 
-    <div align="right" class='col-sm-offset-0 col-sm-2'>  
-      <b>Land Size:</b>
+  <div class="form-group">
+    <div class="form-group-sm col-sm-6 col-xs-6">  
+    <div align="right" class='col-sm-offset-0 col-sm-4 col-xs-4'>  
+      <b>Land&nbsp;Size:</b>
     </div>
-    <div align="left"class='col-sm-offset-0 col-sm-3 gutter-0'>
+    <div align="left"class='col-sm-offset-0 col-sm-8 col-xs-8 gutter-0'>
       <% if @article.size.present? %>   
         <%= @article.size %> 
           <%= "SqFt" if @article.uom == "3" %><%= "SqM" if @article.uom == "4" %><%= "Acres" if @article.uom == "5" %><%= "Hectres" if @article.uom == "6" %>
@@ -242,58 +268,72 @@
         NIL
       <% end %>
     </div>
-
-    <div align="right" class='col-sm-offset-0 col-sm-3'>          
-      <b>Title Type</b>
     </div>
-    <div align="left" class='col-sm-offset-0 col-sm-3 gutter-0'>        
+
+    <div class="form-group-sm col-sm-6 col-xs-6"> 
+    <div align="right" class='col-sm-offset-0 col-sm-4 col-xs-4'>          
+      <b>Title&nbsp;Type:</b>
+    </div>
+    <div align="left" class='col-sm-offset-0 col-sm-8 col-xs-8 gutter-0'>        
       <% if @article.titletype.present? %>
         <%= @article.titletype %>
       <% else %>
         NIL
       <% end %>
     </div>
+    </div>
   </div>
-  <div class="form-group"> 
-    <div align="right" class='col-sm-offset-0 col-sm-2'>  
+  
+  <div class="form-group">
+    <div class="form-group-sm col-sm-6 col-xs-6"> 
+    <div align="right" class='col-sm-offset-0 col-sm-4 col-xs-4'>  
       <b>Price:</b>
     </div>
-    <div align="left" class='col-sm-offset-0 col-sm-3 gutter-0'> 
+    <div align="left" class='col-sm-offset-0 col-sm-8 col-xs-8 gutter-0'> 
       <%# @places.currency if @places.present? %> <%# number_with_precision(@article.amount, precision: 0, delimiter: ' ') %><!--&nbsp;-->
       <%= @places.currency if @places.present? %> <%= number_with_precision(@article.amount, precision: 0, delimiter: ',') %>
       <%# @places.currency if @places.present? %> <%# number_with_delimiter(@article.amount) %>&nbsp;
     </div>
-
-    <div align="right" class='col-sm-offset-0 col-sm-3'>  
-      <b>Bank value:</b>
     </div>
-    <div align="left" class='col-sm-offset-0 col-sm-3 gutter-0'> 
+
+    <div class="form-group-sm col-sm-6 col-xs-6"> 
+    <div align="right" class='col-sm-offset-0 col-sm-4 col-xs-4'>  
+      <b>Bank&nbsp;value:</b>
+    </div>
+    <div align="left" class='col-sm-offset-0 col-sm-8 col-xs-8 gutter-0'> 
       <%= @places.currency if @places.present? %> <%= number_with_precision(@article.valuation, precision: 0, delimiter: ',') %>
     </div>
-  </div>
+    </div>
+  </div>  
+
+  <br><br>
+  <!-- Fac and Full Descr -->
   
-  
-  
-  <div class="form-group"> 
-    <div align="right" class='col-sm-offset-0 col-sm-2'>  
+  <div class="form-group">
+    <div class="form-group-sm col-sm-12 col-xs-12"> 
+    <div align="right" class='col-sm-offset-0 col-sm-2 col-xs-2'>  
       <b>Facilities:</b>
     </div>
-    <div align="left"class='col-sm-offset-0 col-sm-10 gutter-0'>         
-          <%= "Lift/ Elevator, " if @article.xlift? %><%= "Swimming Pool, " if @article.xpool? %><%= "Squash Court, " if @article.xsqua? %>
-          <%= "Playground, " if @article.xplay? %><%= "Balcony, " if @article.xbalc? %><%= "Gymnasium, " if @article.xgymn? %>
-          <%= "Mini Market, " if @article.xmini? %><%= "Jogging Track, " if @article.xjogg? %><%= "Cable TV, " if @article.xcabl? %>
-          <%= "Tennis Court, " if @article.xtenn? %><%= "Covered Car Park, " if @article.xpark? %>
-          <%= "24 hours Security, " if @article.xsecu? %><%= "etc." %>
+    <div align="left" class='col-sm-offset-0 col-sm-10 col-xs-10 gutter-0'>         
+      <%= "Lift/ Elevator, " if @article.xlift? %><%= "Swimming Pool, " if @article.xpool? %><%= "Squash Court, " if @article.xsqua? %>
+      <%= "Playground, "     if @article.xplay? %><%= "Balcony, "       if @article.xbalc? %><%= "Gymnasium, "    if @article.xgymn? %>
+      <%= "Mini Market, "    if @article.xmini? %><%= "Jogging Track, " if @article.xjogg? %><%= "Cable TV, "     if @article.xcabl? %>
+      <%= "Tennis Court, "   if @article.xtenn? %><%= "Covered Car Park, " if @article.xpark? %>
+      <%= "24 hours Security, " if @article.xsecu? %><%= "etc." %>
+    </div>
     </div>
   </div>
   
-  <div class="form-group"> 
-    <div align="right" class='col-sm-offset-0 col-sm-2'>  
+  <div class="form-group">
+    <div class="form-group-sm col-sm-12 col-xs-12"> 
+    <div align="right" class='col-sm-offset-0 col-sm-2 col-xs-2'>  
       <b>Description:</b>
     </div>
-    <div align="left" class='col-sm-offset-0 col-sm-10 gutter-0'> 
+    <div align="left" class='col-sm-offset-0 col-sm-10 col-xs-10 gutter-0'> 
       <%= simple_format(@article.description) %>&nbsp;
     </div>
+    </div>
   </div>
+  
   <br><br><br><br><br><br><br>
 </div><!--bg-details-->

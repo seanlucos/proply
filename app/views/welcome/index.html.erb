@@ -26,10 +26,12 @@ Usually if you want to pass some variable to erb , you can fetch that variable i
         </div>
       </div>
       <% if params[:place].present? or params[:more] == 'Y'%>
+        
         <%= render 'articles/article', obj: @articles %>      
         <div align="left">
           <%= will_paginate @articles %>
         </div>
+        
       <% else %>
         <%= render 'articles/main', obj: @articles %>
       <% end %><br><br><br>

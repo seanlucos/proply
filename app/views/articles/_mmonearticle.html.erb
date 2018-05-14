@@ -169,78 +169,165 @@ function showSlides(n) {
 }
 </script>
 <br><br>
+
+
 <div align="right" class='font-green col-xs-3 gutter-0'>
   <%= "Category:" %>&nbsp;
 </div>  
 <div class='col-xs-9 gutter-0'>
   <%= @article.category%> <%= @article.proptype %>
 </div>
+
 <div align="right" class='font-green col-xs-3 gutter-0'>
   <%= "Location:" %>&nbsp;
 </div>  
 <div class='col-xs-9 gutter-0'>
   <%= @area.name if @area.present? %>, <%= @region.name if @region.present?%>, <%= @place.name if @place.present?%>
 </div>
+
 <div align="right" class='font-green col-xs-3 gutter-0'>
   <%= "Id:" %>&nbsp;
 </div>
 <div  class='col-xs-9 gutter-0'>
   <%= @article.id %>
 </div>
-<div align="right"  class='font-green col-xs-3 gutter-0'>
-  <%= "Size:" %>&nbsp;
-</div>
-<div class='col-xs-9 gutter-0'>
-  <% if @article.size.present? %>
-  <%= @article.size %> 
+
+<% if @article.size1.present? %>
+  <div align="right"  class='font-green col-xs-3 gutter-0'>
+    <%= "Built-up:" %>&nbsp;
+  </div>
+  <div class='col-xs-9 gutter-0'>
+    <%= @article.size1 %> 
+    <%= "SqFt" if @article.uom == "3" %><%= "SqM" if @article.uom == "4" %><%= "Acres" if @article.uom == "5" %><%= "Hectres" if @article.uom == "6" %>
+      (<%= number_with_precision(@article.size1.to_i*0.092903, precision: 2, delimiter: ',') if @article.uom == "3" %><%= " SqM" if @article.uom == "3" %>
+      <%= number_with_precision(@article.size1.to_i*10.7639, precision: 2, delimiter: ',') if @article.uom == "4" and @article.size1.present? %><%= " SqFt" if @article.uom == "4" %>
+      )
+  </div>
+<% end %>      
+
+<% if @article.size.present? %>
+  <div align="right"  class='font-green col-xs-3 gutter-0'>
+    <%= "Land Size:" %>&nbsp;
+  </div>
+  <div class='col-xs-9 gutter-0'>
+    <%= @article.size %> 
     <%= "SqFt" if @article.uom == "3" %><%= "SqM" if @article.uom == "4" %><%= "Acres" if @article.uom == "5" %><%= "Hectres" if @article.uom == "6" %>
       (<%= number_with_precision(@article.size.to_i*0.092903, precision: 2, delimiter: ',') if @article.uom == "3" %><%= " SqM" if @article.uom == "3" %>
       <%= number_with_precision(@article.size.to_i*10.7639, precision: 2, delimiter: ',') if @article.uom == "4" and @article.size.present? %><%= " SqFt" if @article.uom == "4" %>
       )
-  <% else %>
-    NIL
-  <% end %>
-</div>
-<div align="right" class='font-green col-xs-3 gutter-0'>
-  <%= "Facilities:" %>&nbsp;
-</div>
-<div class='col-xs-9 gutter-0'>
-  <%= "Lift/ Elevator, " if @article.xlift? %><%= "Swimming Pool, " if @article.xpool? %><%= "Squash Court, " if @article.xsqua? %>
-  <%= "Playground, " if @article.xplay? %><%= "Balcony, " if @article.xbalc? %><%= "Gymnasium, " if @article.xgymn? %>
-  <%= "Mini Market, " if @article.xmini? %><%= "Jogging Track, " if @article.xjogg? %><%= "Cable TV, " if @article.xcabl? %>
-  <%= "Tennis Court, " if @article.xtenn? %><%= "Covered Car Park, " if @article.xpark? %>
-  <%= "24 hours Security, " if @article.xsecu? %><%= "etc." %>
-</div>
-<div align="right" class='font-green col-xs-3 gutter-0'>
-  <%= "Bedrooms:" %>&nbsp;
-</div>
-<div class='col-xs-9 gutter-0'>
-  <%= @article.bedroom %>&nbsp;
-</div>
-<div align="right" class='font-green col-xs-3 gutter-0'>
-  <%= "Bathrooms:" %>&nbsp;
-</div>
-<div class='col-xs-9 gutter-0'>
-  <%= @article.bathroom %>&nbsp;
-</div>
+  </div>
+<% end %>      
+
+
+<% if @article.xlift.present? || @article.xpool.present? || @article.xplay.present? || @article.xbalc.present? ||
+  @article.xmini.present? || @article.xjogg.present? || @article.xtenn.present? || @article.xpark.present? ||
+  @article.xsecu.present? || @article.xsqua.present? || @article.xgymn.present? || @article.xcabl.present? %>
+  <div align="right" class='font-green col-xs-3 gutter-0'>
+    <%= "Facilities:" %>&nbsp;
+  </div>
+  <div class='col-xs-9 gutter-0'>
+    <%= "Lift/ Elevator, " if @article.xlift? %><%= "Swimming Pool, " if @article.xpool? %><%= "Squash Court, " if @article.xsqua? %>
+    <%= "Playground, "     if @article.xplay? %><%= "Balcony, "       if @article.xbalc? %><%= "Gymnasium, "    if @article.xgymn? %>
+    <%= "Mini Market, "    if @article.xmini? %><%= "Jogging Track, " if @article.xjogg? %><%= "Cable TV, "     if @article.xcabl? %>
+    <%= "Tennis Court, "   if @article.xtenn? %><%= "Covered Car Park, " if @article.xpark? %>
+    <%= "24 hours Security, " if @article.xsecu? %><%= "etc." %>
+  </div>
+<% end %>
+
+<% if @article.bedroom.present? %>
+  <div align="right" class='font-green col-xs-3 gutter-0'>
+    <%= "Bedrooms:" %>&nbsp;
+  </div>
+  <div class='col-xs-9 gutter-0'>
+    <%= @article.bedroom %>&nbsp;
+  </div>
+<% end %>
+
+<% if @article.bathroom.present? %>
+  <div align="right" class='font-green col-xs-3 gutter-0'>
+    <%= "Bathrooms:" %>&nbsp;
+  </div>
+  <div class='col-xs-9 gutter-0'>
+    <%= @article.bathroom %>&nbsp;
+  </div>
+<% end %>
+
+<% if @article.furnishing.present? %>
+  <div align="right" class='font-green col-xs-3 gutter-0'>
+    <%= "Furnishing:" %>&nbsp;
+  </div>
+  <div class='col-xs-9 gutter-0'>
+    <%= @article.furnishing %>&nbsp;  
+  </div>
+<% end %>
+
+<% if @article.ceiling.present? %>
+  <div align="right" class='font-green col-xs-3 gutter-0'>
+    <%= "Ceiling(m):" %>&nbsp;
+  </div>
+  <div class='col-xs-9 gutter-0'>
+    <%= number_with_precision(@article.ceiling, precision: 0, delimiter: ',') %>  
+  </div>
+<% end %>
+
+<% if @article.zoning.present? %>
+  <div align="right" class='font-green col-xs-3 gutter-0'>
+    <%= "Zoning:" %>&nbsp;
+  </div>
+  <div class='col-xs-9 gutter-0'>
+    <%= @article.zoning %>&nbsp;  
+  </div>
+<% end %>
+
+<% if @article.lot.present? %>
+  <div align="right" class='font-green col-xs-3 gutter-0'>
+    <%= "Lot:" %>&nbsp;
+  </div>
+  <div class='col-xs-9 gutter-0'>
+    <%= @article.lot %>&nbsp;  
+  </div>
+<% end %>
+
 <div align="right" class='font-green col-xs-3 gutter-0'>
   <%= "Other info:" %>&nbsp;
 </div>
 <div class='col-xs-9 gutter-0'>
-  <%= @otherinfo.name if @otherinfo.present? %>&nbsp;
+  <%= @otherinfo.name if @otherinfo.present? %>&nbsp;   
 </div>
+
+<% if @article.titletype.present? %>
+  <div align="right" class='font-green col-xs-3 gutter-0'>
+    <%= "Title Type:" %>&nbsp;
+  </div>
+  <div class='col-xs-9 gutter-0'>
+    <%= @article.titletype %>&nbsp;  
+  </div>
+<% end %>
+
 <div align="right" class='font-green col-xs-3 gutter-0'>
   <%= "Price:" %>&nbsp;
 </div>
 <div class='col-xs-9 gutter-0'>
   <%= @places.currency if @places.present? %> <%= number_with_precision(@article.amount, precision: 0, delimiter: ',') %>
 </div>
+
+<% if @article.valuation.present? %>
+  <div align="right" class='font-green col-xs-3 gutter-0'>
+    <%= "Valuation:" %>&nbsp;
+  </div>
+  <div class='col-xs-9 gutter-0'>
+    <%= @places.currency if @places.present? %> <%= number_with_precision(@article.valuation, precision: 0, delimiter: ',') %>
+  </div>
+<% end %>
+
+
 <div align="right" class='font-green col-xs-3 gutter-0'>
   <%= "Last update:" %>&nbsp;
 </div>
 <div class='col-xs-9 gutter-0'>
   <%= (@article.updated_at + 8.hours).to_formatted_s(:long) %>
 </div>
+
 <div align="right" class='font-green col-xs-3 gutter-0'>
   <%= "Description:" %>&nbsp;
 </div>
