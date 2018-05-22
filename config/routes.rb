@@ -34,9 +34,7 @@ Rails.application.routes.draw do
   # get 'welcome/mmindex' => 'welcome#mmindex', :proptype => "for Sale"
   get 'welcome/mmindex' => 'welcome#mmindex'
   
-  
   get '/package', to: 'users#package'
-  
   
   # ---------------------------------------------------------------------------
   get 'ref_:name', to: 'articles#view' 

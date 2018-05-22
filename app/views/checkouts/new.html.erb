@@ -4,6 +4,9 @@
 
       <header>
         <!--<h1>Hi, <br>Let's test a transaction</h1>-->
+        
+        <% session[:m_gold] = params[:m_gold] if params[:m_gold].present? %>
+       
         <h2>Hi, <%= session[:m_name] %></h2> 
         
         <h3>How would you like to pay for the 
@@ -32,13 +35,13 @@
             <%# if @amtPay == "prem350" %>
             
             <% if session[:m_gold] == "Premier" %>
-              <input id="amount" name="amount" type="number" min="350.00" step="0.01" placeholder="Amount" value="350.00">
+              <input id="amount" name="amount" type="number" min="350.00" step="0.01" placeholder="Amount" value="350.00" readonly>
             <% else if session[:m_gold] == "Gold" %>
-              <input id="amount" name="amount" type="number" min="500.00" step="0.01" placeholder="Amount" value="500.00">
+              <input id="amount" name="amount" type="number" min="500.00" step="0.01" placeholder="Amount" value="500.00" readonly>
             <% else if session[:m_gold] == "Platinum" %>
-              <input id="amount" name="amount" type="number" min="3000.00" step="0.01" placeholder="Amount" value="3000.00">
+              <input id="amount" name="amount" type="number" min="3000.00" step="0.01" placeholder="Amount" value="3000.00" readonly>
             <% else %>
-              <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10.00">
+              <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="1000.00" readonly>
             <% end %>
             <% end %>
             <% end %>

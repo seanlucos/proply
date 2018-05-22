@@ -42,7 +42,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -78,6 +78,10 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => 'www.landmark.my/', :protocol => 'https'}
+  config.action_mailer.default_url_options = { 
+    :host => 'www.landmark.com.my/', :protocol => 'https'
+    # :host => 'landmarkmy.herokuapp.com/', :protocol => 'https'
+  }
+  config.action_mailer.asset_host = 'https://www.landmark.com.my'
 
 end

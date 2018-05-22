@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   # validates :telephone, presence: true, :on => :update   --- taken out coz forgot password issue 20/10/2016
   validates_presence_of :name, :agentno, :company, :telephone
   
+
   serialize :notification_params, Hash
   def paypal_url(return_path)
     values = {
@@ -37,6 +38,14 @@ class User < ActiveRecord::Base
         quantity: '1'
     }
     "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
+  end
+  
+  def expiry_date
+    if purchased_at.present?
+      purchased_at + 1.year
+    else
+      Date.new(2017, 1, 1)
+    end
   end
 
 end

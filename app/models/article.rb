@@ -4,10 +4,10 @@ class Article < ActiveRecord::Base
   validates :user_id, presence: true
   validates :proptype, presence: true
   validates :place, presence: true
-  validates :region, presence: true
-  validates :area, presence: true
+  validates :region, presence: { message: "(or State) can't be blank" }
+  validates :area, presence: { message: "(or Town) can't be blank" }
   validates :category, presence: true
-  validates :amount, :inclusion => 0..10000000
+  validates :amount, :inclusion => 0..1000000000000
 
  	validates :title, presence: true, length: {minimum: 3, maximum: 50}
 	validates :description, presence: true, length: {minimum: 10, maximum: 1000} 
@@ -28,7 +28,8 @@ class Article < ActiveRecord::Base
   scope :titletype, -> (titletype) { where titletype: titletype }  
   scope :furnishing, -> (furnishing) { where furnishing: furnishing }    
   scope :zoning, -> (zoning) { where zoning: zoning }    
-  scope :lot, -> (lot) { where lot: lot }
+  scope :lot, -> (lot) { where lot: lot } 
+  scope :active_days, ->(time) { where("articles.updated_at > ?", time) if time.present? }
   
   def self.search(search)
    where(['LOWER(title) LIKE ? OR LOWER(description) LIKE ?', "%#{search.downcase}%", "%#{search.downcase}%"])
