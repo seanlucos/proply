@@ -81,18 +81,31 @@
                     <% @region = Region.find_by_id(article.region) if article.region.present? %><%= @region.name if @region.present? %>, 
                     <% @place = Place.find_by_id(article.place) if article.place.present? %><%= @place.name if @place.present? %>.
                   </div>
+
                   <div class="col-sm-12 gutter-0">              
-                    Built-up: <%= article.size1 %> 
+                    Built-up: 
+                    <% if article.size.present? %>
+                      <%= article.size1 %> 
                       <%= "SqFt" if article.uom == "3" %><%= "SqM" if article.uom == "4" %><%= "Acres" if article.uom == "5" %><%= "Hectres" if article.uom == "6" %>
                         (<%= number_with_precision(article.size1.to_i*0.092903, precision: 2, delimiter: ',') if article.uom == "3" %>
                         <%= " SqM" if article.uom == "3" %><%= number_with_precision(article.size1.to_i*10.7639, precision: 2, delimiter: ',') if article.uom == "4" and article.size1.present? %><%= " SqFt" if article.uom == "4" %>)
+                    <% else %>
+                      NIL
+                    <% end %>
                   </div>
+                  
                   <div class="col-sm-12 gutter-0">              
-                    Land area: <%= article.size %> 
+                    Land area: 
+                    <% if article.size.present? %>
+                      <%= article.size %> 
                       <%= "SqFt" if article.uom == "3" %><%= "SqM" if article.uom == "4" %><%= "Acres" if article.uom == "5" %><%= "Hectres" if article.uom == "6" %>
                         (<%= number_with_precision(article.size.to_i*0.092903, precision: 2, delimiter: ',') if article.uom == "3" %>
                         <%= " SqM" if article.uom == "3" %><%= number_with_precision(article.size.to_i*10.7639, precision: 2, delimiter: ',') if article.uom == "4" and article.size.present? %><%= " SqFt" if article.uom == "4" %>)
+                    <% else %>
+                      NIL
+                    <% end %>
                   </div>
+
                   <div class="col-sm-12 gutter-0"> 
                     Last Updated: <%= (article.updated_at + 8.hours).to_formatted_s(:long) %>
                   </div>

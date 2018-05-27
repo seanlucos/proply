@@ -92,19 +92,19 @@
         <!--<div class="form-group form-group-sm">          -->
           <div class="col-xs-4 gutter-0"> 
             <% if params[:region].present? %>
-              <%= select("region", "name", options_for_select(@regions_for_dropdown, :selected => params[:region][:name] ),
+              <%= select("region", "name", options_for_select(@regions_for_dropdown.sort, :selected => params[:region][:name] ),
                 {prompt: 'All regions'}, {class: 'form-control'}) %>
             <% else %>
-              <%= select("region", "name", options_for_select(@regions_for_dropdown), 
+              <%= select("region", "name", options_for_select(@regions_for_dropdown.sort), 
                 {prompt: 'All regions '}, {class: 'form-control'}) %>
             <% end %>
           </div> 
           <div class="col-xs-4 gutter-0"> 
             <% if params[:area].present? %>
-              <%= select("area", "name", options_for_select(@areas_for_dropdown, :selected => params[:area][:name] ),
+              <%= select("area", "name", options_for_select(@areas_for_dropdown.sort, :selected => params[:area][:name] ),
                 {prompt: 'All areas'}, {class: 'form-control'}) %>
             <% else %>
-              <%= select("area", "name", options_for_select(@areas_for_dropdown), 
+              <%= select("area", "name", options_for_select(@areas_for_dropdown.sort), 
                 {prompt: 'All areas'}, {class: 'form-control'}) %>            
             <% end %>
           </div>
