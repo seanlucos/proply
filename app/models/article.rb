@@ -35,4 +35,7 @@ class Article < ActiveRecord::Base
    where(['LOWER(title) LIKE ? OR LOWER(description) LIKE ?', "%#{search.downcase}%", "%#{search.downcase}%"])
   end
 
+  def expired_31days?
+    self.updated_at.to_date < Time.now.ago(31.days)
+  end
 end

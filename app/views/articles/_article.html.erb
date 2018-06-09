@@ -84,7 +84,7 @@
 
                   <div class="col-sm-12 gutter-0">              
                     Built-up: 
-                    <% if article.size.present? %>
+                    <% if article.size1.present? %>
                       <%= article.size1 %> 
                       <%= "SqFt" if article.uom == "3" %><%= "SqM" if article.uom == "4" %><%= "Acres" if article.uom == "5" %><%= "Hectres" if article.uom == "6" %>
                         (<%= number_with_precision(article.size1.to_i*0.092903, precision: 2, delimiter: ',') if article.uom == "3" %>
@@ -131,18 +131,31 @@
             <% if current_user %>
               <% if params[:displayedit] == "Y" && current_user == article.user || current_user.admin? %>
                 <div class="col-sm-8">
+
                   <%= link_to "Edit Ad", edit_article_path(article), class: "btn btn-xs btn-primary" %>
+
                   <%= link_to "Delete Ad", article_path(article), method: :delete,
                   data: { confirm: "Are you sure you want to delete the article?"},
                   class: "btn btn-xs btn-danger" %>
+                  
                 	<% if !article.xonline? %>
                     <div class="btn btn-xs btn-warning ">
                       Draft!
                     </div>&nbsp;&nbsp;
+                  <% else %>
+                    <%#= "[Expired]" if article.expired_31days? %>
+                    <% if article.expired_31days? %>
+                      <div class="btn btn-xs btn-info" >
+                        inactive
+                      </div>   
+                      <!--<span class='glyphicon glyphicon-hand-up'></span>-->
+                    <% end %>  
                   <% end %>
+                
                 </div>
               <% end %>
             <% end %>
+            
           </div><hr>
         <% end %>
     <% end %>
@@ -156,9 +169,12 @@
         <br>
         <h3><b>Where now?</b></h3>
         <h5><b>Found this useful? Share it:</b></h5><br>
-        <%= link_to image_tag("facebook.gif"), "https://www.facebook.com/sharer.php?u=http://www.http://sssssb.comy/" %>&nbsp;&nbsp;
+        
+        <%#= link_to image_tag("facebook.gif"), "https://www.facebook.com/sharer.php?u=http://www.http://sssssb.comy/" %>
+        <%= link_to image_tag("facebook.gif"), "https://www.facebook.com/sharer.php?u=#{request.original_url}", target: :_blank %>&nbsp;&nbsp;
         <%= link_to image_tag("twitter.gif"), "https://twitter.com/login?redirect_after_login=%2Fhome%3Fstatus%3DCurrently%2520reading%2520http%3A%2F%2Fwww.srsp.edu.my" %>&nbsp;&nbsp;
         <%= link_to image_tag("google.gif"), "https://accounts.google.com/ServiceLogin?service=oz&passive=1209600&continue=https://plus.google.com/share?url%3Dhttp://www.sssssb.com%26gpsrc%3Dgplp0&btmpl=popup#identifier" %>&nbsp;&nbsp;
+        
         <%= image_tag("whatsapp.gif") %>
       </div>
     </div>
