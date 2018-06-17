@@ -163,8 +163,8 @@
               <%= select("otherinfo", "name", options_for_select(@otherinfos_for_dropdown, :selected => params[:otherinfo][:name] ), 
                 {prompt: 'All Others'}, {class: 'form-control'}) %>
             <% else %>
-              <%#= select("otherinfo", "name", options_for_select(@otherinfos_for_dropdown), {prompt: 'Others'}, {class: 'form-control'}) %>  
-              <%= select("otherinfo", "name", options_for_select(@otherinfos_for_dropdown, :selected => @otherinfos_for_dropdown.last), {prompt: 'All Others'}, {class: 'form-control'}) %> 
+              <%= select("otherinfo", "name", options_for_select(@otherinfos_for_dropdown), {prompt: 'Others'}, {class: 'form-control'}) %>  
+              <%#= select("otherinfo", "name", options_for_select(@otherinfos_for_dropdown, :selected => @otherinfos_for_dropdown.last), {prompt: 'All Others'}, {class: 'form-control'}) %> 
             <% end %>
           </div> 
           <div class="col-xs-4 gutter-0"> 

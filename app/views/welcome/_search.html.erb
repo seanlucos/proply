@@ -160,10 +160,10 @@
               <%= select("otherinfo", "name", options_for_select(@otherinfos_for_dropdown, :selected => params[:otherinfo][:name] ), 
                 {prompt: 'All Others'}, {class: 'form-control'}) %>
             <% else %>
-              <%#= select("otherinfo", "name", options_for_select(@otherinfos_for_dropdown), 
+              <%= select("otherinfo", "name", options_for_select(@otherinfos_for_dropdown), 
                 {prompt: 'All Others'}, {class: 'form-control'}) %>         
                 <%# params[:otherinfo] = "2" %>
-              <%= select("otherinfo", "name", options_for_select(@otherinfos_for_dropdown, :selected => @otherinfos_for_dropdown.last), {prompt: 'All Others'}, {class: 'form-control'}) %> 
+              <%#= select("otherinfo", "name", options_for_select(@otherinfos_for_dropdown, :selected => @otherinfos_for_dropdown.last), {prompt: 'All Others'}, {class: 'form-control'}) %> 
               <%#= select("place", "name", options_for_select(@places_for_dropdown, @places_for_dropdown.first), {}, {class: 'form-control'}) %>  
             <% end %>
           </div> 
