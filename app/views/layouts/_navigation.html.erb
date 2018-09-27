@@ -35,14 +35,33 @@
           
         <!-- (2) New Ads -->  
         <% if logged_in? %>
+        
+          <% if APP_CONFIG['free90'] %>
+                <% if current_user.status? %>
+                  <li><%= link_to "<span class='glyphicon glyphicon-edit'></span>&nbsp; Insert New Ad".html_safe, 
+                      new_article_path(:param1 => "new", :proptype => "for Sale") %></li>
+                <%# else %>
+                  <li><%#= link_to "<span class='glyphicon glyphicon-info-sign'></span>&nbsp; Package".html_safe, package_path %></li>
+                <% end %>
+
+          <% else %> 
+        
           <% if current_user.status? && Date.today <= current_user.expiry_date %>
 
-            <li><%= link_to "<span class='glyphicon glyphicon-edit'></span>&nbsp; Insert New Ad".html_safe, 
-              new_article_path(:param1 => "new", :proptype => "for Sale") %></li>
+                <%# if Date.today > current_user.expiry_date %>
+                  <%# session[:m_gold] = current_user.status %>
+                  <li><%#= link_to "<span class='glyphicon glyphicon-cog'></span>&nbsp; Subscribe".html_safe, new_checkout_path %></li> 
+                <%# else %>
+                  <li><%= link_to "<span class='glyphicon glyphicon-edit'></span>&nbsp; Insert New Ad".html_safe, 
+                    new_article_path(:param1 => "new", :proptype => "for Sale") %></li>
+                <%# end %>
+
           
           <% else %>
              <li><%= link_to "<span class='glyphicon glyphicon-info-sign'></span>&nbsp; Package".html_safe, package_path %></li>
+          
           <% end %>
+          <% end %><!-- APP_CONFIG -->
         <% end %>
           
         <!-- (3) EMAIL -->

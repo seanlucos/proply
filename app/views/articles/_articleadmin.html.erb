@@ -20,7 +20,7 @@
                   Draft!
                 </div>
               <% else %>
-                <% if article.expired_31days? %>
+                <% if APP_CONFIG['activ30'] && article.expired_31days? %>
                   <div class="btn btn-xs btn-info" >
                     inactive
                   </div>   
@@ -53,7 +53,7 @@
           <br><%= article.user.email %>
           <br><% @place = Place.find_by_id(article.currency) if article.currency.present? %>
           <%= @place.currency if @place.present? %> <%= number_with_precision(article.amount, precision: 0, delimiter: ',') %>
-          <br><%= (article.updated_at + 8.hours).to_formatted_s(:short) %>
+          <br><%= (article.updated_at + 8.hours).to_formatted_s(:db) %>
         </div>
       </div><hr>
     <% end %>

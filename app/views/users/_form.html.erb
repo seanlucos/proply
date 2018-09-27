@@ -120,13 +120,17 @@
                   <%= f.radio_button :m_gold, 'Premier', disabled: true if @user.status == 'Premier' %>
                   <%= (f.radio_button :m_gold, 'Premier') if @user.status != 'Premier' %></div>
                 <div class="col-xs-9">
-                  <%= "Premier:&nbsp; RM 350 -- 30 listings".html_safe %> <!--PayPal 25 ads-->
+                  <% if !APP_CONFIG['free90'] %>
+                      <%= "Premier:&nbsp; RM 350 -- 30 listings".html_safe %> <!--PayPal 25 ads-->
+                  <% else %>
+                      <%= "Premier:&nbsp; Free -- 30 listings".html_safe %> 
+                  <% end %>
                 </div></div>
                 
                 <div class="form-group form-group-sm"> 
                 <div class="col-xs-3" align="right" >
                   <%= f.radio_button :m_gold, 'Gold', disabled: true if @user.status == 'Gold' %>
-                  <%= (f.radio_button :m_gold, 'Gold') if @user.status != 'Gold' %></div>
+                  <%= (f.radio_button :m_gold, 'Gold', disabled: true) if @user.status != 'Gold' %></div>
                 <div class="col-xs-9">
                   <%= "Gold:&nbsp;&nbsp;
                   &nbsp;&nbsp;&nbsp; RM 500 -- 100 listings".html_safe %> <!--CreditCard 55 ads-->
@@ -135,7 +139,7 @@
                 <div class="form-group form-group-sm"> 
                 <div class="col-xs-3" align="right" >
                   <%= f.radio_button :m_gold, 'Platinum', disabled: true if @user.status == 'Platinum' %>
-                  <%= (f.radio_button :m_gold, 'Platinum') if @user.status != 'Platinum' %></div>
+                  <%= (f.radio_button :m_gold, 'Platinum', disabled: true) if @user.status != 'Platinum' %></div>
                 <div class="col-xs-9">
                   <%= "Platinum: RM 3000 -- 1000 listings" %> <!--PayPal3 no exist-->
                 </div></div>

@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   
   def update    ## PATCH /user/id (someone else id)
     
-    #byebug
+    # byebug
 
     if @user.update(user_params)
       session[:m_gold] = @user.m_gold   ## avail only after .update 
@@ -58,8 +58,16 @@ class UsersController < ApplicationController
       if session[:m_gold] == "Premier" or  
         session[:m_gold] == "Gold"  or
         session[:m_gold] == "Platinum" 
-        redirect_to new_checkout_path
+        if !APP_CONFIG['free90']
+          redirect_to new_checkout_path
       
+        else 
+          @user.status = session[:m_gold]
+          @user.purchased_at = Time.now
+          @user.save
+          redirect_to edit_user_path(current_user.id)
+        end
+        
       else
         flash[:success] = "Your account was updated successfully"
         redirect_to edit_user_path(current_user.id)

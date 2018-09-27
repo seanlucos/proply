@@ -53,8 +53,10 @@
                   <br>
                   
                   <!--DELETE /users/:id(.:format)              users#destroy-->
+                  <% if !user.admin? %>
                   <%= link_to "Delete user", user_path(user), method: :delete,
                   data: { confirm: "Are you sure you want to delete this user and all its articles?" }, class: "btn btn-xs btn-danger" %>&nbsp;
+                  <% end %>
                   
                   <%= link_to "Update user", edit_user_path(user), class: "btn btn-xs btn-primary" %>&nbsp;
                 

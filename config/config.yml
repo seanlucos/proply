@@ -1,0 +1,19 @@
+# free90:  true   for Premier-no-1-yr-expiry      ## & hide "package" search result "ALL ads" (non-Draft)
+# free90:  false  for enforce 1-yr-expiry (live)  ## & show "package" search result "activ ads only" (non-Draft)  
+
+# activ30: true   for enforce 30-days-active Ads else show "inactive" (live)
+# activ30: false  for ignore
+
+development:
+  free90: true
+  activ30: false
+
+test:
+  free90: true
+  activ30: false
+
+production:
+  free90: true
+  activ30: false
+  
+

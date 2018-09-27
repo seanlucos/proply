@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
 
-    if Date.today > current_user.expiry_date
+    if Date.today > current_user.expiry_date && !APP_CONFIG['free90']
       flash[:danger] = "Please update your subscription."
       redirect_to root_path
     end      
@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
     @articles = @articles.furnishing(params[:furnishing]) if params[:furnishing].present? and params[:furnishing] !=""
     @articles = @articles.zoning(params[:zoning])         if params[:zoning].present? and params[:zoning] !=""
     @articles = @articles.lot(params[:lot])               if params[:lot].present? and params[:lot] !=""
-    @articles = @articles.active_days(31.days.ago) 
+    @articles = @articles.active_days(31.days.ago)        if !APP_CONFIG['free90'] 
 
 # filter bedrooms
     # @temp0 = Chainb.find(params[:chainb][:name].to_i) if params[:chainb].present? and params[:chainb][:name] !=""

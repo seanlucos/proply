@@ -70,7 +70,7 @@
                     * Draft copy *
                   </div>&nbsp;&nbsp;
                 <% else %>
-                	<% if article.expired_31days? %>
+                	<% if APP_CONFIG['activ30'] && article.expired_31days? %>
                     <div class="btn btn-xs btn-info" >
                       inactive
                     </div> 
