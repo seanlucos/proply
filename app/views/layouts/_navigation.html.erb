@@ -88,7 +88,7 @@
               <% end %>
             
               <!-- logged_in but non-Admin -->
-              <li><%= link_to "My Ads", articles_path %></li>
+              <li><%= link_to "My Ads", articles_path(current_user.id) %></li>
               <li><%= link_to "My Settings", edit_user_path(current_user.id) %></li>
               <li><%= link_to "Sign Out ".html_safe, destroy_user_session_path, :method => :delete %></li>        
 

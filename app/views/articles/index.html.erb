@@ -4,6 +4,9 @@
       <div class="col-lg-12">
         <%= render 'mmarticle', obj: @articles %> 
       </div>
+      <div align="left" >
+        <%= will_paginate %>
+      </div> 
     </div>
   </div>
 <% else %>
